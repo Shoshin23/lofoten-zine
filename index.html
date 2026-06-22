@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LOFOTEN ZINE · 17–21 Aug</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3ead6;
+    --paper2:#efe3c7;
+    --ink:#23303a;
+    --red:#c8483c;       /* rorbu red */
+    --sea:#2f7d83;       /* fjord teal */
+    --sea2:#3f9aa0;
+    --mustard:#e0a52e;
+    --sky:#bfd8d6;
+    --tape:#e6d27a;
+    --shadow:rgba(35,48,58,.18);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Patrick Hand", "Comic Sans MS",cursive;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 20% 10%, #f7efdd, transparent 40%),
+      radial-gradient(circle at 80% 80%, #f0e6cf, transparent 45%),
+      var(--paper);
+    background-attachment:fixed;
+    line-height:1.5;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:18px 16px 80px;position:relative;z-index:1}
+
+  /* ---------- COVER ---------- */
+  .cover{
+    position:relative;border:3px solid var(--ink);border-radius:14px;overflow:hidden;
+    background:linear-gradient(180deg,#cfe3e2 0%,#dfeae0 55%,#f1e7d0 100%);
+    box-shadow:0 10px 24px var(--shadow);
+  }
+  .cover svg{display:block;width:100%;height:auto}
+  .cover .titleblock{position:absolute;left:0;right:0;top:14px;text-align:center}
+  .zine-kicker{font-family:"Special Elite",monospace;letter-spacing:4px;font-size:13px;color:var(--ink);opacity:.8}
+  .zine-title{font-family:"Caveat",cursive;font-weight:700;font-size:clamp(48px,11vw,104px);line-height:.85;color:var(--red);margin:2px 0;text-shadow:2px 2px 0 #fff3, -1px -1px 0 #0001}
+  .zine-sub{font-family:"Caveat",cursive;font-size:clamp(20px,4vw,30px);color:var(--ink)}
+  .tag{display:inline-block;background:var(--ink);color:var(--paper);padding:4px 12px;border-radius:20px;font-family:"Special Elite";font-size:12px;letter-spacing:2px;margin-top:8px;transform:rotate(-2deg)}
+
+  /* washi tape */
+  .tape-deco{position:absolute;width:120px;height:30px;background:var(--tape);opacity:.85;box-shadow:0 2px 5px var(--shadow)}
+  .tape-deco.tl{top:-10px;left:30px;transform:rotate(-8deg)}
+  .tape-deco.tr{top:-10px;right:30px;transform:rotate(7deg)}
+
+  h2.section{font-family:"Caveat";font-weight:700;font-size:34px;color:var(--sea);margin:34px 0 10px;display:flex;align-items:center;gap:10px}
+  h2.section::after{content:"";flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--sea) 0 10px,transparent 10px 18px);border-radius:3px}
+
+  /* ---------- AT A GLANCE STRIP ---------- */
+  .glance{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+  @media(max-width:680px){.glance{grid-template-columns:repeat(2,1fr)}}
+  .gcard{background:var(--paper2);border:2px solid var(--ink);border-radius:10px;padding:10px;text-align:center;box-shadow:3px 3px 0 var(--shadow);transition:transform .15s}
+  .gcard:hover{transform:translateY(-3px) rotate(-1deg)}
+  .gcard .gd{font-family:"Special Elite";font-size:11px;background:var(--ink);color:var(--paper);border-radius:12px;padding:2px 8px;display:inline-block}
+  .gcard .gt{font-family:"Caveat";font-weight:700;font-size:22px;color:var(--red);margin:6px 0 2px;line-height:1}
+  .gcard .gx{font-size:13px}
+
+  /* ---------- DAY TABS ---------- */
+  .tabs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .tab{cursor:pointer;border:2px solid var(--ink);background:var(--paper2);border-radius:10px 10px 0 0;
+       padding:8px 14px;font-family:"Caveat";font-weight:700;font-size:20px;color:var(--ink);transform:translateY(2px);box-shadow:0 -2px 0 var(--shadow) inset}
+  .tab .num{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--mustard);color:var(--ink);align-items:center;justify-content:center;font-size:15px;margin-right:6px}
+  .tab.active{background:var(--red);color:#fff;transform:translateY(0)}
+  .tab.active .num{background:#fff;color:var(--red)}
+
+  .panel{display:none;border:3px solid var(--ink);border-radius:0 12px 12px 12px;background:var(--paper2);padding:0;overflow:hidden;box-shadow:6px 6px 0 var(--shadow);animation:pop .25s ease}
+  .panel.active{display:block}
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .panel .scene{width:100%;height:auto;display:block;background:linear-gradient(180deg,#cfe3e2,#e8ecd8)}
+  .panel .body{padding:16px 18px 20px}
+  .daterow{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;border-bottom:2px dashed var(--ink);padding-bottom:8px;margin-bottom:10px}
+  .daterow .dt{font-family:"Caveat";font-weight:700;font-size:30px;color:var(--red)}
+  .daterow .base{font-family:"Special Elite";font-size:12px;background:var(--sea);color:#fff;padding:3px 10px;border-radius:14px}
+  ul.steps{list-style:none;margin:0;padding:0}
+  ul.steps li{position:relative;padding:7px 6px 7px 34px;border-bottom:1px dotted #0002;font-size:17px}
+  ul.steps li::before{content:"➜";position:absolute;left:8px;top:7px;color:var(--sea2);font-size:16px}
+  ul.steps li b{color:var(--red)}
+  .pill{display:inline-block;font-family:"Special Elite";font-size:10px;letter-spacing:1px;padding:2px 8px;border-radius:10px;margin-left:4px;vertical-align:middle}
+  .pill.easy{background:#cfe6c4;color:#2c5a25}
+  .pill.med{background:#f3d9a6;color:#7a4e10}
+  .pill.opt{background:#e3d2ef;color:#5a3a72}
+  .tip{margin-top:10px;background:#fff7e2;border-left:5px solid var(--mustard);padding:8px 12px;font-size:15px;border-radius:0 8px 8px 0}
+
+  /* ---------- BUDGET ---------- */
+  .budget{border:3px solid var(--ink);border-radius:12px;background:var(--paper2);padding:14px 16px;box-shadow:5px 5px 0 var(--shadow)}
+  .brow{display:flex;justify-content:space-between;border-bottom:1px dotted #0003;padding:5px 0;font-size:16px}
+  .brow.total{border-top:3px solid var(--ink);border-bottom:none;margin-top:6px;font-family:"Caveat";font-weight:700;font-size:24px;color:var(--red)}
+  .bbar{height:14px;border-radius:8px;background:#0001;overflow:hidden;margin-top:10px;border:1px solid var(--ink)}
+  .bbar span{display:block;height:100%;background:repeating-linear-gradient(45deg,var(--sea) 0 8px,var(--sea2) 8px 16px)}
+
+  /* ---------- CHECKLISTS ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:680px){.cols{grid-template-columns:1fr}}
+  .note{border:3px solid var(--ink);border-radius:12px;padding:12px 14px;box-shadow:4px 4px 0 var(--shadow)}
+  .note.red{background:#fbe7e3}.note.sea{background:#e2f0ee}
+  .note h3{font-family:"Caveat";font-weight:700;font-size:24px;margin:0 0 6px}
+  .check{list-style:none;margin:0;padding:0}
+  .check li{padding:4px 0;font-size:16px;cursor:pointer;user-select:none}
+  .check li .box{display:inline-flex;width:20px;height:20px;border:2px solid var(--ink);border-radius:5px;margin-right:8px;vertical-align:-4px;justify-content:center;align-items:center;font-size:14px;background:#fff}
+  .check li.done .box{background:var(--sea);color:#fff}
+  .check li.done{opacity:.55;text-decoration:line-through}
+
+  .commandments{counter-reset:c;list-style:none;margin:0;padding:0}
+  .commandments li{counter-increment:c;position:relative;padding:6px 6px 6px 38px;font-size:16px;border-bottom:1px dotted #0002}
+  .commandments li::before{content:counter(c);position:absolute;left:6px;top:5px;width:24px;height:24px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Special Elite";font-size:12px}
+
+  footer{text-align:center;margin-top:40px;font-family:"Caveat";font-size:22px;color:var(--sea)}
+  .stamp{display:inline-block;border:3px double var(--red);color:var(--red);font-family:"Special Elite";font-size:12px;letter-spacing:2px;padding:8px 14px;border-radius:8px;transform:rotate(-6deg);margin-top:8px}
+  a.scrolltop{color:var(--sea);text-decoration:underline dotted}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===================== COVER ===================== -->
+  <div class="cover">
+    <span class="tape-deco tl"></span><span class="tape-deco tr"></span>
+    <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lofoten landscape">
+      <!-- sky already via gradient bg -->
+      <!-- sun -->
+      <circle cx="730" cy="86" r="34" fill="#f2c34a"/>
+      <circle cx="730" cy="86" r="34" fill="none" stroke="#e0a52e" stroke-width="2" opacity=".6"/>
+      <!-- back mountains -->
+      <path d="M0 230 L120 120 L210 200 L300 95 L420 215 L520 130 L640 220 L760 110 L900 215 L900 360 L0 360 Z" fill="#7fa6a6"/>
+      <!-- mid mountains -->
+      <path d="M0 270 L90 175 L190 255 L290 160 L400 260 L520 175 L650 270 L780 180 L900 265 L900 360 L0 360 Z" fill="#5d8587"/>
+      <!-- snow caps -->
+      <path d="M300 95 L325 135 L290 130 Z" fill="#fff" opacity=".85"/>
+      <path d="M520 130 L545 168 L500 162 Z" fill="#fff" opacity=".85"/>
+      <path d="M760 110 L788 150 L738 146 Z" fill="#fff" opacity=".8"/>
+      <!-- sea -->
+      <rect x="0" y="300" width="900" height="60" fill="#2f7d83"/>
+      <path d="M0 300 q60 -12 120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 v60 H0 Z" fill="#3f9aa0"/>
+      <!-- rorbu cabins -->
+      <g>
+        <rect x="120" y="262" width="46" height="34" fill="#c8483c"/><path d="M118 262 L143 244 L168 262 Z" fill="#8f2f27"/><rect x="135" y="276" width="12" height="20" fill="#3a2018"/>
+        <rect x="176" y="268" width="40" height="28" fill="#b23c31"/><path d="M174 268 L196 252 L218 268 Z" fill="#7d2a22"/><rect x="190" y="280" width="10" height="16" fill="#3a2018"/>
+      </g>
+      <!-- little boat -->
+      <g>
+        <path d="M560 320 q30 18 70 0 l-8 14 q-27 10 -54 0 Z" fill="#23303a"/>
+        <rect x="592" y="296" width="3" height="26" fill="#23303a"/><path d="M595 298 l22 12 -22 8 Z" fill="#efe3c7"/>
+      </g>
+      <!-- fish drying rack -->
+      <g stroke="#3a2018" stroke-width="3" fill="none">
+        <path d="M250 296 V250 M310 296 V250 M250 258 H310 M250 270 H310"/>
+        <path d="M262 270 v14 M276 270 v14 M290 270 v14 M304 270 v12" stroke="#cbb89a" stroke-width="2"/>
+      </g>
+    </svg>
+    <div class="titleblock">
+      <div class="zine-kicker">A NORDIC ROAD-TRIP ZINE</div>
+      <div class="zine-title">LOFOTEN</div>
+      <div class="zine-sub">5 days of fjords, lakes &amp; little red cabins</div>
+      <div class="tag">17 – 21 AUGUST 2026 · KK · SHWETA · SIDDHARTH</div>
+    </div>
+  </div>
+
+  <p style="text-align:center;font-size:18px;margin:14px 6px 0">
+    🚗 Self-drive &nbsp;·&nbsp; 🥦 Veg &amp; cook-in &nbsp;·&nbsp; 🥾 Easy–medium hikes &nbsp;·&nbsp; 🌅 ~16h daylight &nbsp;·&nbsp; 💶 ~€850 pp
+  </p>
+
+  <!-- ===================== AT A GLANCE ===================== -->
+  <h2 class="section">🗺️ The trip at a glance</h2>
+  <div class="glance">
+    <div class="gcard"><span class="gd">MON 17</span><div class="gt">Fly &amp; Drive In</div><div class="gx">AMS→Evenes, scenic drive to Svolvær</div></div>
+    <div class="gcard"><span class="gd">TUE 18</span><div class="gt">Henningsvær</div><div class="gx">Fishing village + east-coast lakes</div></div>
+    <div class="gcard"><span class="gd">WED 19</span><div class="gt">Beach Day</div><div class="gx">Haukland ↔ Uttakleiv, head west</div></div>
+    <div class="gcard"><span class="gd">THU 20</span><div class="gt">Reine &amp; Å</div><div class="gx">Lake loop + the big viewpoint</div></div>
+    <div class="gcard"><span class="gd">FRI 21</span><div class="gt">Slow &amp; Fly Out</div><div class="gx">Sakrisøy views, drive to Evenes</div></div>
+  </div>
+
+  <!-- ===================== DAY TABS ===================== -->
+  <h2 class="section">📖 Day by day <span style="font-size:15px;font-family:'Special Elite';color:var(--ink);opacity:.6">(tap a day)</span></h2>
+  <div class="tabs" id="tabs">
+    <div class="tab active" data-d="1"><span class="num">1</span>Mon 17</div>
+    <div class="tab" data-d="2"><span class="num">2</span>Tue 18</div>
+    <div class="tab" data-d="3"><span class="num">3</span>Wed 19</div>
+    <div class="tab" data-d="4"><span class="num">4</span>Thu 20</div>
+    <div class="tab" data-d="5"><span class="num">5</span>Fri 21</div>
+  </div>
+
+  <!-- DAY 1 -->
+  <div class="panel active" data-d="1">
+    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="plane and road">
+      <rect width="900" height="200" fill="#cfe3e2"/>
+      <path d="M0 150 L150 80 L300 150 L470 70 L640 150 L800 90 L900 150 L900 200 L0 200Z" fill="#6f9698"/>
+      <rect x="0" y="160" width="900" height="40" fill="#4d4036"/>
+      <path d="M0 180 H900" stroke="#e6d27a" stroke-width="4" stroke-dasharray="34 26"/>
+      <!-- car -->
+      <g><rect x="120" y="150" width="70" height="26" rx="6" fill="#c8483c"/><rect x="138" y="138" width="38" height="18" rx="5" fill="#9fd0d2"/><circle cx="140" cy="178" r="9" fill="#23303a"/><circle cx="178" cy="178" r="9" fill="#23303a"/></g>
+      <!-- plane -->
+      <g transform="translate(640 60) rotate(8)"><path d="M0 0 L70 8 L86 0 L70 -8 Z" fill="#fff"/><path d="M30 0 L18 -22 L34 -6 Z" fill="#dfe7e6"/><path d="M30 0 L18 22 L34 6 Z" fill="#dfe7e6"/></g>
+    </svg>
+    <div class="body">
+      <div class="daterow"><span class="dt">Mon 17 · Touch down &amp; roll in</span><span class="base">🛏 Base: Svolvær / Kabelvåg</span></div>
+      <ul class="steps">
+        <li>Fly <b>Amsterdam → Evenes (EVE)</b>, the Harstad–Narvik airport. Aim for a midday-ish arrival.</li>
+        <li>Pick up the <b>rental car</b>. Big grocery shop at the first <b>Rema 1000 / Coop Extra</b> — stock up for veg cooking while choice is good.</li>
+        <li>Drive into Lofoten on the <b>E10</b> (~2.5–3 h). It's jaw-dropping even as a transfer — fjords, bridges, peaks.</li>
+        <li>Check in near <b>Svolvær / Kabelvåg</b>. Easy evening: harbour stroll, cook the first dinner. <span class="pill easy">chill</span></li>
+      </ul>
+      <div class="tip">✈️ Book the AMS↔EVE flight first — it's the single biggest cost lever. Target €300–350 return.</div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="panel" data-d="2">
+    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="fishing village">
+      <rect width="900" height="200" fill="#cfe3e2"/>
+      <path d="M0 120 L130 50 L260 120 L400 40 L540 120 L690 55 L820 120 L900 80 L900 200 L0 200Z" fill="#5d8587"/>
+      <rect x="0" y="150" width="900" height="50" fill="#2f7d83"/>
+      <g><rect x="120" y="120" width="50" height="34" fill="#c8483c"/><path d="M118 120 L145 100 L172 120Z" fill="#8f2f27"/>
+         <rect x="200" y="126" width="44" height="28" fill="#d98b2b"/><path d="M198 126 L222 108 L246 126Z" fill="#a5641a"/>
+         <rect x="300" y="122" width="48" height="32" fill="#b23c31"/><path d="M298 122 L324 104 L350 122Z" fill="#7d2a22"/></g>
+      <!-- pier posts -->
+      <g stroke="#3a2018" stroke-width="4"><path d="M180 154 V178 M240 154 V178 M348 154 V178"/></g>
+    </svg>
+    <div class="body">
+      <div class="daterow"><span class="dt">Tue 18 · Henningsvær &amp; east lakes</span><span class="base">🛏 Base: Svolvær / Kabelvåg</span></div>
+      <ul class="steps">
+        <li><b>Henningsvær</b> — the "Venice of Lofoten," a village scattered over skerries. Wander the harbour + the famous clifftop <b>football pitch</b>. <span class="pill easy">easy</span></li>
+        <li>Optional climb: <b>Festvågtind</b> for a top-down view of the village. <span class="pill med">medium ~2h</span> <span class="pill opt">optional</span></li>
+        <li>Roadside <b>lakes &amp; fjord viewpoints</b> (Storvatnet area) on the way back — pull into laybys for photos.</li>
+        <li>Cook-in dinner, or treat yourselves to a veg pizza in Svolvær.</li>
+      </ul>
+      <div class="tip">📸 Golden hour runs late — around 9–10pm in August. Save a viewpoint for the soft evening light.</div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="panel" data-d="3">
+    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="beach">
+      <rect width="900" height="200" fill="#cfe3e2"/>
+      <path d="M0 110 L160 40 L320 110 L500 35 L660 110 L820 50 L900 100 L900 130 L0 130Z" fill="#6f9698"/>
+      <rect x="0" y="120" width="900" height="40" fill="#5bb6bd"/>
+      <path d="M0 130 q120 22 240 6 t240 6 t240 6 t180 4 v18 H0Z" fill="#ead9b0"/>
+      <rect x="0" y="158" width="900" height="42" fill="#e6d2a6"/>
+    </svg>
+    <div class="body">
+      <div class="daterow"><span class="dt">Wed 19 · White-sand beach day</span><span class="base">🛏 Move west → Reine / Hamnøy</span></div>
+      <ul class="steps">
+        <li>Drive west on the E10 (1.5–2 h with stops).</li>
+        <li><b>Haukland → Uttakleiv coastal path</b> — turquoise water, white sand, the best short walk in Lofoten. <span class="pill easy">easy ~1–2h</span></li>
+        <li>Stop at <b>Skagsanden beach</b> &amp; <b>Flakstad</b> church en route; maybe <b>Vikten</b> glass studio.</li>
+        <li>Check into <b>Reine / Hamnøy / Ramberg</b> base — your home for the dramatic west end. Cook in.</li>
+      </ul>
+      <div class="tip">🛒 Shops thin out further west — do a top-up grocery run in <b>Leknes</b> before settling in Reine.</div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="panel" data-d="4">
+    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="reine peaks and lake">
+      <rect width="900" height="200" fill="#cfe3e2"/>
+      <path d="M0 160 L120 40 L230 160 Z" fill="#587f81"/>
+      <path d="M180 160 L340 25 L500 160 Z" fill="#4d7173"/>
+      <path d="M430 160 L600 50 L760 160 Z" fill="#5d8587"/>
+      <path d="M340 25 L368 70 L312 66 Z" fill="#fff" opacity=".85"/>
+      <rect x="0" y="150" width="900" height="50" fill="#2f7d83"/>
+      <ellipse cx="450" cy="178" rx="320" ry="16" fill="#3f9aa0" opacity=".7"/>
+      <g><rect x="250" y="140" width="40" height="26" fill="#c8483c"/><path d="M248 140 L270 124 L292 140Z" fill="#8f2f27"/>
+         <rect x="560" y="142" width="38" height="24" fill="#b23c31"/><path d="M558 142 L579 127 L600 142Z" fill="#7d2a22"/></g>
+    </svg>
+    <div class="body">
+      <div class="daterow"><span class="dt">Thu 20 · Reine, Å &amp; the big view</span><span class="base">🛏 Base: Reine / Hamnøy</span></div>
+      <ul class="steps">
+        <li><b>Reine &amp; Hamnøy</b> — the most photographed spot in Norway. Red rorbuer under razor peaks; viewpoints from the bridges &amp; <b>Sakrisøy</b>. <span class="pill easy">easy</span></li>
+        <li><b>Å i Lofoten</b> — village at the literal end of the road. Walk the <b>Ågvatnet lake loop</b>, a calm fjord-lake ringed by mountains. <span class="pill easy">easy</span></li>
+        <li>Pick ONE big nature hit:
+          <br>• <b>Kvalvika Beach + Ryten</b> viewpoint over a hidden beach <span class="pill med">medium ~3–4h</span>
+          <br>• or <b>Reinebringen</b> stair-climb for the postcard shot <span class="pill med">medium-hard</span>
+          <br>• or keep it gentle — viewpoints only <span class="pill opt">easy swap</span></li>
+      </ul>
+      <div class="tip">🥾 Doing Ryten or Reinebringen? Go in the morning, carry water + a windproof layer, and wear grippy shoes — trails get slick after rain.</div>
+    </div>
+  </div>
+
+  <!-- DAY 5 -->
+  <div class="panel" data-d="5">
+    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="drive out">
+      <rect width="900" height="200" fill="#cfe3e2"/>
+      <path d="M0 130 L160 60 L320 130 L490 55 L660 130 L820 70 L900 120 L900 200 L0 200Z" fill="#6f9698"/>
+      <rect x="0" y="150" width="900" height="50" fill="#4d4036"/>
+      <path d="M0 176 H900" stroke="#e6d27a" stroke-width="4" stroke-dasharray="34 26"/>
+      <g><rect x="690" y="146" width="70" height="26" rx="6" fill="#c8483c"/><rect x="708" y="134" width="38" height="18" rx="5" fill="#9fd0d2"/><circle cx="710" cy="174" r="9" fill="#23303a"/><circle cx="748" cy="174" r="9" fill="#23303a"/></g>
+      <g transform="translate(180 70)"><circle r="26" fill="#f2c34a"/></g>
+    </svg>
+    <div class="body">
+      <div class="daterow"><span class="dt">Fri 21 · Slow morning, fly home</span><span class="base">🛫 Drive to Evenes (EVE)</span></div>
+      <ul class="steps">
+        <li>Lazy start: last <b>Reine / Sakrisøy</b> photos, a warm bakery stop, pack up.</li>
+        <li>Drive back east to <b>Evenes (EVE)</b> (~3–3.5 h with the inbound stops you skipped). Leave a comfortable buffer.</li>
+        <li>Drop the car, fly <b>EVE → Amsterdam</b>. 🎉</li>
+      </ul>
+      <div class="tip">⛽ Return the car with a full tank (fuel near the airport is easiest) to dodge refuelling fees.</div>
+    </div>
+  </div>
+
+  <!-- ===================== BUDGET ===================== -->
+  <h2 class="section">💶 Budget snapshot <span style="font-size:15px;font-family:'Special Elite';color:var(--ink);opacity:.6">per person</span></h2>
+  <div class="budget">
+    <div class="brow"><span>✈️ Flights AMS ↔ EVE (book early)</span><span>€300–380</span></div>
+    <div class="brow"><span>🚗 Rental car · 5 days ÷ 3</span><span>€165</span></div>
+    <div class="brow"><span>⛽ Fuel + a few tolls ÷ 3</span><span>€30</span></div>
+    <div class="brow"><span>🛏 Lodging · 4 nights (cabin for 3) ÷ 3</span><span>€210</span></div>
+    <div class="brow"><span>🥦 Groceries / cooking</span><span>€100</span></div>
+    <div class="brow"><span>🍫 Buffer (snacks, one meal out, parking)</span><span>€40</span></div>
+    <div class="brow total"><span>All-in total</span><span>≈ €845–925</span></div>
+    <div class="bbar"><span style="width:94%"></span></div>
+    <p style="font-size:14px;margin:8px 2px 0">Sits right at your €800–900 ceiling. Late August (past the peak-price wall) + cooking + a midweek flight keep it honest.</p>
+  </div>
+
+  <!-- ===================== DRIVING + PACKING ===================== -->
+  <h2 class="section">🚗 Good to know</h2>
+  <div class="cols">
+    <div class="note red">
+      <h3>Driving the E10 — easy, just mind these</h3>
+      <ol class="commandments">
+        <li>One main road, well-kept, calm drivers — totally fine if you've driven in Europe.</li>
+        <li>West end (Reine/Flakstad) has <b>narrow bits &amp; single-lane bridges</b> — slow, let oncoming cars pass.</li>
+        <li><b>Never stop in the road for photos.</b> Use marked laybys only.</li>
+        <li>Tunnels: conditions can differ at the far end — ease out, don't gun it.</li>
+        <li>Respect 50–60 km/h zones — villages, sheep &amp; crossings.</li>
+      </ol>
+    </div>
+    <div class="note sea">
+      <h3>Pack &amp; prep <span style="font-size:13px;font-family:'Special Elite';opacity:.6">(tap to check)</span></h3>
+      <ul class="check" id="pack">
+        <li><span class="box">✓</span> Waterproof jacket + warm layer (8–15°C, windy)</li>
+        <li><span class="box">✓</span> Grippy hiking shoes</li>
+        <li><span class="box">✓</span> Eye mask (16h daylight!)</li>
+        <li><span class="box">✓</span> Reusable bags for the big grocery shop</li>
+        <li><span class="box">✓</span> Offline maps + downloaded playlists</li>
+        <li><span class="box">✓</span> Credit card (Norway is near-cashless)</li>
+        <li><span class="box">✓</span> Confirm cabins have a kitchen when booking</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================== BOOK FIRST ===================== -->
+  <h2 class="section">📌 Book these first</h2>
+  <div class="note" style="background:#fff7e2">
+    <ul class="check" id="book">
+      <li><span class="box">✓</span> <b>Flights</b> AMS↔EVE, 17 &amp; 21 Aug — biggest budget lever</li>
+      <li><span class="box">✓</span> <b>Rental car</b> at Evenes (limited supply even in shoulder season)</li>
+      <li><span class="box">✓</span> <b>Cabin 1</b> near Svolvær/Kabelvåg (nights 17–18)</li>
+      <li><span class="box">✓</span> <b>Cabin 2</b> near Reine/Hamnøy/Ramberg (nights 19–20)</li>
+    </ul>
+  </div>
+
+  <footer>
+    Pakk sekken — Lofoten is calling. 🏔️🐟<br>
+    <span class="stamp">GOD TUR · LOFOTEN 2026</span><br><br>
+    <a class="scrolltop" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ back to the cover</a>
+  </footer>
+
+</div>
+
+<script>
+  // Day tabs
+  const tabs = document.querySelectorAll('#tabs .tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    const d=t.dataset.d;
+    tabs.forEach(x=>x.classList.toggle('active',x.dataset.d===d));
+    panels.forEach(p=>p.classList.toggle('active',p.dataset.d===d));
+  }));
+  // Checkable lists (in-memory only)
+  document.querySelectorAll('.check li').forEach(li=>{
+    li.addEventListener('click',()=>li.classList.toggle('done'));
+  });
+</script>
+</body>
+</html>
