@@ -119,6 +119,26 @@
   .commandments li{counter-increment:c;position:relative;padding:6px 6px 6px 38px;font-size:16px;border-bottom:1px dotted #0002}
   .commandments li::before{content:counter(c);position:absolute;left:6px;top:5px;width:24px;height:24px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Special Elite";font-size:12px}
 
+  /* ---------- REAL PHOTOS ---------- */
+  .hero{position:relative;margin-top:14px;border:3px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:6px 6px 0 var(--shadow);background:#cfe3e2}
+  .hero img{display:block;width:100%;height:auto}
+  .hero .cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(35,48,58,.82));color:#fff;font-family:"Caveat";font-weight:700;font-size:clamp(18px,3.2vw,26px);padding:30px 16px 12px}
+  .photo{margin:4px 0 14px;border:3px solid var(--ink);border-radius:6px;overflow:hidden;background:#fff;box-shadow:4px 4px 0 var(--shadow)}
+  .photo img{display:block;width:100%;height:auto;background:#cfe3e2}
+  .photo figcaption{font-family:"Caveat";font-weight:700;font-size:18px;color:var(--ink);padding:6px 12px}
+  .photorow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 14px}
+  @media(max-width:560px){.photorow{grid-template-columns:1fr}}
+  .photorow .photo{margin:0}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+  .pola{background:#fff;border:1px solid #0002;padding:8px 8px 0;box-shadow:3px 5px 12px var(--shadow);transition:transform .18s ease}
+  .pola:nth-child(odd){transform:rotate(-1.6deg)}
+  .pola:nth-child(even){transform:rotate(1.6deg)}
+  .pola:hover{transform:rotate(0) scale(1.04);z-index:3}
+  .pola img{display:block;width:100%;height:160px;object-fit:cover;background:#cfe3e2}
+  .pola .cap{font-family:"Caveat";font-weight:700;font-size:17px;text-align:center;padding:7px 4px 12px;color:var(--ink);line-height:1.1}
+  .credit{font-family:"Special Elite";font-size:11px;color:var(--ink);opacity:.6;margin-top:10px;line-height:1.5}
+  .credit a{color:var(--sea)}
+
   footer{text-align:center;margin-top:40px;font-family:"Caveat";font-size:22px;color:var(--sea)}
   .stamp{display:inline-block;border:3px double var(--red);color:var(--red);font-family:"Special Elite";font-size:12px;letter-spacing:2px;padding:8px 14px;border-radius:8px;transform:rotate(-6deg);margin-top:8px}
   a.scrolltop{color:var(--sea);text-decoration:underline dotted}
@@ -169,6 +189,11 @@
       <div class="tag">17 – 21 AUGUST 2026 · KK · SHWETA · SIDDHARTH</div>
     </div>
   </div>
+
+  <figure class="hero" style="margin-top:16px">
+    <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Reinebringen%20reine%20lofoten%20tunliweb%2001.jpg?width=1200" alt="View over Reine from Reinebringen, Lofoten">
+    <figcaption class="cap">Reine &amp; the fjord, seen from Reinebringen — the postcard that started it all 🏔️</figcaption>
+  </figure>
 
   <p style="text-align:center;font-size:18px;margin:14px 6px 0">
     🚗 Self-drive &nbsp;·&nbsp; 🥦 Veg &amp; cook-in &nbsp;·&nbsp; 🥾 Easy–medium hikes &nbsp;·&nbsp; 🌅 ~16h daylight &nbsp;·&nbsp; 💶 ~€850 pp
@@ -232,6 +257,7 @@
     </svg>
     <div class="body">
       <div class="daterow"><span class="dt">Tue 18 · Henningsvær &amp; east lakes</span><span class="base">🛏 Base: Svolvær / Kabelvåg</span></div>
+      <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Henningsv%C3%A6r.jpg?width=1100" alt="Henningsvær harbour, Lofoten"><figcaption>📍 Henningsvær harbour, ringed by peaks</figcaption></figure>
       <ul class="steps">
         <li><b>Henningsvær</b> — the "Venice of Lofoten," a village scattered over skerries. Wander the harbour + the famous clifftop <b>football pitch</b>. <span class="pill easy">easy</span></li>
         <li>Optional climb: <b>Festvågtind</b> for a top-down view of the village. <span class="pill med">medium ~2h</span> <span class="pill opt">optional</span></li>
@@ -253,6 +279,10 @@
     </svg>
     <div class="body">
       <div class="daterow"><span class="dt">Wed 19 · White-sand beach day</span><span class="base">🛏 Move west → Reine / Hamnøy</span></div>
+      <div class="photorow">
+        <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hauklandsanden,%20Vestv%C3%A5g%C3%B8y,%20Lofoten.JPG?width=900" alt="Haukland Beach, Lofoten"><figcaption>📍 Haukland Beach</figcaption></figure>
+        <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lofoten,%20Uttakleiv%202.JPG?width=900" alt="Uttakleiv Beach, Lofoten"><figcaption>📍 Uttakleiv Beach</figcaption></figure>
+      </div>
       <ul class="steps">
         <li>Drive west on the E10 (1.5–2 h with stops).</li>
         <li><b>Haukland → Uttakleiv coastal path</b> — turquoise water, white sand, the best short walk in Lofoten. <span class="pill easy">easy ~1–2h</span></li>
@@ -278,6 +308,11 @@
     </svg>
     <div class="body">
       <div class="daterow"><span class="dt">Thu 20 · Reine, Å &amp; the big view</span><span class="base">🛏 Base: Reine / Hamnøy</span></div>
+      <div class="photorow">
+        <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ryten%20Kvalvika%20Lofoten%20tunliweb.jpg?width=900" alt="Kvalvika Beach from Ryten, Lofoten"><figcaption>📍 Kvalvika Beach from Ryten</figcaption></figure>
+        <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Agvatnet.jpg?width=900" alt="Ågvatnet lake at Å, Lofoten"><figcaption>📍 Ågvatnet — the lake walk at Å</figcaption></figure>
+      </div>
+      <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hamn%C3%B8y%20Reine%20Moskenes%20Lofoten%20norway%20tunliweb%2003.jpg?width=1100" alt="Hamnøy at blue hour, Lofoten"><figcaption>📍 Hamnøy at blue hour — right by your base</figcaption></figure>
       <ul class="steps">
         <li><b>Reine &amp; Hamnøy</b> — the most photographed spot in Norway. Red rorbuer under razor peaks; viewpoints from the bridges &amp; <b>Sakrisøy</b>. <span class="pill easy">easy</span></li>
         <li><b>Å i Lofoten</b> — village at the literal end of the road. Walk the <b>Ågvatnet lake loop</b>, a calm fjord-lake ringed by mountains. <span class="pill easy">easy</span></li>
@@ -310,6 +345,19 @@
       <div class="tip">⛽ Return the car with a full tank (fuel near the airport is easiest) to dodge refuelling fees.</div>
     </div>
   </div>
+
+  <!-- ===================== POSTCARDS ===================== -->
+  <h2 class="section">📷 Postcards from the road</h2>
+  <div class="gallery">
+    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Reinebringen%20reine%20lofoten%20tunliweb%2001.jpg?width=600" alt="Reine from Reinebringen"><figcaption class="cap">Reinebringen view</figcaption></figure>
+    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ryten%20Kvalvika%20Lofoten%20tunliweb.jpg?width=600" alt="Kvalvika from Ryten"><figcaption class="cap">Kvalvika &amp; Ryten</figcaption></figure>
+    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hauklandsanden,%20Vestv%C3%A5g%C3%B8y,%20Lofoten.JPG?width=600" alt="Haukland Beach"><figcaption class="cap">Haukland Beach</figcaption></figure>
+    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lofoten,%20Uttakleiv%202.JPG?width=600" alt="Uttakleiv Beach"><figcaption class="cap">Uttakleiv Beach</figcaption></figure>
+    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Agvatnet.jpg?width=600" alt="Ågvatnet lake"><figcaption class="cap">Ågvatnet lake, Å</figcaption></figure>
+    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Henningsv%C3%A6r.jpg?width=600" alt="Henningsvær"><figcaption class="cap">Henningsvær</figcaption></figure>
+    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hamn%C3%B8y%20Reine%20Moskenes%20Lofoten%20norway%20tunliweb%2003.jpg?width=600" alt="Hamnøy blue hour"><figcaption class="cap">Hamnøy, blue hour</figcaption></figure>
+  </div>
+  <p class="credit">Photos via <a href="https://commons.wikimedia.org/wiki/Category:Lofoten">Wikimedia Commons</a> — several by Svein-Magne Tunli (tunliweb.no), licensed CC BY-SA 4.0; others CC / public domain. Reine, Kvalvika/Ryten, Hamnøy © Svein-Magne Tunli, CC BY-SA 4.0.</p>
 
   <!-- ===================== BUDGET ===================== -->
   <h2 class="section">💶 Budget snapshot <span style="font-size:15px;font-family:'Special Elite';color:var(--ink);opacity:.6">per person</span></h2>
