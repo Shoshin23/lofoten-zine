@@ -3,337 +3,428 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LOFOTEN ZINE · 19–23 Aug</title>
+<title>Lofoten Zine · 19–23 Aug 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&family=Special+Elite&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f3ead6;--paper2:#efe3c7;--ink:#23303a;--red:#c8483c;
-    --sea:#2f7d83;--sea2:#3f9aa0;--mustard:#e0a52e;--sky:#bfd8d6;
-    --tape:#e6d27a;--shadow:rgba(35,48,58,.18);
+    --paper:#f4ecdd;--paper2:#ece0c8;--card:#fbf5ea;--ink:#1f2d36;--ink2:#46555e;
+    --terra:#c7553f;--terra-dk:#9e3f2d;--sea:#2e7d83;--sea-dk:#21595e;--sea2:#3f9aa0;
+    --gold:#d99a2b;--sky:#cfe3e2;--line:rgba(31,45,54,.14);--shadow:rgba(31,45,54,.16);
+    --display:"Fraunces",Georgia,serif;--body:"Inter",system-ui,sans-serif;--hand:"Caveat",cursive;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth;color-scheme:light}
-  body{margin:0;font-family:"Patrick Hand","Comic Sans MS",cursive;color:var(--ink);
-    background:radial-gradient(circle at 20% 10%,#f7efdd,transparent 40%),radial-gradient(circle at 80% 80%,#f0e6cf,transparent 45%),var(--paper);
-    background-attachment:fixed;line-height:1.5;}
-  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.05;z-index:0;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
-  .wrap{max-width:920px;margin:0 auto;padding:18px 16px 80px;position:relative;z-index:1}
+  html{scroll-behavior:smooth;color-scheme:light;-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:var(--body);color:var(--ink);line-height:1.6;font-size:16px;
+    background:radial-gradient(1200px 600px at 15% -5%,#f8f1e2,transparent 60%),radial-gradient(1000px 500px at 100% 100%,#efe5cf,transparent 55%),var(--paper);
+    background-attachment:fixed;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.045;z-index:0;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");}
+  .wrap{max-width:940px;margin:0 auto;padding:22px 18px 90px;position:relative;z-index:1}
+  img{max-width:100%}
+  #prog{position:fixed;top:0;left:0;height:4px;width:0;z-index:50;background:linear-gradient(90deg,var(--terra),var(--gold),var(--sea));transition:width .1s linear}
+  .has-js .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1)}
+  .has-js .reveal.in{opacity:1;transform:none}
 
-  .cover{position:relative;border:3px solid var(--ink);border-radius:14px;overflow:hidden;
-    background:linear-gradient(180deg,#cfe3e2 0%,#dfeae0 55%,#f1e7d0 100%);box-shadow:0 10px 24px var(--shadow);}
-  .cover svg{display:block;width:100%;height:auto}
-  .cover .titleblock{position:absolute;left:0;right:0;top:14px;text-align:center}
-  .zine-kicker{font-family:"Special Elite",monospace;letter-spacing:4px;font-size:13px;color:var(--ink);opacity:.8}
-  .zine-title{font-family:"Caveat",cursive;font-weight:700;font-size:clamp(48px,11vw,104px);line-height:.85;color:var(--red);margin:2px 0;text-shadow:2px 2px 0 #fff3,-1px -1px 0 #0001}
-  .zine-sub{font-family:"Caveat",cursive;font-size:clamp(20px,4vw,30px);color:var(--ink)}
-  .tag{display:inline-block;background:var(--ink);color:var(--paper);padding:4px 12px;border-radius:20px;font-family:"Special Elite";font-size:12px;letter-spacing:2px;margin-top:8px;transform:rotate(-2deg)}
-  .tape-deco{position:absolute;width:120px;height:30px;background:var(--tape);opacity:.85;box-shadow:0 2px 5px var(--shadow)}
-  .tape-deco.tl{top:-10px;left:30px;transform:rotate(-8deg)}
-  .tape-deco.tr{top:-10px;right:30px;transform:rotate(7deg)}
+  .kicker{font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--sea-dk)}
+  h2.section{font-family:var(--display);font-weight:600;font-size:clamp(26px,4.4vw,38px);line-height:1.05;color:var(--ink);margin:6px 0 16px;letter-spacing:-.01em}
+  .sec-head{margin:46px 0 4px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .sec-head .hint{font-family:var(--hand);font-size:20px;color:var(--sea)}
 
-  h2.section{font-family:"Caveat";font-weight:700;font-size:34px;color:var(--sea);margin:34px 0 10px;display:flex;align-items:center;gap:10px}
-  h2.section::after{content:"";flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--sea) 0 10px,transparent 10px 18px);border-radius:3px}
+  /* COVER */
+  .cover{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 18px 40px -18px var(--shadow);border:1px solid var(--line)}
+  .cover svg.scene{display:block;width:100%;height:auto}
+  .cover .veil{position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 0%,rgba(255,255,255,.18),transparent 55%)}
+  .cover .titleblock{position:absolute;left:0;right:0;top:8%;text-align:center;padding:0 16px}
+  .cover .ribbon{display:inline-block;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#fff;background:rgba(31,45,54,.42);backdrop-filter:blur(2px);padding:6px 14px;border-radius:999px}
+  .zine-title{font-family:var(--display);font-weight:900;font-size:clamp(56px,13vw,128px);line-height:.82;color:#fff;margin:10px 0 0;letter-spacing:-.02em;text-shadow:0 3px 18px rgba(31,45,54,.35)}
+  .zine-sub{font-family:var(--hand);font-weight:700;font-size:clamp(22px,4.4vw,36px);color:#fff;margin-top:2px;text-shadow:0 2px 10px rgba(31,45,54,.4)}
+  .zine-meta{margin-top:12px;display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;font-family:var(--body);font-weight:600;font-size:12px;letter-spacing:.06em;color:#1f2d36;background:rgba(251,245,234,.9);padding:7px 14px;border-radius:999px;box-shadow:0 4px 14px -6px var(--shadow)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:16px 0 0}
+  .chip{font-family:var(--body);font-weight:500;font-size:13.5px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 13px;box-shadow:0 2px 8px -5px var(--shadow);display:inline-flex;gap:7px;align-items:center}
+  .chip b{font-weight:700;color:var(--terra-dk)}
 
-  .glance{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-  @media(max-width:680px){.glance{grid-template-columns:repeat(2,1fr)}}
-  .gcard{background:var(--paper2);border:2px solid var(--ink);border-radius:10px;padding:10px;text-align:center;box-shadow:3px 3px 0 var(--shadow);transition:transform .15s}
-  .gcard:hover{transform:translateY(-3px) rotate(-1deg)}
-  .gcard .gd{font-family:"Special Elite";font-size:11px;background:var(--ink);color:var(--paper);border-radius:12px;padding:2px 8px;display:inline-block}
-  .gcard .gt{font-family:"Caveat";font-weight:700;font-size:21px;color:var(--red);margin:6px 0 2px;line-height:1}
-  .gcard .gx{font-size:13px}
-  .gcard .gb{font-family:"Special Elite";font-size:9px;letter-spacing:1px;color:var(--sea);margin-top:5px}
+  /* ===== INTERACTIVE MAP ===== */
+  .mapcard{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(180deg,#dcecef,#e9efe1);box-shadow:0 16px 40px -22px var(--shadow)}
+  #tripmap{display:block;width:100%;height:auto}
+  .stop{cursor:pointer}
+  .stop .ring{opacity:0;transition:opacity .3s ease}
+  .stop.active .ring{opacity:1}
+  .stop .dot{transition:transform .25s ease,fill .25s ease}
+  .stop:hover .dot{transform:scale(1.22)}
+  .stop.active .dot{fill:var(--terra)}
+  .stop .lbl{font-family:var(--body);font-weight:600;font-size:13.5px;fill:var(--ink);pointer-events:none}
+  .stop.active .lbl{fill:var(--terra-dk)}
+  .stop .sub{font-family:var(--body);font-weight:500;font-size:10.5px;fill:var(--ink2);pointer-events:none}
+  #car{filter:drop-shadow(0 3px 4px rgba(31,45,54,.35))}
+  .map-ui{display:flex;align-items:center;gap:14px;padding:14px 16px;border-top:1px solid var(--line);background:var(--card)}
+  .navbtn{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s ease}
+  .navbtn:hover{background:var(--terra);color:#fff;border-color:var(--terra)}
+  .navbtn.play{background:var(--sea);color:#fff;border-color:var(--sea)}
+  .navbtn.play:hover{background:var(--sea-dk)}
+  .stopinfo{flex:1;min-width:0}
+  .si-top{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .si-day{font-family:var(--body);font-weight:700;font-size:10.5px;letter-spacing:.1em;color:#fff;background:var(--ink);border-radius:999px;padding:3px 9px}
+  .si-name{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);line-height:1.1}
+  .si-leg{font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--sea-dk);margin-top:3px}
+  .si-leg .g{color:var(--ink2);font-weight:500}
+  .si-note{font-size:13px;color:var(--ink2);margin-top:2px;line-height:1.35}
+  .dots{display:flex;gap:6px;padding:0 16px 14px;flex-wrap:wrap}
+  .dots button{width:13px;height:13px;border-radius:50%;border:2px solid var(--sea);background:transparent;cursor:pointer;padding:0;transition:all .18s ease}
+  .dots button:hover{transform:scale(1.2)}
+  .dots button.on{background:var(--terra);border-color:var(--terra)}
+  .dots button.past{background:var(--sea)}
 
-  .tabs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-  .tab{cursor:pointer;border:2px solid var(--ink);background:var(--paper2);border-radius:10px 10px 0 0;padding:8px 14px;font-family:"Caveat";font-weight:700;font-size:20px;color:var(--ink);transform:translateY(2px);box-shadow:0 -2px 0 var(--shadow) inset}
-  .tab .num{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--mustard);color:var(--ink);align-items:center;justify-content:center;font-size:15px;margin-right:6px}
-  .tab.active{background:var(--red);color:#fff;transform:translateY(0)}
-  .tab.active .num{background:#fff;color:var(--red)}
-  .panel{display:none;border:3px solid var(--ink);border-radius:0 12px 12px 12px;background:var(--paper2);overflow:hidden;box-shadow:6px 6px 0 var(--shadow);animation:pop .25s ease}
-  .panel.active{display:block}
-  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .panel .scene{width:100%;height:auto;display:block;background:linear-gradient(180deg,#cfe3e2,#e8ecd8)}
-  .panel .body{padding:16px 18px 20px}
-  .daterow{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;border-bottom:2px dashed var(--ink);padding-bottom:8px;margin-bottom:10px}
-  .daterow .dt{font-family:"Caveat";font-weight:700;font-size:28px;color:var(--red)}
-  .daterow .base{font-family:"Special Elite";font-size:12px;background:var(--sea);color:#fff;padding:3px 10px;border-radius:14px}
+  /* hero photo */
+  .frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 16px 38px -20px var(--shadow);background:var(--sky)}
+  .frame.hero{margin-top:16px}
+  .frame.hero img{display:block;width:100%;height:clamp(220px,38vw,400px);object-fit:cover;cursor:zoom-in}
+  .frame .cap{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 14px;color:#fff;background:linear-gradient(transparent,rgba(31,45,54,.78));font-family:var(--hand);font-weight:700;font-size:clamp(19px,3vw,26px)}
+
+  /* glance */
+  .glance{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+  @media(max-width:720px){.glance{grid-template-columns:repeat(2,1fr)}}
+  .gcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 12px;box-shadow:0 6px 18px -14px var(--shadow);transition:transform .18s ease,box-shadow .18s ease;cursor:pointer}
+  .gcard:hover{transform:translateY(-4px);box-shadow:0 16px 26px -16px var(--shadow)}
+  .gcard .gd{font-family:var(--body);font-weight:700;font-size:10.5px;letter-spacing:.12em;color:#fff;background:var(--ink);border-radius:999px;padding:3px 9px;display:inline-block}
+  .gcard .gt{font-family:var(--display);font-weight:600;font-size:18px;line-height:1.05;color:var(--terra-dk);margin:9px 0 3px}
+  .gcard .gx{font-size:12.5px;color:var(--ink2);line-height:1.35}
+  .gcard .gb{font-family:var(--body);font-weight:700;font-size:9.5px;letter-spacing:.1em;color:var(--sea-dk);margin-top:7px}
+
+  /* tabs / days */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .tab{cursor:pointer;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 15px;font-family:var(--body);font-weight:600;font-size:15px;color:var(--ink2);display:inline-flex;align-items:center;gap:9px;transition:all .18s ease}
+  .tab .num{display:inline-flex;width:23px;height:23px;border-radius:50%;background:var(--paper2);color:var(--ink);align-items:center;justify-content:center;font-size:13px;font-weight:700}
+  .tab:hover{border-color:var(--sea)}
+  .tab.active{background:var(--terra);color:#fff;border-color:var(--terra)}
+  .tab.active .num{background:#fff;color:var(--terra)}
+  .panel{display:none;border:1px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden;box-shadow:0 14px 34px -22px var(--shadow);margin-top:12px}
+  .panel.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .panel .body{padding:18px 20px 22px}
+  .daterow{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+  .daterow .dt{font-family:var(--display);font-weight:600;font-size:clamp(20px,3.4vw,26px);color:var(--ink)}
+  .daterow .base{font-family:var(--body);font-weight:600;font-size:11.5px;letter-spacing:.04em;background:var(--sea);color:#fff;padding:5px 11px;border-radius:999px}
+  .drive{display:flex;gap:9px;align-items:flex-start;background:#eef4ef;border:1px solid #d4e4d8;border-radius:11px;padding:9px 12px;font-size:13.5px;margin-bottom:14px;line-height:1.45}
+  .drive .di{font-size:17px;line-height:1.2}
+  .drive b{color:var(--sea-dk)}
   ul.steps{list-style:none;margin:0;padding:0}
-  ul.steps li{position:relative;padding:7px 6px 7px 34px;border-bottom:1px dotted #0002;font-size:17px}
-  ul.steps li::before{content:"➜";position:absolute;left:8px;top:7px;color:var(--sea2);font-size:16px}
-  ul.steps li b{color:var(--red)}
-  .pill{display:inline-block;font-family:"Special Elite";font-size:10px;letter-spacing:1px;padding:2px 8px;border-radius:10px;margin-left:4px;vertical-align:middle}
-  .pill.easy{background:#cfe6c4;color:#2c5a25}
-  .pill.med{background:#f3d9a6;color:#7a4e10}
-  .pill.opt{background:#e3d2ef;color:#5a3a72}
-  .pill.fall{background:#bfe0ea;color:#155}
-  .tip{margin-top:10px;background:#fff7e2;border-left:5px solid var(--mustard);padding:8px 12px;font-size:15px;border-radius:0 8px 8px 0}
-
-  .hero{position:relative;margin-top:14px;border:3px solid var(--ink);border-radius:12px;overflow:hidden;box-shadow:6px 6px 0 var(--shadow);background:#cfe3e2}
-  .hero img{display:block;width:100%;height:auto}
-  .hero .cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(35,48,58,.82));color:#fff;font-family:"Caveat";font-weight:700;font-size:clamp(18px,3.2vw,26px);padding:30px 16px 12px}
-  .photo{margin:4px 0 14px;border:3px solid var(--ink);border-radius:6px;overflow:hidden;background:#fff;box-shadow:4px 4px 0 var(--shadow)}
-  .photo img{display:block;width:100%;height:auto;background:#cfe3e2}
-  .photo figcaption{font-family:"Caveat";font-weight:700;font-size:18px;color:var(--ink);padding:6px 12px}
-  .photorow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:4px 0 14px}
+  ul.steps li{position:relative;padding:9px 4px 9px 30px;border-bottom:1px solid var(--line);font-size:15.5px}
+  ul.steps li:last-child{border-bottom:none}
+  ul.steps li::before{content:"";position:absolute;left:8px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--sea2);box-shadow:0 0 0 3px rgba(46,125,131,.16)}
+  ul.steps li b{color:var(--terra-dk);font-weight:700}
+  .pill{display:inline-block;font-family:var(--body);font-weight:700;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px;margin-left:5px;vertical-align:1px;white-space:nowrap}
+  .pill.easy{background:#d8eccd;color:#2c5a25}
+  .pill.med{background:#f6e1b0;color:#7a4e10}
+  .pill.opt{background:#e6d6f0;color:#5a3a72}
+  .pill.fall{background:#c5e6ef;color:#13555c}
+  .tip{margin-top:12px;background:#fff7e4;border:1px solid #f0dca6;border-left:5px solid var(--gold);padding:10px 13px;font-size:14.5px;border-radius:8px}
+  .photorow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 4px}
   @media(max-width:560px){.photorow{grid-template-columns:1fr}}
-  .photorow .photo{margin:0}
-  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
-  .pola{background:#fff;border:1px solid #0002;padding:8px 8px 0;box-shadow:3px 5px 12px var(--shadow);transition:transform .18s ease}
-  .pola:nth-child(odd){transform:rotate(-1.6deg)}
-  .pola:nth-child(even){transform:rotate(1.6deg)}
-  .pola:hover{transform:rotate(0) scale(1.04);z-index:3}
-  .pola img{display:block;width:100%;height:160px;object-fit:cover;background:#cfe3e2}
-  .pola .cap{font-family:"Caveat";font-weight:700;font-size:17px;text-align:center;padding:7px 4px 12px;color:var(--ink);line-height:1.1}
-  .credit{font-family:"Special Elite";font-size:11px;color:var(--ink);opacity:.6;margin-top:10px;line-height:1.5}
-  .credit a{color:var(--sea)}
+  figure.shot{margin:0 0 14px;border-radius:13px;overflow:hidden;border:1px solid var(--line);background:var(--sky);box-shadow:0 8px 22px -16px var(--shadow);cursor:zoom-in;position:relative}
+  figure.shot img{display:block;width:100%;height:230px;object-fit:cover;transition:transform .4s ease}
+  .photorow figure.shot img{height:190px}
+  figure.shot:hover img{transform:scale(1.045)}
+  figure.shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;color:#fff;font-family:var(--body);font-weight:600;font-size:13px;background:linear-gradient(transparent,rgba(31,45,54,.72))}
+  figure.shot .mag{position:absolute;top:9px;right:9px;width:28px;height:28px;border-radius:50%;background:rgba(251,245,234,.92);display:flex;align-items:center;justify-content:center;font-size:14px;opacity:0;transition:opacity .2s ease}
+  figure.shot:hover .mag{opacity:1}
 
-  .budget{border:3px solid var(--ink);border-radius:12px;background:var(--paper2);padding:14px 16px;box-shadow:5px 5px 0 var(--shadow)}
-  .brow{display:flex;justify-content:space-between;border-bottom:1px dotted #0003;padding:5px 0;font-size:16px}
-  .brow.total{border-top:3px solid var(--ink);border-bottom:none;margin-top:6px;font-family:"Caveat";font-weight:700;font-size:24px;color:var(--red)}
-  .bbar{height:14px;border-radius:8px;background:#0001;overflow:hidden;margin-top:10px;border:1px solid var(--ink)}
-  .bbar span{display:block;height:100%;background:repeating-linear-gradient(45deg,var(--sea) 0 8px,var(--sea2) 8px 16px)}
+  .panelcard{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:6px 18px;box-shadow:0 10px 30px -22px var(--shadow)}
+  .hikes{list-style:none;margin:0;padding:0}
+  .hikes li{display:flex;gap:13px;align-items:flex-start;padding:13px 2px;border-bottom:1px solid var(--line);font-size:15px}
+  .hikes li:last-child{border-bottom:none}
+  .hikes li .ic{font-size:23px;line-height:1;flex:none;width:30px;text-align:center}
+  .hikes li b{color:var(--terra-dk)}
+
+  .gallery{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:120px;gap:12px}
+  @media(max-width:720px){.gallery{grid-template-columns:repeat(4,1fr);grid-auto-rows:100px}}
+  @media(max-width:480px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  .gtile{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--sky);cursor:zoom-in;box-shadow:0 8px 22px -18px var(--shadow)}
+  .gtile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+  .gtile:hover img{transform:scale(1.06)}
+  .gtile .gcap{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 8px;color:#fff;font-family:var(--body);font-weight:600;font-size:12.5px;background:linear-gradient(transparent,rgba(31,45,54,.74));opacity:0;transition:opacity .25s ease}
+  .gtile:hover .gcap{opacity:1}
+  .gtile.big{grid-column:span 3;grid-row:span 2}
+  .gtile.tall{grid-row:span 2}
+  .gtile.wide{grid-column:span 2}
+  @media(max-width:480px){.gtile.big,.gtile.wide{grid-column:span 2}.gtile.big{grid-row:span 2}}
+
+  .lb{position:fixed;inset:0;z-index:80;background:rgba(20,28,33,.92);display:none;align-items:center;justify-content:center;padding:24px}
+  .lb.open{display:flex;animation:fade .25s ease}
+  .lb img{max-width:92vw;max-height:80vh;border-radius:12px;box-shadow:0 30px 60px -20px #000}
+  .lb .lbcap{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#f4ecdd;font-family:var(--hand);font-weight:700;font-size:22px;padding:0 20px}
+  .lb .lbx,.lb .lbnav{position:absolute;background:rgba(244,236,221,.14);color:#fff;border:none;cursor:pointer;border-radius:50%;width:46px;height:46px;font-size:22px;display:flex;align-items:center;justify-content:center;transition:background .2s ease}
+  .lb .lbx:hover,.lb .lbnav:hover{background:rgba(244,236,221,.3)}
+  .lb .lbx{top:18px;right:18px}.lb .prev{left:14px;top:50%;transform:translateY(-50%)}.lb .next{right:14px;top:50%;transform:translateY(-50%)}
+  .lb .lbct{position:absolute;top:24px;left:24px;color:#cdbfa6;font-weight:600;font-size:13px;letter-spacing:.08em}
+
+  .budget{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:18px 20px;box-shadow:0 12px 32px -22px var(--shadow)}
+  .brow{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid var(--line);padding:9px 0;font-size:15px}
+  .brow span:last-child{font-variant-numeric:tabular-nums;font-weight:600}
+  .brow.total{border-bottom:none;border-top:2px solid var(--ink);margin-top:6px;padding-top:12px;font-family:var(--display);font-weight:600;font-size:22px;color:var(--terra-dk)}
+  .bbar{height:12px;border-radius:999px;background:rgba(31,45,54,.08);overflow:hidden;margin-top:14px}
+  .bbar span{display:block;height:100%;background:linear-gradient(90deg,var(--sea),var(--sea2))}
+  .bnote{font-size:13.5px;color:var(--ink2);margin:10px 2px 0}
 
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:680px){.cols{grid-template-columns:1fr}}
-  .note{border:3px solid var(--ink);border-radius:12px;padding:12px 14px;box-shadow:4px 4px 0 var(--shadow)}
-  .note.red{background:#fbe7e3}.note.sea{background:#e2f0ee}.note.gold{background:#fff7e2}
-  .note h3{font-family:"Caveat";font-weight:700;font-size:24px;margin:0 0 6px}
+  @media(max-width:720px){.cols{grid-template-columns:1fr}}
+  .note{border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:0 10px 30px -24px var(--shadow);background:var(--card)}
+  .note h3{font-family:var(--display);font-weight:600;font-size:20px;margin:0 0 8px;color:var(--ink)}
+  .ol{counter-reset:c;list-style:none;margin:0;padding:0}
+  .ol li{counter-increment:c;position:relative;padding:8px 2px 8px 36px;font-size:14.5px;border-bottom:1px solid var(--line)}
+  .ol li:last-child{border-bottom:none}
+  .ol li::before{content:counter(c);position:absolute;left:2px;top:8px;width:24px;height:24px;background:var(--terra);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
   .check{list-style:none;margin:0;padding:0}
-  .check li{padding:4px 0;font-size:16px;cursor:pointer;user-select:none}
-  .check li .box{display:inline-flex;width:20px;height:20px;border:2px solid var(--ink);border-radius:5px;margin-right:8px;vertical-align:-4px;justify-content:center;align-items:center;font-size:14px;background:#fff}
+  .check li{padding:7px 0;font-size:14.5px;cursor:pointer;user-select:none;display:flex;gap:10px;align-items:flex-start;transition:opacity .2s ease}
+  .check li .box{flex:none;width:21px;height:21px;border:2px solid var(--sea);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;color:transparent;transition:all .15s ease;margin-top:1px}
   .check li.done .box{background:var(--sea);color:#fff}
-  .check li.done{opacity:.55;text-decoration:line-through}
-  .commandments{counter-reset:c;list-style:none;margin:0;padding:0}
-  .commandments li{counter-increment:c;position:relative;padding:6px 6px 6px 38px;font-size:16px;border-bottom:1px dotted #0002}
-  .commandments li::before{content:counter(c);position:absolute;left:6px;top:5px;width:24px;height:24px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Special Elite";font-size:12px}
+  .check li.done{opacity:.5;text-decoration:line-through}
 
-  .hikes{list-style:none;margin:0;padding:0}
-  .hikes li{display:flex;gap:10px;align-items:flex-start;padding:8px 4px;border-bottom:1px dotted #0002;font-size:16px}
-  .hikes li .ic{font-size:22px;line-height:1.1}
-  .hikes li b{color:var(--red)}
-
-  footer{text-align:center;margin-top:40px;font-family:"Caveat";font-size:22px;color:var(--sea)}
-  .stamp{display:inline-block;border:3px double var(--red);color:var(--red);font-family:"Special Elite";font-size:12px;letter-spacing:2px;padding:8px 14px;border-radius:8px;transform:rotate(-6deg);margin-top:8px}
-  a.scrolltop{color:var(--sea);text-decoration:underline dotted}
+  footer{text-align:center;margin-top:54px}
+  footer .fline{font-family:var(--hand);font-size:26px;color:var(--sea)}
+  .stamp{display:inline-block;border:2px dashed var(--terra);color:var(--terra);font-family:var(--body);font-weight:700;font-size:12px;letter-spacing:.18em;padding:9px 16px;border-radius:10px;transform:rotate(-3deg);margin-top:10px}
+  .top{display:block;margin-top:16px;color:var(--sea);font-weight:600;font-size:14px;text-decoration:none}
+  .top:hover{text-decoration:underline}
+  .credit{font-size:11.5px;color:var(--ink2);opacity:.85;margin-top:12px;line-height:1.5}
+  .credit a{color:var(--sea-dk)}
 </style>
 </head>
 <body>
+<div id="prog"></div>
 <div class="wrap">
 
   <!-- COVER -->
-  <div class="cover">
-    <span class="tape-deco tl"></span><span class="tape-deco tr"></span>
-    <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lofoten landscape">
-      <circle cx="730" cy="86" r="34" fill="#f2c34a"/>
-      <circle cx="730" cy="86" r="34" fill="none" stroke="#e0a52e" stroke-width="2" opacity=".6"/>
-      <path d="M0 230 L120 120 L210 200 L300 95 L420 215 L520 130 L640 220 L760 110 L900 215 L900 360 L0 360 Z" fill="#7fa6a6"/>
-      <path d="M0 270 L90 175 L190 255 L290 160 L400 260 L520 175 L650 270 L780 180 L900 265 L900 360 L0 360 Z" fill="#5d8587"/>
-      <path d="M300 95 L325 135 L290 130 Z" fill="#fff" opacity=".85"/>
-      <path d="M520 130 L545 168 L500 162 Z" fill="#fff" opacity=".85"/>
-      <path d="M760 110 L788 150 L738 146 Z" fill="#fff" opacity=".8"/>
-      <rect x="0" y="300" width="900" height="60" fill="#2f7d83"/>
-      <path d="M0 300 q60 -12 120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 v60 H0 Z" fill="#3f9aa0"/>
-      <g>
-        <rect x="120" y="262" width="46" height="34" fill="#c8483c"/><path d="M118 262 L143 244 L168 262 Z" fill="#8f2f27"/><rect x="135" y="276" width="12" height="20" fill="#3a2018"/>
-        <rect x="176" y="268" width="40" height="28" fill="#b23c31"/><path d="M174 268 L196 252 L218 268 Z" fill="#7d2a22"/><rect x="190" y="280" width="10" height="16" fill="#3a2018"/>
-      </g>
-      <g><path d="M560 320 q30 18 70 0 l-8 14 q-27 10 -54 0 Z" fill="#23303a"/><rect x="592" y="296" width="3" height="26" fill="#23303a"/><path d="M595 298 l22 12 -22 8 Z" fill="#efe3c7"/></g>
-      <g stroke="#3a2018" stroke-width="3" fill="none"><path d="M250 296 V250 M310 296 V250 M250 258 H310 M250 270 H310"/><path d="M262 270 v14 M276 270 v14 M290 270 v14 M304 270 v12" stroke="#cbb89a" stroke-width="2"/></g>
+  <div class="cover reveal">
+    <svg class="scene" viewBox="0 0 1000 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylised Lofoten landscape">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d7e7e6"/><stop offset="1" stop-color="#f1e8d4"/></linearGradient>
+        <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f7d83"/><stop offset="1" stop-color="#26666b"/></linearGradient>
+      </defs>
+      <rect width="1000" height="440" fill="url(#sky)"/>
+      <circle cx="812" cy="96" r="40" fill="#f2c34a"/><circle cx="812" cy="96" r="40" fill="none" stroke="#e0a52e" stroke-width="2" opacity=".55"/>
+      <path d="M0 250 L130 120 L235 215 L335 95 L470 230 L585 130 L715 235 L840 110 L1000 230 L1000 440 L0 440Z" fill="#86adac"/>
+      <path d="M0 300 L100 185 L210 275 L320 170 L440 285 L575 185 L710 295 L850 195 L1000 290 L1000 440 L0 440Z" fill="#5d8587"/>
+      <path d="M320 170 L348 215 L292 210Z" fill="#fff" opacity=".85"/><path d="M575 185 L602 226 L548 222Z" fill="#fff" opacity=".82"/><path d="M840 110 L872 156 L808 150Z" fill="#fff" opacity=".8"/>
+      <rect x="0" y="332" width="1000" height="108" fill="url(#seaG)"/>
+      <path d="M0 332 q70 -13 140 0 t140 0 t140 0 t140 0 t140 0 t140 0 t160 0 v108 H0Z" fill="#3f9aa0" opacity=".9"/>
+      <g><rect x="138" y="290" width="52" height="38" rx="2" fill="#c7553f"/><path d="M134 290 L164 268 L194 290Z" fill="#9e3f2d"/><rect x="156" y="306" width="14" height="22" fill="#3a2018"/>
+         <rect x="200" y="298" width="44" height="30" rx="2" fill="#b8462f"/><path d="M196 298 L222 279 L248 298Z" fill="#86301f"/><rect x="216" y="312" width="11" height="16" fill="#3a2018"/></g>
+      <g><path d="M612 356 q34 20 78 0 l-9 16 q-30 11 -60 0Z" fill="#1f2d36"/><rect x="647" y="330" width="3" height="28" fill="#1f2d36"/><path d="M650 332 l24 13 -24 9Z" fill="#f4ecdd"/></g>
     </svg>
+    <div class="veil"></div>
     <div class="titleblock">
-      <div class="zine-kicker">A NORDIC ROAD-TRIP ZINE</div>
-      <div class="zine-title">LOFOTEN</div>
+      <span class="ribbon">A Nordic road-trip zine</span>
+      <div class="zine-title">Lofoten</div>
       <div class="zine-sub">fjords, white beaches, lakes &amp; waterfalls</div>
-      <div class="tag">19 – 23 AUGUST 2026 · KK · SHWETA · SIDDHARTH</div>
+      <div class="zine-meta">19–23 AUGUST 2026&nbsp; · &nbsp;KK · SHWETA · SIDDHARTH</div>
     </div>
   </div>
 
-  <figure class="hero" style="margin-top:16px">
-    <img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Reinebringen%20reine%20lofoten%20tunliweb%2001.jpg?width=1200" alt="View over Reine from Reinebringen, Lofoten">
+  <div class="chips reveal">
+    <span class="chip">⚡ <b>Electric</b> self-drive</span>
+    <span class="chip">🥦 Veg &amp; cook-in</span>
+    <span class="chip">🥾 Easy–medium hikes</span>
+    <span class="chip">💧 Waterfalls</span>
+    <span class="chip">🛏 Two bases</span>
+    <span class="chip">💶 <b>~€840</b> pp</span>
+  </div>
+
+  <!-- ===== INTERACTIVE ROUTE MAP (HERO) ===== -->
+  <div class="sec-head reveal"><div><div class="kicker">The route · interactive</div><h2 class="section">Drive the trip</h2></div><div class="hint">press ▶ or tap a stop</div></div>
+  <div class="mapcard reveal">
+    <svg id="tripmap" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive trip map">
+      <defs>
+        <linearGradient id="mSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcebef"/><stop offset="1" stop-color="#cddfe2"/></linearGradient>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#c7553f" stop-opacity=".5"/><stop offset="1" stop-color="#c7553f" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="1000" height="520" fill="url(#mSea)"/>
+      <!-- stylised archipelago -->
+      <g fill="#bcd4bf" stroke="#a6c3ab" stroke-width="2">
+        <path d="M40 360 q50 -86 150 -74 q92 10 78 90 q-10 60 -110 70 q-118 12 -118 -86Z"/>
+        <path d="M160 300 q60 -78 168 -56 q78 22 50 96 q-26 64 -132 60 q-110 -4 -86 -100Z"/>
+        <path d="M330 268 q86 -70 214 -38 q86 24 54 100 q-34 70 -184 58 q-148 -10 -84 -120Z"/>
+        <path d="M540 244 q88 -64 206 -28 q82 26 50 100 q-36 70 -184 54 q-138 -16 -72 -126Z"/>
+        <path d="M730 200 q68 -54 150 -20 q64 26 36 86 q-34 64 -136 48 q-96 -18 -50 -114Z"/>
+      </g>
+      <g fill="#a9c6ad" opacity=".5">
+        <path d="M120 330 q28 -36 70 -28 q36 8 24 42 q-16 36 -60 28 q-46 -8 -34 -42Z"/>
+        <path d="M430 250 q32 -30 84 -16 q36 10 20 46 q-20 38 -72 26 q-48 -10 -32 -56Z"/>
+        <path d="M640 226 q28 -28 74 -14 q32 10 18 44 q-20 36 -66 24 q-42 -10 -26 -54Z"/>
+      </g>
+      <!-- little peaks + cabins for flavour -->
+      <g fill="#7c9a86" opacity=".7"><path d="M250 250 l26 -40 l26 40Z"/><path d="M470 232 l30 -46 l30 46Z"/><path d="M690 206 l24 -38 l24 38Z"/></g>
+      <g><rect x="150" y="300" width="16" height="13" fill="#c7553f"/><path d="M148 300 l8 -7 l8 7Z" fill="#9e3f2d"/>
+         <rect x="720" y="206" width="15" height="12" fill="#c7553f"/><path d="M718 206 l7.5 -7 l7.5 7Z" fill="#9e3f2d"/></g>
+
+      <!-- ROUTE PATHS (loop: out along top, back along bottom) -->
+      <path id="routeBase" d="M928 96 L815 122 L760 140 L700 158 L650 188 L598 214 L520 206 L432 210 L372 180 L335 212 L296 230 L228 258 L156 286 L100 338 L150 380 L220 378 L360 400 L520 408 L640 398 L700 372 L820 320 L928 250"
+        fill="none" stroke="#9bb0b3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 10"/>
+      <path id="routeTrail" d="M928 96 L815 122 L760 140 L700 158 L650 188 L598 214 L520 206 L432 210 L372 180 L335 212 L296 230 L228 258 L156 286 L100 338 L150 380 L220 378 L360 400 L520 408 L640 398 L700 372 L820 320 L928 250"
+        fill="none" stroke="#c7553f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- PINS (created to match stops; data-stop = index) -->
+      <g class="stop" data-stop="0" transform="translate(928,96)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="12" fill="#46555e" stroke="#fff" stroke-width="2.5"/><text x="0" y="4" text-anchor="middle" font-size="12" fill="#fff">✈</text><text class="lbl" x="0" y="-22" text-anchor="middle">Evenes · in</text></g>
+      <g class="stop" data-stop="1" transform="translate(700,158)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-20" text-anchor="middle">Svolvær</text><text class="sub" x="0" y="-7" text-anchor="middle">base · Wed</text></g>
+      <g class="stop" data-stop="2" transform="translate(598,214)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-18" text-anchor="middle">Henningsvær</text></g>
+      <g class="stop" data-stop="3" transform="translate(432,210)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="34" text-anchor="middle">Leknes</text><text class="sub" x="0" y="48" text-anchor="middle">grocery</text></g>
+      <g class="stop" data-stop="4" transform="translate(372,180)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-18" text-anchor="middle">Haukland</text></g>
+      <g class="stop" data-stop="5" transform="translate(296,230)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="34" text-anchor="middle">Skagsanden</text></g>
+      <g class="stop" data-stop="6" transform="translate(156,286)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-20" text-anchor="middle">Reine</text><text class="sub" x="0" y="-7" text-anchor="middle">base · west</text></g>
+      <g class="stop" data-stop="7" transform="translate(100,338)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="6" y="34" text-anchor="middle">Å · lake</text></g>
+      <g class="stop" data-stop="8" transform="translate(220,378)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="34" text-anchor="middle">Fredvang</text><text class="sub" x="0" y="48" text-anchor="middle">Kvalvika · Ryten</text></g>
+      <g class="stop" data-stop="9" transform="translate(700,372)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="34" text-anchor="middle">Svolvær</text><text class="sub" x="0" y="48" text-anchor="middle">base · Sat</text></g>
+      <g class="stop" data-stop="10" transform="translate(928,250)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="12" fill="#46555e" stroke="#fff" stroke-width="2.5"/><text x="0" y="4" text-anchor="middle" font-size="12" fill="#fff">✈</text><text class="lbl" x="0" y="34" text-anchor="middle">Evenes · out</text></g>
+
+      <!-- CAR MARKER -->
+      <g id="car" transform="translate(928,96)">
+        <circle r="22" fill="url(#glow)"/>
+        <circle r="9" fill="#c7553f" stroke="#fff" stroke-width="3"/>
+        <circle r="3.5" fill="#fff"/>
+      </g>
+    </svg>
+    <div class="map-ui">
+      <button class="navbtn" id="mPrev" aria-label="Previous stop">‹</button>
+      <button class="navbtn play" id="mPlay" aria-label="Play journey">▶</button>
+      <div class="stopinfo">
+        <div class="si-top"><span class="si-day" id="siDay">DAY 1</span><span class="si-name" id="siName">Evenes Airport</span></div>
+        <div class="si-leg" id="siLeg"></div>
+        <div class="si-note" id="siNote"></div>
+      </div>
+      <button class="navbtn" id="mNext" aria-label="Next stop">›</button>
+    </div>
+    <div class="dots" id="mDots"></div>
+  </div>
+
+  <figure class="frame hero reveal">
+    <img class="zoom" loading="lazy" data-cap="Reine &amp; the fjord from Reinebringen" src="https://commons.wikimedia.org/wiki/Special:FilePath/Reinebringen%20reine%20lofoten%20tunliweb%2001.jpg?width=1400" alt="View over Reine from Reinebringen, Lofoten">
     <figcaption class="cap">Reine &amp; the fjord from Reinebringen — your western highlight 🏔️</figcaption>
   </figure>
 
-  <p style="text-align:center;font-size:18px;margin:14px 6px 0">
-    ⚡ Electric self-drive (VW ID.4) &nbsp;·&nbsp; 🥦 Veg &amp; cook-in &nbsp;·&nbsp; 🥾 Easy–medium hikes &nbsp;·&nbsp; 💧 Waterfalls &nbsp;·&nbsp; 💶 ~€840 pp
-  </p>
-
-  <!-- AT A GLANCE -->
-  <h2 class="section">🗺️ The trip at a glance</h2>
-  <div class="glance">
-    <div class="gcard"><span class="gd">WED 19</span><div class="gt">Land &amp; Drive In</div><div class="gx">Evenes 16:40 → fjord stops → Svolvær</div><div class="gb">🛏 SVOLVÆR</div></div>
-    <div class="gcard"><span class="gd">THU 20</span><div class="gt">Village &amp; Beaches</div><div class="gx">Henningsvær, Haukland ↔ Uttakleiv</div><div class="gb">🛏 → REINE</div></div>
-    <div class="gcard"><span class="gd">FRI 21</span><div class="gt">Deep West</div><div class="gx">Reine, Å lake, Sørvågen waterfall</div><div class="gb">🛏 REINE</div></div>
-    <div class="gcard"><span class="gd">SAT 22</span><div class="gt">Kvalvika &amp; Ryten</div><div class="gx">Big hike, then drive back east</div><div class="gb">🛏 → SVOLVÆR</div></div>
-    <div class="gcard"><span class="gd">SUN 23</span><div class="gt">Slow &amp; Fly Out</div><div class="gx">Svolvær → Evenes, fly 13:40</div><div class="gb">🛫 HOME</div></div>
+  <!-- GLANCE -->
+  <div class="sec-head reveal"><div><div class="kicker">Five days</div><h2 class="section">At a glance</h2></div></div>
+  <div class="glance reveal">
+    <div class="gcard" data-day="1"><span class="gd">WED 19</span><div class="gt">Land &amp; Drive In</div><div class="gx">Evenes 16:40 → fjord stops → Svolvær</div><div class="gb">🛏 SVOLVÆR</div></div>
+    <div class="gcard" data-day="2"><span class="gd">THU 20</span><div class="gt">Village &amp; Beaches</div><div class="gx">Henningsvær, Haukland ↔ Uttakleiv</div><div class="gb">🛏 → REINE</div></div>
+    <div class="gcard" data-day="3"><span class="gd">FRI 21</span><div class="gt">Deep West</div><div class="gx">Reine, Å lake, Sørvågen waterfall</div><div class="gb">🛏 REINE</div></div>
+    <div class="gcard" data-day="4"><span class="gd">SAT 22</span><div class="gt">Kvalvika &amp; Ryten</div><div class="gx">Big hike, then drive back east</div><div class="gb">🛏 → SVOLVÆR</div></div>
+    <div class="gcard" data-day="5"><span class="gd">SUN 23</span><div class="gt">Slow &amp; Fly Out</div><div class="gx">Svolvær → Evenes, fly 13:40</div><div class="gb">🛫 HOME</div></div>
   </div>
-  <p style="text-align:center;font-size:15px;margin:10px 6px 0;font-family:'Special Elite'">Two bases: <b style="color:var(--sea)">Svolvær</b> (east, near the airport) bookends a <b style="color:var(--red)">Reine/Hamnøy</b> (west) core — so you see the icons <em>and</em> keep an easy Sunday drive.</p>
 
   <!-- DAY BY DAY -->
-  <h2 class="section">📖 Day by day <span style="font-size:15px;font-family:'Special Elite';color:var(--ink);opacity:.6">(tap a day)</span></h2>
-  <div class="tabs" id="tabs">
-    <div class="tab active" data-d="1"><span class="num">1</span>Wed 19</div>
-    <div class="tab" data-d="2"><span class="num">2</span>Thu 20</div>
-    <div class="tab" data-d="3"><span class="num">3</span>Fri 21</div>
-    <div class="tab" data-d="4"><span class="num">4</span>Sat 22</div>
-    <div class="tab" data-d="5"><span class="num">5</span>Sun 23</div>
+  <div class="sec-head reveal"><div><div class="kicker">Itinerary · with drive times</div><h2 class="section">Day by day</h2></div><div class="hint">tap a day ↘</div></div>
+  <div class="tabs reveal" id="tabs">
+    <div class="tab active" data-day="1"><span class="num">1</span>Wed 19</div>
+    <div class="tab" data-day="2"><span class="num">2</span>Thu 20</div>
+    <div class="tab" data-day="3"><span class="num">3</span>Fri 21</div>
+    <div class="tab" data-day="4"><span class="num">4</span>Sat 22</div>
+    <div class="tab" data-day="5"><span class="num">5</span>Sun 23</div>
   </div>
 
   <!-- DAY 1 -->
-  <div class="panel active" data-d="1">
-    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="plane and road">
-      <rect width="900" height="200" fill="#cfe3e2"/>
-      <path d="M0 150 L150 80 L300 150 L470 70 L640 150 L800 90 L900 150 L900 200 L0 200Z" fill="#6f9698"/>
-      <rect x="0" y="160" width="900" height="40" fill="#4d4036"/>
-      <path d="M0 180 H900" stroke="#e6d27a" stroke-width="4" stroke-dasharray="34 26"/>
-      <g><rect x="120" y="150" width="70" height="26" rx="6" fill="#c8483c"/><rect x="138" y="138" width="38" height="18" rx="5" fill="#9fd0d2"/><circle cx="140" cy="178" r="9" fill="#23303a"/><circle cx="178" cy="178" r="9" fill="#23303a"/></g>
-      <g transform="translate(640 60) rotate(8)"><path d="M0 0 L70 8 L86 0 L70 -8 Z" fill="#fff"/><path d="M30 0 L18 -22 L34 -6 Z" fill="#dfe7e6"/><path d="M30 0 L18 22 L34 6 Z" fill="#dfe7e6"/></g>
-    </svg>
-    <div class="body">
-      <div class="daterow"><span class="dt">Wed 19 · Land &amp; roll in</span><span class="base">🛏 Base 1: Svolvær / Kabelvåg</span></div>
-      <ul class="steps">
-        <li>Land <b>Amsterdam → Evenes (EVE) at 16:40</b>. Pick up the electric car; big shop at the first <b>Rema 1000 / Coop Extra</b>.</li>
-        <li>Drive the E10 into Lofoten (~<b>2.5 h</b>) — gorgeous even as a transfer, and you'll have hours of evening light.</li>
-        <li>Evening stops near Svolvær: <b>Austnesfjorden viewpoint</b> (boardwalk over the fjord) <span class="pill easy">2 min</span> and <b>Sildpollnes Church</b> — the white chapel alone on a fjord spit, magic in low light. <span class="pill easy">photo stop</span></li>
-        <li>Check in around <b>Svolvær / Kabelvåg</b>, cook the first dinner. 🍝</li>
-      </ul>
-      <div class="tip">⚡ Top up the EV at the big <b>Svolvær fast-charger bank</b> when convenient — sets you up for the next few days.</div>
-    </div>
-  </div>
+  <div class="panel active" data-day="1"><div class="body">
+    <div class="daterow"><span class="dt">Wed 19 · Land &amp; roll in</span><span class="base">🛏 Base 1 · Svolvær / Kabelvåg</span></div>
+    <div class="drive"><span class="di">🚗</span><div><b>Evenes → Svolvær</b> — Google 2h39 (166 km) · <b>plan ~3h15</b>. Add ~30 min for the Austnesfjord &amp; Sildpollnes stops. Car pickup: allow 30–45 min first.</div></div>
+    <ul class="steps">
+      <li>Land <b>AMS → Evenes (EVE) 16:40</b>. Pick up the electric car; big shop best done in <b>Svolvær on arrival</b> (no good supermarket on the way).</li>
+      <li>Drive the E10 into Lofoten — gorgeous even as a transfer, hours of evening light left.</li>
+      <li>On-route stops near Svolvær: <b>Austnesfjorden viewpoint</b> <span class="pill easy">2 min</span> &amp; <b>Sildpollnes Church</b> on its fjord spit. <span class="pill easy">photo stop</span></li>
+      <li>Check in around <b>Svolvær / Kabelvåg</b>, cook the first dinner. 🍝</li>
+    </ul>
+    <div class="tip">⚡ Top up the EV at the big <b>Svolvær fast-charger bank</b> — sets you up for the next few days.</div>
+  </div></div>
 
   <!-- DAY 2 -->
-  <div class="panel" data-d="2">
-    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="fishing village">
-      <rect width="900" height="200" fill="#cfe3e2"/>
-      <path d="M0 120 L130 50 L260 120 L400 40 L540 120 L690 55 L820 120 L900 80 L900 200 L0 200Z" fill="#5d8587"/>
-      <rect x="0" y="150" width="900" height="50" fill="#2f7d83"/>
-      <g><rect x="120" y="120" width="50" height="34" fill="#c8483c"/><path d="M118 120 L145 100 L172 120Z" fill="#8f2f27"/>
-         <rect x="200" y="126" width="44" height="28" fill="#d98b2b"/><path d="M198 126 L222 108 L246 126Z" fill="#a5641a"/>
-         <rect x="300" y="122" width="48" height="32" fill="#b23c31"/><path d="M298 122 L324 104 L350 122Z" fill="#7d2a22"/></g>
-      <g stroke="#3a2018" stroke-width="4"><path d="M180 154 V178 M240 154 V178 M348 154 V178"/></g>
-    </svg>
-    <div class="body">
-      <div class="daterow"><span class="dt">Thu 20 · Henningsvær &amp; the beaches</span><span class="base">🛏 Move west → Reine / Hamnøy</span></div>
-      <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Henningsv%C3%A6r.jpg?width=1100" alt="Henningsvær harbour"><figcaption>📍 Henningsvær harbour, ringed by peaks</figcaption></figure>
-      <ul class="steps">
-        <li><b>Henningsvær</b> — the "Venice of Lofoten." Harbour, galleries, the clifftop football pitch. <span class="pill easy">easy</span></li>
-        <li>Optional climb: <b>Festvågtind</b> over the village. <span class="pill med">medium ~2h</span> <span class="pill opt">optional</span></li>
-        <li>Drive west; do the <b>Haukland ↔ Uttakleiv coastal walk</b> around Mannen — two white-sand beaches linked by a gentle path. <span class="pill easy">easy ~1–2h</span></li>
-        <li>Quick add: scramble up <b>Mannen</b> for a top-down view of both beaches. <span class="pill med">short &amp; steep</span> <span class="pill opt">optional</span></li>
-        <li>Stop at <b>Skagsanden beach</b>, then settle into <b>Reine / Hamnøy</b>. Cook in.</li>
-      </ul>
-      <div class="photorow">
-        <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hauklandsanden,%20Vestv%C3%A5g%C3%B8y,%20Lofoten.JPG?width=900" alt="Haukland Beach"><figcaption>📍 Haukland Beach</figcaption></figure>
-        <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lofoten,%20Uttakleiv%202.JPG?width=900" alt="Uttakleiv Beach"><figcaption>📍 Uttakleiv Beach</figcaption></figure>
-      </div>
-      <div class="tip">🛒 Shops thin out west — top up groceries in <b>Leknes</b> before Reine. ⚡ Fast chargers in Leknes too.</div>
+  <div class="panel" data-day="2"><div class="body">
+    <div class="daterow"><span class="dt">Thu 20 · Henningsvær &amp; the beaches</span><span class="base">🛏 Move west → Reine / Hamnøy</span></div>
+    <div class="drive"><span class="di">🚗</span><div><b>The driving-heavy day ≈ 4h35 total.</b> Svolvær→Henningsvær ~50m · →Leknes ~1h30 · →Haukland ~30m · →Skagsanden ~1h · →Reine ~55m. <i>(Google base ~3h10 + buffer.)</i> Start early.</div></div>
+    <figure class="shot"><img class="zoom" loading="lazy" data-cap="Henningsvær harbour" src="https://commons.wikimedia.org/wiki/Special:FilePath/Henningsv%C3%A6r.jpg?width=1200" alt="Henningsvær harbour"><span class="mag">⌕</span><figcaption>Henningsvær — the “Venice of Lofoten”</figcaption></figure>
+    <ul class="steps">
+      <li><b>Henningsvær</b> — harbour, galleries, clifftop football pitch. <span class="pill easy">easy</span> Optional <b>Festvågtind</b>. <span class="pill med">medium ~2h</span></li>
+      <li><b>Haukland ↔ Uttakleiv coastal walk</b> around Mannen — two white-sand beaches, one gentle path. <span class="pill easy">easy ~1–2h</span></li>
+      <li>Optional scramble up <b>Mannen</b> for a top-down view of both beaches. <span class="pill med">short &amp; steep</span> <span class="pill opt">optional</span></li>
+      <li>Stop at <b>Skagsanden beach</b>, then settle into <b>Reine / Hamnøy</b>. Cook in.</li>
+    </ul>
+    <div class="photorow">
+      <figure class="shot"><img class="zoom" loading="lazy" data-cap="Haukland Beach" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hauklandsanden,%20Vestv%C3%A5g%C3%B8y,%20Lofoten.JPG?width=1000" alt="Haukland Beach"><span class="mag">⌕</span><figcaption>Haukland Beach</figcaption></figure>
+      <figure class="shot"><img class="zoom" loading="lazy" data-cap="Uttakleiv Beach" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lofoten,%20Uttakleiv%202.JPG?width=1000" alt="Uttakleiv Beach"><span class="mag">⌕</span><figcaption>Uttakleiv Beach</figcaption></figure>
     </div>
-  </div>
+    <div class="tip">🛒 Top up groceries in <b>Leknes</b> (en route) before Reine. ⚡ Fast chargers there too. If the day feels long, drop Skagsanden.</div>
+  </div></div>
 
   <!-- DAY 3 -->
-  <div class="panel" data-d="3">
-    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="reine peaks lake and waterfall">
-      <rect width="900" height="200" fill="#cfe3e2"/>
-      <path d="M0 160 L120 40 L230 160 Z" fill="#587f81"/>
-      <path d="M180 160 L340 25 L500 160 Z" fill="#4d7173"/>
-      <path d="M430 160 L600 50 L760 160 Z" fill="#5d8587"/>
-      <path d="M340 25 L368 70 L312 66 Z" fill="#fff" opacity=".85"/>
-      <path d="M598 58 q5 40 -2 78 q-7 -36 2 -78Z" fill="#dff1f4" opacity=".9"/>
-      <rect x="0" y="150" width="900" height="50" fill="#2f7d83"/>
-      <ellipse cx="450" cy="178" rx="320" ry="16" fill="#3f9aa0" opacity=".7"/>
-      <g><rect x="250" y="140" width="40" height="26" fill="#c8483c"/><path d="M248 140 L270 124 L292 140Z" fill="#8f2f27"/>
-         <rect x="560" y="142" width="38" height="24" fill="#b23c31"/><path d="M558 142 L579 127 L600 142Z" fill="#7d2a22"/></g>
-    </svg>
-    <div class="body">
-      <div class="daterow"><span class="dt">Fri 21 · The deep west</span><span class="base">🛏 Base 2: Reine / Hamnøy</span></div>
-      <div class="photorow">
-        <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Agvatnet.jpg?width=900" alt="Ågvatnet lake at Å"><figcaption>📍 Ågvatnet — the lake walk at Å</figcaption></figure>
-        <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hamn%C3%B8y%20Reine%20Moskenes%20Lofoten%20norway%20tunliweb%2003.jpg?width=900" alt="Hamnøy blue hour"><figcaption>📍 Hamnøy, right by your base</figcaption></figure>
-      </div>
-      <ul class="steps">
-        <li><b>Reine, Hamnøy &amp; Sakrisøy</b> — the most photographed corner of Norway. Roadside viewpoints galore, zero climbing. <span class="pill easy">easy</span></li>
-        <li><b>Å i Lofoten</b> + the <b>Ågvatnet lake loop</b> — a calm fjord-lake ringed by peaks. <span class="pill easy">easy</span></li>
-        <li><b>Sørvågen Waterfall</b> (Studalselva) — a short, well-marked ~1 km stroll from the car to a cascade with a fjord view. <span class="pill fall">💧 waterfall</span> <span class="pill easy">easy ~30 min</span></li>
-        <li><b>Reinebringen</b> stone stairs for the postcard shot. <span class="pill med">medium-hard ~1.5h</span> — or skip and enjoy the bridge viewpoints. <span class="pill opt">easy swap</span></li>
-      </ul>
-      <div class="tip">💧 Want more water &amp; alpine drama? The <b>Sørvågen → Munkebu</b> trail climbs past <b>waterfalls, streams and mountain lakes</b> — go as far as you like, then turn back.</div>
+  <div class="panel" data-day="3"><div class="body">
+    <div class="daterow"><span class="dt">Fri 21 · The deep west</span><span class="base">🛏 Base 2 · Reine / Hamnøy</span></div>
+    <div class="drive"><span class="di">🚗</span><div><b>Light driving day — under ~1h all day.</b> Reine ↔ Å / Sørvågen ~25 min each way (Google 14 min). Everything else is on foot.</div></div>
+    <div class="photorow">
+      <figure class="shot"><img class="zoom" loading="lazy" data-cap="Ågvatnet — the lake walk at Å" src="https://commons.wikimedia.org/wiki/Special:FilePath/Agvatnet.jpg?width=1000" alt="Ågvatnet lake at Å"><span class="mag">⌕</span><figcaption>Ågvatnet — the lake walk at Å</figcaption></figure>
+      <figure class="shot"><img class="zoom" loading="lazy" data-cap="Hamnøy, right by your base" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hamn%C3%B8y%20Reine%20Moskenes%20Lofoten%20norway%20tunliweb%2003.jpg?width=1000" alt="Hamnøy blue hour"><span class="mag">⌕</span><figcaption>Hamnøy, right by your base</figcaption></figure>
     </div>
-  </div>
+    <ul class="steps">
+      <li><b>Reine, Hamnøy &amp; Sakrisøy</b> — the most photographed corner of Norway. Roadside viewpoints, zero climbing. <span class="pill easy">easy</span></li>
+      <li><b>Å i Lofoten</b> + the <b>Ågvatnet lake loop</b> — a calm fjord-lake ringed by peaks. <span class="pill easy">easy</span></li>
+      <li><b>Sørvågen Waterfall</b> (Studalselva) — a short ~1 km stroll to a cascade with a fjord view. <span class="pill fall">💧 waterfall</span> <span class="pill easy">easy ~30 min</span></li>
+      <li><b>Reinebringen</b> stone stairs for the postcard shot. <span class="pill med">medium-hard ~1.5h</span> <span class="pill opt">easy swap: bridge viewpoints</span></li>
+    </ul>
+    <div class="tip">💧 More water &amp; alpine drama: the <b>Sørvågen → Munkebu</b> trail climbs past waterfalls, streams &amp; mountain lakes — go as far as you like.</div>
+  </div></div>
 
   <!-- DAY 4 -->
-  <div class="panel" data-d="4">
-    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="hidden beach from above">
-      <rect width="900" height="200" fill="#cfe3e2"/>
-      <path d="M0 110 L160 40 L320 110 L500 35 L660 110 L820 50 L900 100 L900 130 L0 130Z" fill="#6f9698"/>
-      <rect x="0" y="120" width="900" height="40" fill="#5bb6bd"/>
-      <path d="M0 130 q120 22 240 6 t240 6 t240 6 t180 4 v18 H0Z" fill="#ead9b0"/>
-      <rect x="0" y="158" width="900" height="42" fill="#e6d2a6"/>
-    </svg>
-    <div class="body">
-      <div class="daterow"><span class="dt">Sat 22 · Kvalvika + Ryten, then east</span><span class="base">🛏 Back to Svolvær</span></div>
-      <figure class="photo"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ryten%20Kvalvika%20Lofoten%20tunliweb.jpg?width=1100" alt="Kvalvika Beach seen from Ryten"><figcaption>📍 Kvalvika Beach from Ryten — the day's big payoff</figcaption></figure>
-      <ul class="steps">
-        <li>Morning hike: <b>Kvalvika Beach + Ryten</b> — a hidden beach and a clifftop view straight down onto it. One of Lofoten's best, doable at an easy-medium pace. <span class="pill med">medium ~3–4h</span></li>
-        <li><em>Easier swap:</em> just walk down to <b>Kvalvika beach</b> and skip the Ryten summit. <span class="pill opt">gentler</span></li>
-        <li>Afternoon: drive <b>back east to Svolvær</b> (~2 h). Last cook-in, or a celebratory veg dinner in town.</li>
-        <li>Optional easy viewpoint near Kabelvåg if you've legs left: <b>Tjeldbergtind</b>. <span class="pill med">easy-medium ~1.5h</span> <span class="pill opt">optional</span></li>
-      </ul>
-      <div class="tip">🥾 Carry water + a windproof layer for Ryten, wear grippy shoes (slick after rain), and go in the morning to beat the day-trippers.</div>
-    </div>
-  </div>
+  <div class="panel" data-day="4"><div class="body">
+    <div class="daterow"><span class="dt">Sat 22 · Kvalvika + Ryten, then east</span><span class="base">🛏 Back to Svolvær</span></div>
+    <div class="drive"><span class="di">🚗</span><div><b>The long day.</b> Reine→Fredvang ~45m (Google 30m), hike, then <b>Fredvang→Svolvær ~2h35</b> (Google 1h51, 105 km). Hike early, eat, then drive.</div></div>
+    <figure class="shot"><img class="zoom" loading="lazy" data-cap="Kvalvika Beach from Ryten" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ryten%20Kvalvika%20Lofoten%20tunliweb.jpg?width=1200" alt="Kvalvika Beach from Ryten"><span class="mag">⌕</span><figcaption>Kvalvika Beach from Ryten — the day’s big payoff</figcaption></figure>
+    <ul class="steps">
+      <li><b>Kvalvika Beach + Ryten</b> — a hidden beach and a clifftop view straight down onto it. <span class="pill med">medium ~3–4h</span> <span class="pill opt">easier: just Kvalvika beach</span></li>
+      <li>📸 <b>Fredvang roadside stop:</b> the shark-fin peak <b>Volandstinden</b> + the curving <b>Fredvang Bridges</b> with red cabins — the classic shot, right where you park. <span class="pill easy">no hike</span></li>
+      <li><b>Swap option:</b> want that view <i>from above</i>? <b>Volandstinden</b> is a separate short hike (~5 km, easy-moderate) from Fredvang — trade it for Ryten if the shark-fin-from-above is the dream. <span class="pill opt">pick one</span></li>
+      <li>Drive <b>back east to Svolvær</b>. Optional easy viewpoint near Kabelvåg: <b>Tjeldbergtind</b>. <span class="pill med">easy-medium</span> <span class="pill opt">optional</span></li>
+    </ul>
+    <div class="tip">⛰️ Ryten looks out over Kvalvika &amp; the open sea — a different angle from the Volandstinden/bridges view. You realistically can’t do <i>both</i> big hikes plus the drive east, so choose your peak.</div>
+  </div></div>
 
   <!-- DAY 5 -->
-  <div class="panel" data-d="5">
-    <svg class="scene" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-label="drive out">
-      <rect width="900" height="200" fill="#cfe3e2"/>
-      <path d="M0 130 L160 60 L320 130 L490 55 L660 130 L820 70 L900 120 L900 200 L0 200Z" fill="#6f9698"/>
-      <rect x="0" y="150" width="900" height="50" fill="#4d4036"/>
-      <path d="M0 176 H900" stroke="#e6d27a" stroke-width="4" stroke-dasharray="34 26"/>
-      <g><rect x="690" y="146" width="70" height="26" rx="6" fill="#c8483c"/><rect x="708" y="134" width="38" height="18" rx="5" fill="#9fd0d2"/><circle cx="710" cy="174" r="9" fill="#23303a"/><circle cx="748" cy="174" r="9" fill="#23303a"/></g>
-      <g transform="translate(180 70)"><circle r="26" fill="#f2c34a"/></g>
-    </svg>
-    <div class="body">
-      <div class="daterow"><span class="dt">Sun 23 · Slow morning, fly home</span><span class="base">🛫 Drive to Evenes (EVE)</span></div>
-      <ul class="steps">
-        <li>Relaxed start: Svolvær harbour, a bakery stop, pack up.</li>
-        <li>Drive <b>Svolvær → Evenes</b> (~2.5 h). Leave by <b>~09:30</b> to comfortably make the <b>13:40</b> flight with car return + check-in.</li>
-        <li>Return the EV <b>fully charged</b> (charger near the airport is easiest), fly <b>EVE → Amsterdam</b>. 🎉</li>
-      </ul>
-      <div class="tip">⏱️ Staying in Svolvær (not Reine) on the last night is the whole trick — Reine → Evenes is ~4 h, Svolvær is ~2.5 h. That's why we loop back east on Saturday.</div>
-    </div>
-  </div>
+  <div class="panel" data-day="5"><div class="body">
+    <div class="daterow"><span class="dt">Sun 23 · Slow morning, fly home</span><span class="base">🛫 Drive to Evenes (EVE)</span></div>
+    <div class="drive"><span class="di">🚗</span><div><b>Svolvær → Evenes ~3h05</b> (Google 2h39, 166 km) + EV charge top-up. <b>Leave by ~09:00–09:15</b> for the 13:40 flight with car return + check-in.</div></div>
+    <ul class="steps">
+      <li>Relaxed start: Svolvær harbour, a bakery stop, pack up.</li>
+      <li>Drive back east; return the EV <b>fully charged</b> (charger near the airport is easiest).</li>
+      <li>Fly <b>EVE → Amsterdam</b>. 🎉</li>
+    </ul>
+    <div class="tip">⏱️ Staying in Svolvær (not Reine) the last night is the whole trick — Reine → Evenes is ~4 h, Svolvær ~2.5 h. That’s why Saturday loops back east.</div>
+  </div></div>
 
-  <!-- HIKES & WATERFALLS -->
-  <h2 class="section">🥾 Hikes &amp; 💧 waterfalls</h2>
-  <div class="note gold">
+  <!-- HIKES -->
+  <div class="sec-head reveal"><div><div class="kicker">On foot</div><h2 class="section">Hikes &amp; waterfalls</h2></div></div>
+  <div class="panelcard reveal">
     <ul class="hikes">
       <li><span class="ic">🌊</span><div><b>Haukland ↔ Uttakleiv coastal walk</b> — gentle path around Mannen linking two white beaches. <span class="pill easy">easy ~1–2h</span></div></li>
       <li><span class="ic">🏞️</span><div><b>Ågvatnet lake loop (Å)</b> — flat-ish walk along a fjord-lake under sharp peaks. <span class="pill easy">easy</span></div></li>
       <li><span class="ic">💧</span><div><b>Sørvågen Waterfall</b> — ~1 km stroll from the car to a cascade with a view. <span class="pill fall">waterfall</span> <span class="pill easy">easy</span></div></li>
-      <li><span class="ic">🏖️</span><div><b>Kvalvika + Ryten</b> — hidden beach + clifftop viewpoint, the trip's signature hike. <span class="pill med">medium ~3–4h</span></div></li>
+      <li><span class="ic">🏖️</span><div><b>Kvalvika + Ryten</b> — hidden beach + clifftop viewpoint, the trip’s signature hike. <span class="pill med">medium ~3–4h</span></div></li>
+      <li><span class="ic">🦈</span><div><b>Volandstinden (“the shark fin”)</b> — short climb above Fredvang for the bridges-from-above shot. <span class="pill med">easy-moderate ~5 km</span> <span class="pill opt">swap for Ryten</span></div></li>
       <li><span class="ic">⛰️</span><div><b>Reinebringen</b> — stone stairs to the iconic Reine view. <span class="pill med">medium-hard ~1.5h</span></div></li>
-      <li><span class="ic">💦</span><div><b>Sørvågen → Munkebu</b> — climbs past waterfalls, streams &amp; alpine lakes; go partway and turn back. <span class="pill med">medium</span> <span class="pill opt">optional</span></div></li>
-      <li><span class="ic">👀</span><div><b>Tjeldbergtind</b> (near Kabelvåg) &amp; <b>Festvågtind</b> (Henningsvær) — quick panoramic viewpoints. <span class="pill med">easy-medium</span> <span class="pill opt">optional</span></div></li>
+      <li><span class="ic">💦</span><div><b>Sørvågen → Munkebu</b> — past waterfalls, streams &amp; alpine lakes; go partway and turn back. <span class="pill med">medium</span> <span class="pill opt">optional</span></div></li>
     </ul>
   </div>
 
-  <!-- POSTCARDS -->
-  <h2 class="section">📷 Postcards from the road</h2>
-  <div class="gallery">
-    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Reinebringen%20reine%20lofoten%20tunliweb%2001.jpg?width=600" alt="Reine from Reinebringen"><figcaption class="cap">Reinebringen view</figcaption></figure>
-    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ryten%20Kvalvika%20Lofoten%20tunliweb.jpg?width=600" alt="Kvalvika from Ryten"><figcaption class="cap">Kvalvika &amp; Ryten</figcaption></figure>
-    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hauklandsanden,%20Vestv%C3%A5g%C3%B8y,%20Lofoten.JPG?width=600" alt="Haukland Beach"><figcaption class="cap">Haukland Beach</figcaption></figure>
-    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lofoten,%20Uttakleiv%202.JPG?width=600" alt="Uttakleiv Beach"><figcaption class="cap">Uttakleiv Beach</figcaption></figure>
-    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Agvatnet.jpg?width=600" alt="Ågvatnet lake"><figcaption class="cap">Ågvatnet lake, Å</figcaption></figure>
-    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Henningsv%C3%A6r.jpg?width=600" alt="Henningsvær"><figcaption class="cap">Henningsvær</figcaption></figure>
-    <figure class="pola"><img loading="lazy" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hamn%C3%B8y%20Reine%20Moskenes%20Lofoten%20norway%20tunliweb%2003.jpg?width=600" alt="Hamnøy blue hour"><figcaption class="cap">Hamnøy, blue hour</figcaption></figure>
+  <!-- GALLERY -->
+  <div class="sec-head reveal"><div><div class="kicker">Postcards</div><h2 class="section">From the road</h2></div><div class="hint">click to enlarge ↗</div></div>
+  <div class="gallery reveal">
+    <div class="gtile big"><img class="zoom" loading="lazy" data-cap="Reine from Reinebringen" src="https://commons.wikimedia.org/wiki/Special:FilePath/Reinebringen%20reine%20lofoten%20tunliweb%2001.jpg?width=1000" alt="Reine from Reinebringen"><span class="gcap">Reinebringen view</span></div>
+    <div class="gtile tall"><img class="zoom" loading="lazy" data-cap="Kvalvika Beach from Ryten" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ryten%20Kvalvika%20Lofoten%20tunliweb.jpg?width=800" alt="Kvalvika from Ryten"><span class="gcap">Kvalvika &amp; Ryten</span></div>
+    <div class="gtile tall"><img class="zoom" loading="lazy" data-cap="Hamnøy at blue hour" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hamn%C3%B8y%20Reine%20Moskenes%20Lofoten%20norway%20tunliweb%2003.jpg?width=800" alt="Hamnøy blue hour"><span class="gcap">Hamnøy, blue hour</span></div>
+    <div class="gtile wide"><img class="zoom" loading="lazy" data-cap="Haukland Beach" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hauklandsanden,%20Vestv%C3%A5g%C3%B8y,%20Lofoten.JPG?width=900" alt="Haukland Beach"><span class="gcap">Haukland Beach</span></div>
+    <div class="gtile wide"><img class="zoom" loading="lazy" data-cap="Uttakleiv Beach" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lofoten,%20Uttakleiv%202.JPG?width=900" alt="Uttakleiv Beach"><span class="gcap">Uttakleiv Beach</span></div>
+    <div class="gtile wide"><img class="zoom" loading="lazy" data-cap="Henningsvær" src="https://commons.wikimedia.org/wiki/Special:FilePath/Henningsv%C3%A6r.jpg?width=900" alt="Henningsvær"><span class="gcap">Henningsvær</span></div>
+    <div class="gtile wide"><img class="zoom" loading="lazy" data-cap="Ågvatnet lake, Å" src="https://commons.wikimedia.org/wiki/Special:FilePath/Agvatnet.jpg?width=900" alt="Ågvatnet lake"><span class="gcap">Ågvatnet lake, Å</span></div>
   </div>
-  <p class="credit">Photos via <a href="https://commons.wikimedia.org/wiki/Category:Lofoten">Wikimedia Commons</a> — several by Svein-Magne Tunli (tunliweb.no), CC BY-SA 4.0; others CC / public domain.</p>
+  <p class="credit reveal">Photos via <a href="https://commons.wikimedia.org/wiki/Category:Lofoten">Wikimedia Commons</a> — several by Svein-Magne Tunli (tunliweb.no), CC BY-SA 4.0; others CC / public domain.</p>
 
   <!-- BUDGET -->
-  <h2 class="section">💶 Budget snapshot <span style="font-size:15px;font-family:'Special Elite';color:var(--ink);opacity:.6">per person</span></h2>
-  <div class="budget">
+  <div class="sec-head reveal"><div><div class="kicker">Money</div><h2 class="section">Budget snapshot <span style="font-size:14px;color:var(--ink2);font-family:var(--body);font-weight:500">· per person</span></h2></div></div>
+  <div class="budget reveal">
     <div class="brow"><span>✈️ Flights AMS ↔ EVE (booked)</span><span>€303</span></div>
     <div class="brow"><span>🚗 Hertz EV · 5 days (€499.92 ÷ 3)</span><span>€167</span></div>
     <div class="brow"><span>⚡ EV charging + tolls</span><span>€20</span></div>
@@ -342,39 +433,39 @@
     <div class="brow"><span>🍫 Buffer (snacks, a meal out, parking)</span><span>€40</span></div>
     <div class="brow total"><span>All-in total</span><span>≈ €840</span></div>
     <div class="bbar"><span style="width:93%"></span></div>
-    <p style="font-size:14px;margin:8px 2px 0">Sits right in your €800–900 target. The EV is a quiet win — charging is far cheaper than petrol, ~€20 covers the whole trip.</p>
+    <p class="bnote">Sits right in your €800–900 target. The EV is a quiet win — charging is far cheaper than petrol, ~€20 covers the whole trip.</p>
   </div>
 
   <!-- GOOD TO KNOW -->
-  <h2 class="section">🚗 Good to know</h2>
-  <div class="cols">
-    <div class="note red">
+  <div class="sec-head reveal"><div><div class="kicker">Practical</div><h2 class="section">Good to know</h2></div></div>
+  <div class="cols reveal">
+    <div class="note">
       <h3>Driving + EV</h3>
-      <ol class="commandments">
-        <li>One main road (E10), well-kept, calm drivers — easy if you've driven in Europe.</li>
+      <ol class="ol">
+        <li>One main road (E10), well-kept, calm drivers — easy if you’ve driven in Europe.</li>
         <li>West end (Reine/Flakstad) has <b>narrow bits &amp; single-lane bridges</b> — slow, let oncoming cars pass.</li>
         <li><b>Never stop in the road for photos.</b> Use marked laybys only.</li>
-        <li><b>Charging is easy:</b> fast-charger banks in Svolvær &amp; Leknes; ~30 min = 10→80%. Cards now work directly (2026).</li>
-        <li>Last night in <b>Svolvær</b> keeps Sunday's airport drive to ~2.5 h.</li>
+        <li>Summer traffic is slower than Google shows — that’s why every leg here has a buffer.</li>
+        <li><b>Charging:</b> fast-charger banks in Svolvær &amp; Leknes; ~30 min = 10→80%. Cards work directly (2026).</li>
       </ol>
     </div>
-    <div class="note sea">
-      <h3>Pack &amp; prep <span style="font-size:13px;font-family:'Special Elite';opacity:.6">(tap to check)</span></h3>
+    <div class="note">
+      <h3>Pack &amp; prep <span style="font-size:13px;color:var(--ink2);font-weight:500;font-family:var(--body)">· tap to check</span></h3>
       <ul class="check" id="pack">
         <li><span class="box">✓</span> Waterproof jacket + warm layer (8–15°C, windy)</li>
-        <li><span class="box">✓</span> Grippy hiking shoes (for Ryten/Reinebringen)</li>
+        <li><span class="box">✓</span> Grippy hiking shoes (Ryten / Reinebringen)</li>
         <li><span class="box">✓</span> Eye mask (long, bright evenings)</li>
         <li><span class="box">✓</span> Reusable bags for the big grocery shop</li>
-        <li><span class="box">✓</span> Offline maps + EV charging app (or just Google Maps)</li>
+        <li><span class="box">✓</span> Offline maps + EV charging app (or Google Maps)</li>
         <li><span class="box">✓</span> Tap credit card (Norway is near-cashless)</li>
         <li><span class="box">✓</span> Confirm cabins have a kitchen + the EV cable is in the car</li>
       </ul>
     </div>
   </div>
 
-  <!-- BOOK FIRST -->
-  <h2 class="section">📌 Still to book</h2>
-  <div class="note gold">
+  <!-- BOOK -->
+  <div class="sec-head reveal"><div><div class="kicker">Next</div><h2 class="section">Still to book</h2></div></div>
+  <div class="note reveal">
     <ul class="check" id="book">
       <li><span class="box">✓</span> <b>Cabin A</b> — Svolvær/Kabelvåg for <b>Wed 19</b> &amp; <b>Sat 22</b> (2 nights, can be the same place)</li>
       <li><span class="box">✓</span> <b>Cabin B</b> — Reine/Hamnøy/Sakrisøy for <b>Thu 20 &amp; Fri 21</b> (books out earliest — grab it)</li>
@@ -382,23 +473,147 @@
     </ul>
   </div>
 
-  <footer>
-    Pakk sekken — Lofoten is calling. 🏔️🐟💧<br>
-    <span class="stamp">GOD TUR · LOFOTEN 2026</span><br><br>
-    <a class="scrolltop" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ back to the cover</a>
+  <footer class="reveal">
+    <div class="fline">Pakk sekken — Lofoten is calling. 🏔️🐟💧</div>
+    <span class="stamp">GOD TUR · LOFOTEN 2026</span>
+    <a class="top" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">↑ back to the top</a>
   </footer>
 
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" aria-hidden="true">
+  <div class="lbct" id="lbct"></div>
+  <button class="lbx" id="lbx" aria-label="Close">✕</button>
+  <button class="lbnav prev" id="lbprev" aria-label="Previous">‹</button>
+  <button class="lbnav next" id="lbnext" aria-label="Next">›</button>
+  <img id="lbimg" src="" alt="">
+  <div class="lbcap" id="lbcap"></div>
+</div>
+
 <script>
-  const tabs=document.querySelectorAll('#tabs .tab');
-  const panels=document.querySelectorAll('.panel');
-  tabs.forEach(t=>t.addEventListener('click',()=>{
-    const d=t.dataset.d;
-    tabs.forEach(x=>x.classList.toggle('active',x.dataset.d===d));
-    panels.forEach(p=>p.classList.toggle('active',p.dataset.d===d));
-  }));
-  document.querySelectorAll('.check li').forEach(li=>li.addEventListener('click',()=>li.classList.toggle('done')));
+(function(){
+  document.body.classList.add('has-js');
+
+  /* progress bar */
+  var prog=document.getElementById('prog');
+  function onScroll(){var h=document.documentElement;prog.style.width=((h.scrollTop)/((h.scrollHeight-h.clientHeight)||1)*100)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  /* reveal */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* ===== INTERACTIVE MAP ===== */
+  var stops=[
+    {day:'DAY 1',name:'Evenes Airport',leg:'Land 16:40 · pick up the EV',note:'The journey starts here — fly in, grab the car, point west.'},
+    {day:'DAY 1',name:'Svolvær',leg:'Evenes → Svolvær · <span class="g">Google 2h39 ·</span> plan ~3h15',note:'Base 1 (east). Stop at Austnesfjorden &amp; Sildpollnes on the way in.'},
+    {day:'DAY 2',name:'Henningsvær',leg:'Svolvær → Henningsvær · <span class="g">34m ·</span> plan ~50m',note:'The “Venice of Lofoten” — harbour, galleries, the clifftop pitch.'},
+    {day:'DAY 2',name:'Leknes',leg:'Henningsvær → Leknes · <span class="g">1h06 ·</span> plan ~1h30',note:'Grocery top-up + fast chargers before heading further west.'},
+    {day:'DAY 2',name:'Haukland &amp; Uttakleiv',leg:'Leknes → Haukland · <span class="g">15m ·</span> plan ~30m',note:'Two white-sand beaches joined by an easy coastal walk.'},
+    {day:'DAY 2',name:'Skagsanden',leg:'Haukland → Skagsanden · <span class="g">41m ·</span> plan ~1h',note:'Mirror-sand beach at Flakstad — a classic photo stop.'},
+    {day:'DAY 2',name:'Reine / Hamnøy',leg:'Skagsanden → Reine · <span class="g">36m ·</span> plan ~55m',note:'Base 2 (west) — the most photographed corner of Norway.'},
+    {day:'DAY 3',name:'Å &amp; Ågvatnet',leg:'Reine → Å · <span class="g">14m ·</span> plan ~25m',note:'Light day: lake loop, Sørvågen waterfall, Reinebringen. Mostly on foot.'},
+    {day:'DAY 4',name:'Fredvang · Kvalvika / Ryten',leg:'Reine → Fredvang · <span class="g">30m ·</span> plan ~45m',note:'Big hike to Kvalvika &amp; Ryten. Roadside: Volandstinden “shark fin” + the bridges.'},
+    {day:'DAY 4',name:'Svolvær',leg:'Fredvang → Svolvær · <span class="g">1h51 ·</span> plan ~2h35',note:'The long drive back east, after the hike. Last night near the airport.'},
+    {day:'DAY 5',name:'Evenes Airport',leg:'Svolvær → Evenes · <span class="g">2h39 ·</span> plan ~3h05',note:'Leave by ~09:00–09:15, return the EV charged, fly 13:40. 🎉'}
+  ];
+  var svg=document.getElementById('tripmap');
+  var base=document.getElementById('routeBase');
+  var trail=document.getElementById('routeTrail');
+  var car=document.getElementById('car');
+  var pins=Array.prototype.slice.call(svg.querySelectorAll('.stop'));
+  var total=base.getTotalLength();
+
+  /* compute each stop's length along the path by matching pin coords */
+  var pts=base.getAttribute('d').replace('M','').split('L').map(function(s){var a=s.trim().split(/[ ,]+/);return {x:parseFloat(a[0]),y:parseFloat(a[1])};});
+  // cumulative length per vertex
+  var cum=[0];for(var i=1;i<pts.length;i++){var dx=pts[i].x-pts[i-1].x,dy=pts[i].y-pts[i-1].y;cum.push(cum[i-1]+Math.sqrt(dx*dx+dy*dy));}
+  // map each stop index to nearest vertex length (pins are placed on vertices in order)
+  var stopLen=[];
+  pins.forEach(function(p){
+    var t=p.getAttribute('transform');var m=/translate\(([-\d.]+),\s*([-\d.]+)\)/.exec(t);
+    var px=parseFloat(m[1]),py=parseFloat(m[2]);
+    var bi=0,bd=1e9;for(var k=0;k<pts.length;k++){var d=(pts[k].x-px)*(pts[k].x-px)+(pts[k].y-py)*(pts[k].y-py);if(d<bd){bd=d;bi=k;}}
+    stopLen[parseInt(p.dataset.stop,10)]=cum[bi];
+  });
+
+  trail.style.strokeDasharray=total;
+  function setTrail(len){trail.style.strokeDashoffset=(total-len);}
+  function setCar(len){var pt=base.getPointAtLength(len);car.setAttribute('transform','translate('+pt.x+','+pt.y+')');}
+
+  var cur=0, curLen=stopLen[0]||0, raf=null;
+  function render(){
+    var s=stops[cur];
+    document.getElementById('siDay').textContent=s.day;
+    document.getElementById('siName').innerHTML=s.name;
+    document.getElementById('siLeg').innerHTML=s.leg;
+    document.getElementById('siNote').innerHTML=s.note;
+    pins.forEach(function(p){p.classList.toggle('active',parseInt(p.dataset.stop,10)===cur);});
+    dots.forEach(function(d,i){d.className=(i===cur?'on':(i<cur?'past':''));});
+  }
+  function animTo(targetLen,cb){
+    if(raf)cancelAnimationFrame(raf);
+    var startLen=curLen, dur=Math.min(1100,Math.max(420,Math.abs(targetLen-startLen)*1.1)), t0=null;
+    function step(ts){
+      if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/dur);var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+      curLen=startLen+(targetLen-startLen)*e;setCar(curLen);setTrail(curLen);
+      if(p<1){raf=requestAnimationFrame(step);}else{curLen=targetLen;if(cb)cb();}
+    }
+    raf=requestAnimationFrame(step);
+  }
+  function goTo(i,instant){
+    cur=Math.max(0,Math.min(stops.length-1,i));render();
+    if(instant){curLen=stopLen[cur];setCar(curLen);setTrail(curLen);}else{animTo(stopLen[cur]);}
+  }
+
+  /* dots */
+  var dotWrap=document.getElementById('mDots'),dots=[];
+  stops.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Stop '+(i+1));b.addEventListener('click',function(){stopPlay();goTo(i);});dotWrap.appendChild(b);dots.push(b);});
+
+  pins.forEach(function(p){p.addEventListener('click',function(){stopPlay();goTo(parseInt(p.dataset.stop,10));});});
+  document.getElementById('mPrev').addEventListener('click',function(){stopPlay();goTo(cur-1);});
+  document.getElementById('mNext').addEventListener('click',function(){stopPlay();goTo(cur+1);});
+
+  /* play */
+  var playing=false,timer=null,playBtn=document.getElementById('mPlay');
+  function tick(){
+    if(cur>=stops.length-1){stopPlay();return;}
+    goTo(cur+1);timer=setTimeout(tick,1700);
+  }
+  function startPlay(){
+    if(cur>=stops.length-1)goTo(0,true);
+    playing=true;playBtn.textContent='❚❚';timer=setTimeout(tick,500);
+  }
+  function stopPlay(){playing=false;playBtn.textContent='▶';if(timer){clearTimeout(timer);timer=null;}}
+  playBtn.addEventListener('click',function(){playing?stopPlay():startPlay();});
+
+  goTo(0,true);
+
+  /* ===== DAY TABS ===== */
+  var tabs=document.querySelectorAll('#tabs .tab');
+  var panels=document.querySelectorAll('.panel');
+  function setDay(d){tabs.forEach(function(t){t.classList.toggle('active',t.dataset.day===d);});panels.forEach(function(p){p.classList.toggle('active',p.dataset.day===d);});}
+  tabs.forEach(function(t){t.addEventListener('click',function(){setDay(t.dataset.day);});});
+  document.querySelectorAll('.glance .gcard').forEach(function(g){g.addEventListener('click',function(){setDay(g.dataset.day);document.getElementById('tabs').scrollIntoView({behavior:'smooth',block:'start'});});});
+
+  /* ===== checklists ===== */
+  document.querySelectorAll('.check li').forEach(function(li){li.addEventListener('click',function(){li.classList.toggle('done');});});
+
+  /* ===== lightbox ===== */
+  var imgs=Array.prototype.slice.call(document.querySelectorAll('img.zoom'));
+  var lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg'),lbcap=document.getElementById('lbcap'),lbct=document.getElementById('lbct'),idx=0;
+  function srcFull(im){return im.getAttribute('src').replace(/\?width=\d+/,'?width=1600');}
+  function show(i){idx=(i+imgs.length)%imgs.length;var im=imgs[idx];lbimg.src=srcFull(im);lbimg.alt=im.alt||'';lbcap.textContent=im.getAttribute('data-cap')||im.alt||'';lbct.textContent=(idx+1)+' / '+imgs.length;}
+  function openLb(i){show(i);lb.classList.add('open');lb.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+  function closeLb(){lb.classList.remove('open');lb.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  imgs.forEach(function(im,i){im.addEventListener('click',function(){openLb(i);});});
+  document.getElementById('lbx').addEventListener('click',closeLb);
+  document.getElementById('lbprev').addEventListener('click',function(e){e.stopPropagation();show(idx-1);});
+  document.getElementById('lbnext').addEventListener('click',function(e){e.stopPropagation();show(idx+1);});
+  lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLb();else if(e.key==='ArrowLeft')show(idx-1);else if(e.key==='ArrowRight')show(idx+1);});
+})();
 </script>
 </body>
 </html>
