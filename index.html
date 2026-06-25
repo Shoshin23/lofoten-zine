@@ -6,13 +6,13 @@
 <title>Lofoten Zine · 19–23 Aug 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#f4ecdd;--paper2:#ece0c8;--card:#fbf5ea;--ink:#1f2d36;--ink2:#46555e;
     --terra:#c7553f;--terra-dk:#9e3f2d;--sea:#2e7d83;--sea-dk:#21595e;--sea2:#3f9aa0;
     --gold:#d99a2b;--sky:#cfe3e2;--line:rgba(31,45,54,.14);--shadow:rgba(31,45,54,.16);
-    --display:"Fraunces",Georgia,serif;--body:"Inter",system-ui,sans-serif;--hand:"Caveat",cursive;
+    --display:"Fraunces",Georgia,serif;--body:"Inter",system-ui,sans-serif;--hand:"Caveat",cursive;--pix:"Press Start 2P",monospace;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth;color-scheme:light;-webkit-text-size-adjust:100%}
@@ -32,7 +32,6 @@
   .sec-head{margin:46px 0 4px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .sec-head .hint{font-family:var(--hand);font-size:20px;color:var(--sea)}
 
-  /* COVER */
   .cover{position:relative;border-radius:22px;overflow:hidden;box-shadow:0 18px 40px -18px var(--shadow);border:1px solid var(--line)}
   .cover svg.scene{display:block;width:100%;height:auto}
   .cover .veil{position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 0%,rgba(255,255,255,.18),transparent 55%)}
@@ -45,19 +44,19 @@
   .chip{font-family:var(--body);font-weight:500;font-size:13.5px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 13px;box-shadow:0 2px 8px -5px var(--shadow);display:inline-flex;gap:7px;align-items:center}
   .chip b{font-weight:700;color:var(--terra-dk)}
 
-  /* ===== INTERACTIVE MAP ===== */
-  .mapcard{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(180deg,#dcecef,#e9efe1);box-shadow:0 16px 40px -22px var(--shadow)}
-  #tripmap{display:block;width:100%;height:auto}
+  /* ===== 16-BIT MAP ===== */
+  .mapcard{border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#0e3a45;box-shadow:0 16px 40px -22px var(--shadow)}
+  #tripmap{display:block;width:100%;height:auto;image-rendering:auto}
   .stop{cursor:pointer}
   .stop .ring{opacity:0;transition:opacity .3s ease}
   .stop.active .ring{opacity:1}
   .stop .dot{transition:transform .25s ease,fill .25s ease}
   .stop:hover .dot{transform:scale(1.22)}
   .stop.active .dot{fill:var(--terra)}
-  .stop .lbl{font-family:var(--body);font-weight:600;font-size:13.5px;fill:var(--ink);pointer-events:none}
-  .stop.active .lbl{fill:var(--terra-dk)}
-  .stop .sub{font-family:var(--body);font-weight:500;font-size:10.5px;fill:var(--ink2);pointer-events:none}
-  #car{filter:drop-shadow(0 3px 4px rgba(31,45,54,.35))}
+  .stop .lbl{font-family:var(--body);font-weight:700;font-size:13px;fill:#fff;paint-order:stroke;stroke:#16404a;stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+  .stop.active .lbl{fill:#ffe2b0}
+  .stop .sub{font-family:var(--body);font-weight:600;font-size:10px;fill:#d7e6e3;paint-order:stroke;stroke:#16404a;stroke-width:3.5px;stroke-linejoin:round;pointer-events:none}
+  #car{filter:drop-shadow(0 3px 3px rgba(0,0,0,.4))}
   .map-ui{display:flex;align-items:center;gap:14px;padding:14px 16px;border-top:1px solid var(--line);background:var(--card)}
   .navbtn{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s ease}
   .navbtn:hover{background:var(--terra);color:#fff;border-color:var(--terra)}
@@ -65,24 +64,22 @@
   .navbtn.play:hover{background:var(--sea-dk)}
   .stopinfo{flex:1;min-width:0}
   .si-top{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-  .si-day{font-family:var(--body);font-weight:700;font-size:10.5px;letter-spacing:.1em;color:#fff;background:var(--ink);border-radius:999px;padding:3px 9px}
+  .si-day{font-family:var(--pix);font-size:9px;letter-spacing:.02em;color:#fff;background:var(--ink);border-radius:6px;padding:5px 8px}
   .si-name{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);line-height:1.1}
   .si-leg{font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--sea-dk);margin-top:3px}
   .si-leg .g{color:var(--ink2);font-weight:500}
   .si-note{font-size:13px;color:var(--ink2);margin-top:2px;line-height:1.35}
   .dots{display:flex;gap:6px;padding:0 16px 14px;flex-wrap:wrap}
-  .dots button{width:13px;height:13px;border-radius:50%;border:2px solid var(--sea);background:transparent;cursor:pointer;padding:0;transition:all .18s ease}
+  .dots button{width:13px;height:13px;border-radius:3px;border:2px solid var(--sea);background:transparent;cursor:pointer;padding:0;transition:all .18s ease}
   .dots button:hover{transform:scale(1.2)}
   .dots button.on{background:var(--terra);border-color:var(--terra)}
   .dots button.past{background:var(--sea)}
 
-  /* hero photo */
   .frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 16px 38px -20px var(--shadow);background:var(--sky)}
   .frame.hero{margin-top:16px}
   .frame.hero img{display:block;width:100%;height:clamp(220px,38vw,400px);object-fit:cover;cursor:zoom-in}
   .frame .cap{position:absolute;left:0;right:0;bottom:0;padding:34px 18px 14px;color:#fff;background:linear-gradient(transparent,rgba(31,45,54,.78));font-family:var(--hand);font-weight:700;font-size:clamp(19px,3vw,26px)}
 
-  /* glance */
   .glance{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
   @media(max-width:720px){.glance{grid-template-columns:repeat(2,1fr)}}
   .gcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 12px;box-shadow:0 6px 18px -14px var(--shadow);transition:transform .18s ease,box-shadow .18s ease;cursor:pointer}
@@ -92,7 +89,6 @@
   .gcard .gx{font-size:12.5px;color:var(--ink2);line-height:1.35}
   .gcard .gb{font-family:var(--body);font-weight:700;font-size:9.5px;letter-spacing:.1em;color:var(--sea-dk);margin-top:7px}
 
-  /* tabs / days */
   .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
   .tab{cursor:pointer;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:9px 15px;font-family:var(--body);font-weight:600;font-size:15px;color:var(--ink2);display:inline-flex;align-items:center;gap:9px;transition:all .18s ease}
   .tab .num{display:inline-flex;width:23px;height:23px;border-radius:50%;background:var(--paper2);color:var(--ink);align-items:center;justify-content:center;font-size:13px;font-weight:700}
@@ -115,10 +111,7 @@
   ul.steps li::before{content:"";position:absolute;left:8px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--sea2);box-shadow:0 0 0 3px rgba(46,125,131,.16)}
   ul.steps li b{color:var(--terra-dk);font-weight:700}
   .pill{display:inline-block;font-family:var(--body);font-weight:700;font-size:10px;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px;margin-left:5px;vertical-align:1px;white-space:nowrap}
-  .pill.easy{background:#d8eccd;color:#2c5a25}
-  .pill.med{background:#f6e1b0;color:#7a4e10}
-  .pill.opt{background:#e6d6f0;color:#5a3a72}
-  .pill.fall{background:#c5e6ef;color:#13555c}
+  .pill.easy{background:#d8eccd;color:#2c5a25}.pill.med{background:#f6e1b0;color:#7a4e10}.pill.opt{background:#e6d6f0;color:#5a3a72}.pill.fall{background:#c5e6ef;color:#13555c}
   .tip{margin-top:12px;background:#fff7e4;border:1px solid #f0dca6;border-left:5px solid var(--gold);padding:10px 13px;font-size:14.5px;border-radius:8px}
   .photorow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 0 4px}
   @media(max-width:560px){.photorow{grid-template-columns:1fr}}
@@ -145,9 +138,7 @@
   .gtile:hover img{transform:scale(1.06)}
   .gtile .gcap{position:absolute;left:0;right:0;bottom:0;padding:18px 10px 8px;color:#fff;font-family:var(--body);font-weight:600;font-size:12.5px;background:linear-gradient(transparent,rgba(31,45,54,.74));opacity:0;transition:opacity .25s ease}
   .gtile:hover .gcap{opacity:1}
-  .gtile.big{grid-column:span 3;grid-row:span 2}
-  .gtile.tall{grid-row:span 2}
-  .gtile.wide{grid-column:span 2}
+  .gtile.big{grid-column:span 3;grid-row:span 2}.gtile.tall{grid-row:span 2}.gtile.wide{grid-column:span 2}
   @media(max-width:480px){.gtile.big,.gtile.wide{grid-column:span 2}.gtile.big{grid-row:span 2}}
 
   .lb{position:fixed;inset:0;z-index:80;background:rgba(20,28,33,.92);display:none;align-items:center;justify-content:center;padding:24px}
@@ -230,58 +221,70 @@
     <span class="chip">💶 <b>~€840</b> pp</span>
   </div>
 
-  <!-- ===== INTERACTIVE ROUTE MAP (HERO) ===== -->
-  <div class="sec-head reveal"><div><div class="kicker">The route · interactive</div><h2 class="section">Drive the trip</h2></div><div class="hint">press ▶ or tap a stop</div></div>
+  <!-- ===== 16-BIT INTERACTIVE MAP (HERO) ===== -->
+  <div class="sec-head reveal"><div><div class="kicker">The route · interactive</div><h2 class="section">Drive the trip</h2></div><div class="hint">press ▶ to drive · tap a stop</div></div>
   <div class="mapcard reveal">
-    <svg id="tripmap" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive trip map">
+    <svg id="tripmap" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive 16-bit trip map">
       <defs>
-        <linearGradient id="mSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcebef"/><stop offset="1" stop-color="#cddfe2"/></linearGradient>
-        <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#c7553f" stop-opacity=".5"/><stop offset="1" stop-color="#c7553f" stop-opacity="0"/></radialGradient>
+        <linearGradient id="mSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d6f78"/><stop offset="1" stop-color="#124e57"/></linearGradient>
+        <pattern id="grain" width="3" height="3" patternUnits="userSpaceOnUse"><rect width="3" height="3" fill="none"/><rect width="1" height="1" fill="#0a2a30"/></pattern>
+        <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ffd27a" stop-opacity=".55"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
       </defs>
-      <rect width="1000" height="520" fill="url(#mSea)"/>
-      <!-- stylised archipelago -->
-      <g fill="#bcd4bf" stroke="#a6c3ab" stroke-width="2">
-        <path d="M40 360 q50 -86 150 -74 q92 10 78 90 q-10 60 -110 70 q-118 12 -118 -86Z"/>
-        <path d="M160 300 q60 -78 168 -56 q78 22 50 96 q-26 64 -132 60 q-110 -4 -86 -100Z"/>
-        <path d="M330 268 q86 -70 214 -38 q86 24 54 100 q-34 70 -184 58 q-148 -10 -84 -120Z"/>
-        <path d="M540 244 q88 -64 206 -28 q82 26 50 100 q-36 70 -184 54 q-138 -16 -72 -126Z"/>
-        <path d="M730 200 q68 -54 150 -20 q64 26 36 86 q-34 64 -136 48 q-96 -18 -50 -114Z"/>
+      <rect width="1000" height="560" fill="url(#mSea)"/>
+      <g id="seaFx"></g>
+      <!-- island landmasses (extruded: cliff + grass + highlight) -->
+      <g id="islands">
+        <!-- WEST (Reine / Å / Fredvang) -->
+        <path d="M62 392 C50 330 116 268 200 278 C266 286 306 318 304 366 C306 420 250 470 168 468 C92 466 52 436 60 408 C54 400 58 396 62 392Z" fill="#33602f"/>
+        <path d="M62 380 C50 318 116 256 200 266 C266 274 306 306 304 354 C306 408 250 458 168 456 C92 454 52 424 60 396 C54 388 58 384 62 380Z" fill="#6aa84f"/>
+        <path d="M70 320 C110 276 168 270 214 286 C190 300 150 300 120 326 C100 344 92 360 80 360 C66 356 62 338 70 320Z" fill="#86c062" opacity=".55"/>
+        <!-- MID (Vestvågøy) -->
+        <path d="M298 270 C288 214 384 188 474 206 C566 224 588 268 574 320 C566 384 470 428 380 424 C298 420 286 366 298 312Z" fill="#33602f"/>
+        <path d="M298 258 C288 202 384 176 474 194 C566 212 588 256 574 308 C566 372 470 416 380 412 C298 408 286 354 298 300Z" fill="#6aa84f"/>
+        <path d="M312 236 C360 198 432 198 486 220 C452 232 392 230 352 252 C330 266 322 280 312 280 C300 274 304 252 312 236Z" fill="#86c062" opacity=".5"/>
+        <!-- EAST (Austvågøya) -->
+        <path d="M560 270 C548 206 642 166 748 184 C852 202 916 234 912 292 C916 388 850 444 726 442 C600 442 556 384 560 322Z" fill="#33602f"/>
+        <path d="M560 258 C548 194 642 154 748 172 C852 190 916 222 912 280 C916 376 850 432 726 430 C600 430 556 372 560 310Z" fill="#6aa84f"/>
+        <path d="M576 232 C636 192 716 192 778 216 C740 230 668 228 624 252 C600 266 592 282 580 282 C566 276 568 250 576 232Z" fill="#86c062" opacity=".5"/>
+        <!-- EVENES mainland (top-right) -->
+        <path d="M858 78 C902 66 992 80 1000 132 L1000 312 C962 312 884 292 872 230 C860 172 836 116 858 78Z" fill="#33602f"/>
+        <path d="M858 66 C902 54 992 68 1000 120 L1000 300 C962 300 884 280 872 218 C860 160 836 104 858 66Z" fill="#6aa84f"/>
       </g>
-      <g fill="#a9c6ad" opacity=".5">
-        <path d="M120 330 q28 -36 70 -28 q36 8 24 42 q-16 36 -60 28 q-46 -8 -34 -42Z"/>
-        <path d="M430 250 q32 -30 84 -16 q36 10 20 46 q-20 38 -72 26 q-48 -10 -32 -56Z"/>
-        <path d="M640 226 q28 -28 74 -14 q32 10 18 44 q-20 36 -66 24 q-42 -10 -26 -54Z"/>
-      </g>
-      <!-- little peaks + cabins for flavour -->
-      <g fill="#7c9a86" opacity=".7"><path d="M250 250 l26 -40 l26 40Z"/><path d="M470 232 l30 -46 l30 46Z"/><path d="M690 206 l24 -38 l24 38Z"/></g>
-      <g><rect x="150" y="300" width="16" height="13" fill="#c7553f"/><path d="M148 300 l8 -7 l8 7Z" fill="#9e3f2d"/>
-         <rect x="720" y="206" width="15" height="12" fill="#c7553f"/><path d="M718 206 l7.5 -7 l7.5 7Z" fill="#9e3f2d"/></g>
+      <g id="terrain"></g>
 
-      <!-- ROUTE PATHS (loop: out along top, back along bottom) -->
-      <path id="routeBase" d="M928 96 L815 122 L760 140 L700 158 L650 188 L598 214 L520 206 L432 210 L372 180 L335 212 L296 230 L228 258 L156 286 L100 338 L150 380 L220 378 L360 400 L520 408 L640 398 L700 372 L820 320 L928 250"
-        fill="none" stroke="#9bb0b3" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 10"/>
-      <path id="routeTrail" d="M928 96 L815 122 L760 140 L700 158 L650 188 L598 214 L520 206 L432 210 L372 180 L335 212 L296 230 L228 258 L156 286 L100 338 L150 380 L220 378 L360 400 L520 408 L640 398 L700 372 L820 320 L928 250"
-        fill="none" stroke="#c7553f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- ROUTE -->
+      <path id="routeCase" d="M928 96 L815 122 L760 140 L700 158 L650 188 L598 214 L520 206 L432 210 L372 180 L335 212 L296 230 L228 258 L156 286 L100 338 L150 380 L220 378 L360 400 L520 408 L640 398 L700 372 L820 320 L928 250" fill="none" stroke="#0e2e34" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+      <path id="routeBase" d="M928 96 L815 122 L760 140 L700 158 L650 188 L598 214 L520 206 L432 210 L372 180 L335 212 L296 230 L228 258 L156 286 L100 338 L150 380 L220 378 L360 400 L520 408 L640 398 L700 372 L820 320 L928 250" fill="none" stroke="#efe3c4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="routeTrail" d="M928 96 L815 122 L760 140 L700 158 L650 188 L598 214 L520 206 L432 210 L372 180 L335 212 L296 230 L228 258 L156 286 L100 338 L150 380 L220 378 L360 400 L520 408 L640 398 L700 372 L820 320 L928 250" fill="none" stroke="#e0773f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
 
-      <!-- PINS (created to match stops; data-stop = index) -->
-      <g class="stop" data-stop="0" transform="translate(928,96)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="12" fill="#46555e" stroke="#fff" stroke-width="2.5"/><text x="0" y="4" text-anchor="middle" font-size="12" fill="#fff">✈</text><text class="lbl" x="0" y="-22" text-anchor="middle">Evenes · in</text></g>
-      <g class="stop" data-stop="1" transform="translate(700,158)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-20" text-anchor="middle">Svolvær</text><text class="sub" x="0" y="-7" text-anchor="middle">base · Wed</text></g>
-      <g class="stop" data-stop="2" transform="translate(598,214)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-18" text-anchor="middle">Henningsvær</text></g>
-      <g class="stop" data-stop="3" transform="translate(432,210)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="34" text-anchor="middle">Leknes</text><text class="sub" x="0" y="48" text-anchor="middle">grocery</text></g>
-      <g class="stop" data-stop="4" transform="translate(372,180)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-18" text-anchor="middle">Haukland</text></g>
-      <g class="stop" data-stop="5" transform="translate(296,230)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="34" text-anchor="middle">Skagsanden</text></g>
-      <g class="stop" data-stop="6" transform="translate(156,286)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-20" text-anchor="middle">Reine</text><text class="sub" x="0" y="-7" text-anchor="middle">base · west</text></g>
-      <g class="stop" data-stop="7" transform="translate(100,338)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="6" y="34" text-anchor="middle">Å · lake</text></g>
-      <g class="stop" data-stop="8" transform="translate(220,378)"><circle class="ring" r="16" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="34" text-anchor="middle">Fredvang</text><text class="sub" x="0" y="48" text-anchor="middle">Kvalvika · Ryten</text></g>
-      <g class="stop" data-stop="9" transform="translate(700,372)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="34" text-anchor="middle">Svolvær</text><text class="sub" x="0" y="48" text-anchor="middle">base · Sat</text></g>
-      <g class="stop" data-stop="10" transform="translate(928,250)"><circle class="ring" r="17" fill="none" stroke="#c7553f" stroke-width="2.5"/><circle class="dot" r="12" fill="#46555e" stroke="#fff" stroke-width="2.5"/><text x="0" y="4" text-anchor="middle" font-size="12" fill="#fff">✈</text><text class="lbl" x="0" y="34" text-anchor="middle">Evenes · out</text></g>
+      <!-- PINS -->
+      <g class="stop" data-stop="0" transform="translate(928,96)"><circle class="ring" r="17" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="12" fill="#46555e" stroke="#fff" stroke-width="2.5"/><text x="0" y="4" text-anchor="middle" font-size="12" fill="#fff">✈</text><text class="lbl" x="0" y="-22" text-anchor="middle">Evenes · in</text></g>
+      <g class="stop" data-stop="1" transform="translate(700,158)"><circle class="ring" r="17" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-20" text-anchor="middle">Svolvær</text><text class="sub" x="0" y="-7" text-anchor="middle">base · Wed</text></g>
+      <g class="stop" data-stop="2" transform="translate(598,214)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-18" text-anchor="middle">Henningsvær</text></g>
+      <g class="stop" data-stop="3" transform="translate(432,210)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="36" text-anchor="middle">Leknes</text><text class="sub" x="0" y="50" text-anchor="middle">grocery</text></g>
+      <g class="stop" data-stop="4" transform="translate(372,180)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-18" text-anchor="middle">Haukland</text></g>
+      <g class="stop" data-stop="5" transform="translate(296,230)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="36" text-anchor="middle">Skagsanden</text></g>
+      <g class="stop" data-stop="6" transform="translate(156,286)"><circle class="ring" r="17" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-20" text-anchor="middle">Reine</text><text class="sub" x="0" y="-7" text-anchor="middle">base · west</text></g>
+      <g class="stop" data-stop="7" transform="translate(100,338)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="10" y="36" text-anchor="middle">Å · lake</text></g>
+      <g class="stop" data-stop="8" transform="translate(220,378)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="36" text-anchor="middle">Fredvang</text><text class="sub" x="0" y="50" text-anchor="middle">Kvalvika · Ryten</text></g>
+      <g class="stop" data-stop="9" transform="translate(700,372)"><circle class="ring" r="17" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="36" text-anchor="middle">Svolvær</text><text class="sub" x="0" y="50" text-anchor="middle">base · Sat</text></g>
+      <g class="stop" data-stop="10" transform="translate(928,250)"><circle class="ring" r="17" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="12" fill="#46555e" stroke="#fff" stroke-width="2.5"/><text x="0" y="4" text-anchor="middle" font-size="12" fill="#fff">✈</text><text class="lbl" x="0" y="36" text-anchor="middle">Evenes · out</text></g>
 
-      <!-- CAR MARKER -->
+      <!-- CAR (pixel van) -->
       <g id="car" transform="translate(928,96)">
-        <circle r="22" fill="url(#glow)"/>
-        <circle r="9" fill="#c7553f" stroke="#fff" stroke-width="3"/>
-        <circle r="3.5" fill="#fff"/>
+        <ellipse cx="0" cy="6" rx="15" ry="5" fill="rgba(0,0,0,.28)"/>
+        <circle r="20" fill="url(#glow)"/>
+        <g transform="translate(-12,-9)">
+          <rect x="0" y="5" width="24" height="9" rx="2" fill="#c7553f"/>
+          <rect x="4" y="0" width="13" height="7" rx="2" fill="#dd6e54"/>
+          <rect x="6" y="1.6" width="8" height="4.4" fill="#cfe9e6"/>
+          <rect x="0" y="11" width="24" height="3" rx="1.5" fill="#8f2f27"/>
+          <circle cx="6" cy="14" r="2.7" fill="#1f2d36"/><circle cx="6" cy="14" r="1" fill="#cfe9e6"/>
+          <circle cx="18" cy="14" r="2.7" fill="#1f2d36"/><circle cx="18" cy="14" r="1" fill="#cfe9e6"/>
+        </g>
       </g>
+
+      <rect width="1000" height="560" fill="url(#grain)" opacity=".06" pointer-events="none"/>
     </svg>
     <div class="map-ui">
       <button class="navbtn" id="mPrev" aria-label="Previous stop">‹</button>
@@ -321,7 +324,6 @@
     <div class="tab" data-day="5"><span class="num">5</span>Sun 23</div>
   </div>
 
-  <!-- DAY 1 -->
   <div class="panel active" data-day="1"><div class="body">
     <div class="daterow"><span class="dt">Wed 19 · Land &amp; roll in</span><span class="base">🛏 Base 1 · Svolvær / Kabelvåg</span></div>
     <div class="drive"><span class="di">🚗</span><div><b>Evenes → Svolvær</b> — Google 2h39 (166 km) · <b>plan ~3h15</b>. Add ~30 min for the Austnesfjord &amp; Sildpollnes stops. Car pickup: allow 30–45 min first.</div></div>
@@ -334,7 +336,6 @@
     <div class="tip">⚡ Top up the EV at the big <b>Svolvær fast-charger bank</b> — sets you up for the next few days.</div>
   </div></div>
 
-  <!-- DAY 2 -->
   <div class="panel" data-day="2"><div class="body">
     <div class="daterow"><span class="dt">Thu 20 · Henningsvær &amp; the beaches</span><span class="base">🛏 Move west → Reine / Hamnøy</span></div>
     <div class="drive"><span class="di">🚗</span><div><b>The driving-heavy day ≈ 4h35 total.</b> Svolvær→Henningsvær ~50m · →Leknes ~1h30 · →Haukland ~30m · →Skagsanden ~1h · →Reine ~55m. <i>(Google base ~3h10 + buffer.)</i> Start early.</div></div>
@@ -352,7 +353,6 @@
     <div class="tip">🛒 Top up groceries in <b>Leknes</b> (en route) before Reine. ⚡ Fast chargers there too. If the day feels long, drop Skagsanden.</div>
   </div></div>
 
-  <!-- DAY 3 -->
   <div class="panel" data-day="3"><div class="body">
     <div class="daterow"><span class="dt">Fri 21 · The deep west</span><span class="base">🛏 Base 2 · Reine / Hamnøy</span></div>
     <div class="drive"><span class="di">🚗</span><div><b>Light driving day — under ~1h all day.</b> Reine ↔ Å / Sørvågen ~25 min each way (Google 14 min). Everything else is on foot.</div></div>
@@ -369,7 +369,6 @@
     <div class="tip">💧 More water &amp; alpine drama: the <b>Sørvågen → Munkebu</b> trail climbs past waterfalls, streams &amp; mountain lakes — go as far as you like.</div>
   </div></div>
 
-  <!-- DAY 4 -->
   <div class="panel" data-day="4"><div class="body">
     <div class="daterow"><span class="dt">Sat 22 · Kvalvika + Ryten, then east</span><span class="base">🛏 Back to Svolvær</span></div>
     <div class="drive"><span class="di">🚗</span><div><b>The long day.</b> Reine→Fredvang ~45m (Google 30m), hike, then <b>Fredvang→Svolvær ~2h35</b> (Google 1h51, 105 km). Hike early, eat, then drive.</div></div>
@@ -383,7 +382,6 @@
     <div class="tip">⛰️ Ryten looks out over Kvalvika &amp; the open sea — a different angle from the Volandstinden/bridges view. You realistically can’t do <i>both</i> big hikes plus the drive east, so choose your peak.</div>
   </div></div>
 
-  <!-- DAY 5 -->
   <div class="panel" data-day="5"><div class="body">
     <div class="daterow"><span class="dt">Sun 23 · Slow morning, fly home</span><span class="base">🛫 Drive to Evenes (EVE)</span></div>
     <div class="drive"><span class="di">🚗</span><div><b>Svolvær → Evenes ~3h05</b> (Google 2h39, 166 km) + EV charge top-up. <b>Leave by ~09:00–09:15</b> for the 13:40 flight with car return + check-in.</div></div>
@@ -494,17 +492,100 @@
 <script>
 (function(){
   document.body.classList.add('has-js');
+  var NS='http://www.w3.org/2000/svg';
+  function E(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e;}
 
-  /* progress bar */
   var prog=document.getElementById('prog');
   function onScroll(){var h=document.documentElement;prog.style.width=((h.scrollTop)/((h.scrollHeight-h.clientHeight)||1)*100)+'%';}
   document.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  /* reveal */
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1});
   document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
 
-  /* ===== INTERACTIVE MAP ===== */
+  /* ===== 16-bit terrain generation ===== */
+  (function buildTerrain(){
+    var sea=document.getElementById('seaFx'), terr=document.getElementById('terrain');
+    if(!terr)return;
+    // sea dither + sparkles
+    for(var y=70;y<545;y+=26){
+      for(var x=8;x<992;x+=30){
+        var jit=((x+y)%60===0)?1:0;
+        if(((x/30+y/26)|0)%3===0) sea.appendChild(E('rect',{x:x+jit,y:y,width:3,height:3,fill:'#2a808a',opacity:.5}));
+      }
+    }
+    for(var i=0;i<26;i++){var sx=40+Math.random()*920,sy=80+Math.random()*440;sea.appendChild(E('rect',{x:sx,y:sy,width:7,height:2,rx:1,fill:'#bfe6e2',opacity:.25}));}
+
+    function peak(g,x,by,h,w,snow){
+      g.appendChild(E('ellipse',{cx:x+5,cy:by+3,rx:w*0.95,ry:6,fill:'rgba(8,30,34,.28)'}));
+      var ax=x, ay=by-h;
+      g.appendChild(E('polygon',{points:ax+','+ay+' '+(x-w)+','+by+' '+x+','+by, fill:'#9c907b'}));
+      g.appendChild(E('polygon',{points:ax+','+ay+' '+x+','+by+' '+(x+w)+','+by, fill:'#5d5346'}));
+      g.appendChild(E('polygon',{points:ax+','+ay+' '+x+','+by+' '+(x-w*0.12)+','+by, fill:'#b3a892'}));
+      if(snow){var f=0.34,sy2=ay+h*f,sx2=w*f;
+        g.appendChild(E('polygon',{points:ax+','+ay+' '+(x-sx2)+','+sy2+' '+x+','+sy2, fill:'#f3f1ea'}));
+        g.appendChild(E('polygon',{points:ax+','+ay+' '+x+','+sy2+' '+(x+sx2)+','+sy2, fill:'#cdd8d9'}));
+      }
+    }
+    function tree(g,x,y,s){
+      g.appendChild(E('rect',{x:x-1,y:y-2,width:2,height:5,fill:'#5a3c22'}));
+      g.appendChild(E('polygon',{points:x+','+(y-s-6)+' '+(x-s*0.7)+','+(y-2)+' '+(x+s*0.7)+','+(y-2),fill:'#2f6b3a'}));
+      g.appendChild(E('polygon',{points:x+','+(y-s-6)+' '+x+','+(y-2)+' '+(x+s*0.7)+','+(y-2),fill:'#255531'}));
+    }
+    function cabin(g,x,y){
+      g.appendChild(E('rect',{x:x-7,y:y-7,width:14,height:9,fill:'#c7553f'}));
+      g.appendChild(E('polygon',{points:(x-9)+','+(y-7)+' '+x+','+(y-15)+' '+(x+9)+','+(y-7),fill:'#8f2f27'}));
+      g.appendChild(E('rect',{x:x-2,y:y-5,width:4,height:5,fill:'#ffe2a8'}));
+    }
+    function beach(g,pts){g.appendChild(E('polygon',{points:pts,fill:'#e7d6a8'}));g.appendChild(E('polygon',{points:pts,fill:'#fff',opacity:.18}));}
+
+    // beaches at the white-sand stops
+    beach(terr,'344,196 404,190 410,206 350,212');   // Haukland
+    beach(terr,'270,238 318,232 322,248 274,252');    // Skagsanden / Uttakleiv-ish
+
+    var peaks=[
+      // east massif (behind Svolvær / Henningsvær)
+      [600,180,72,42,0],[650,168,98,52,1],[705,150,124,58,1],[760,172,82,46,0],[820,188,66,40,0],
+      // mid massif (Vestvågøy)
+      [330,200,64,38,0],[362,186,90,50,1],[412,180,76,44,0],[456,192,98,52,1],
+      // west spires (Reine / Å) — tall + sharp
+      [128,262,132,46,1],[96,300,150,48,1],[186,286,112,44,1],[226,300,86,40,0],[60,332,98,38,1],
+      // low front hills (depth near return road)
+      [500,360,52,46,0],[820,300,58,44,0],[386,300,46,40,0]
+    ];
+    peaks.sort(function(a,b){return a[1]-b[1];}); // far (small y) first
+    peaks.forEach(function(p){peak(terr,p[0],p[1],p[2],p[3],p[4]);});
+
+    // pines on island tops
+    var trees=[[260,250,9],[480,234,8],[700,232,9],[560,300,8],[180,330,8],[330,330,7],[760,250,8],[620,330,8],[140,360,7],[420,340,7]];
+    trees.forEach(function(t){tree(terr,t[0],t[1],t[2]);});
+
+    // red rorbuer near water
+    cabin(terr,168,302); cabin(terr,150,312); cabin(terr,690,360); cabin(terr,604,242); cabin(terr,236,388);
+  })();
+
+  /* ===== map engine ===== */
+  var svg=document.getElementById('tripmap');
+  var base=document.getElementById('routeBase');
+  var trail=document.getElementById('routeTrail');
+  var car=document.getElementById('car');
+  var pins=Array.prototype.slice.call(svg.querySelectorAll('.stop'));
+  var total=base.getTotalLength();
+
+  // sample the path once for robust nearest-length lookup (works for any path)
+  var SAMP=900, samples=[];
+  for(var s=0;s<=SAMP;s++){var L=total*s/SAMP;var pt=base.getPointAtLength(L);samples.push({L:L,x:pt.x,y:pt.y});}
+  var stopLen=[];
+  pins.forEach(function(p){
+    var m=/translate\(([-\d.]+),\s*([-\d.]+)\)/.exec(p.getAttribute('transform'));
+    var px=parseFloat(m[1]),py=parseFloat(m[2]);
+    var best=0,bd=1e9;for(var i=0;i<samples.length;i++){var dx=samples[i].x-px,dy=samples[i].y-py,d=dx*dx+dy*dy;if(d<bd){bd=d;best=i;}}
+    stopLen[parseInt(p.dataset.stop,10)]=samples[best].L;
+  });
+
+  trail.style.strokeDasharray=total;
+  function setTrail(len){trail.style.strokeDashoffset=(total-len);}
+  function setCar(len){var pt=base.getPointAtLength(len);car.setAttribute('transform','translate('+pt.x+','+pt.y+')');}
+
   var stops=[
     {day:'DAY 1',name:'Evenes Airport',leg:'Land 16:40 · pick up the EV',note:'The journey starts here — fly in, grab the car, point west.'},
     {day:'DAY 1',name:'Svolvær',leg:'Evenes → Svolvær · <span class="g">Google 2h39 ·</span> plan ~3h15',note:'Base 1 (east). Stop at Austnesfjorden &amp; Sildpollnes on the way in.'},
@@ -518,31 +599,9 @@
     {day:'DAY 4',name:'Svolvær',leg:'Fredvang → Svolvær · <span class="g">1h51 ·</span> plan ~2h35',note:'The long drive back east, after the hike. Last night near the airport.'},
     {day:'DAY 5',name:'Evenes Airport',leg:'Svolvær → Evenes · <span class="g">2h39 ·</span> plan ~3h05',note:'Leave by ~09:00–09:15, return the EV charged, fly 13:40. 🎉'}
   ];
-  var svg=document.getElementById('tripmap');
-  var base=document.getElementById('routeBase');
-  var trail=document.getElementById('routeTrail');
-  var car=document.getElementById('car');
-  var pins=Array.prototype.slice.call(svg.querySelectorAll('.stop'));
-  var total=base.getTotalLength();
-
-  /* compute each stop's length along the path by matching pin coords */
-  var pts=base.getAttribute('d').replace('M','').split('L').map(function(s){var a=s.trim().split(/[ ,]+/);return {x:parseFloat(a[0]),y:parseFloat(a[1])};});
-  // cumulative length per vertex
-  var cum=[0];for(var i=1;i<pts.length;i++){var dx=pts[i].x-pts[i-1].x,dy=pts[i].y-pts[i-1].y;cum.push(cum[i-1]+Math.sqrt(dx*dx+dy*dy));}
-  // map each stop index to nearest vertex length (pins are placed on vertices in order)
-  var stopLen=[];
-  pins.forEach(function(p){
-    var t=p.getAttribute('transform');var m=/translate\(([-\d.]+),\s*([-\d.]+)\)/.exec(t);
-    var px=parseFloat(m[1]),py=parseFloat(m[2]);
-    var bi=0,bd=1e9;for(var k=0;k<pts.length;k++){var d=(pts[k].x-px)*(pts[k].x-px)+(pts[k].y-py)*(pts[k].y-py);if(d<bd){bd=d;bi=k;}}
-    stopLen[parseInt(p.dataset.stop,10)]=cum[bi];
-  });
-
-  trail.style.strokeDasharray=total;
-  function setTrail(len){trail.style.strokeDashoffset=(total-len);}
-  function setCar(len){var pt=base.getPointAtLength(len);car.setAttribute('transform','translate('+pt.x+','+pt.y+')');}
 
   var cur=0, curLen=stopLen[0]||0, raf=null;
+  var dotWrap=document.getElementById('mDots'),dots=[];
   function render(){
     var s=stops[cur];
     document.getElementById('siDay').textContent=s.day;
@@ -554,53 +613,37 @@
   }
   function animTo(targetLen,cb){
     if(raf)cancelAnimationFrame(raf);
-    var startLen=curLen, dur=Math.min(1100,Math.max(420,Math.abs(targetLen-startLen)*1.1)), t0=null;
-    function step(ts){
-      if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/dur);var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
-      curLen=startLen+(targetLen-startLen)*e;setCar(curLen);setTrail(curLen);
-      if(p<1){raf=requestAnimationFrame(step);}else{curLen=targetLen;if(cb)cb();}
-    }
+    var startLen=curLen,dur=Math.min(1200,Math.max(450,Math.abs(targetLen-startLen)*1.1)),t0=null;
+    function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/dur);var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;curLen=startLen+(targetLen-startLen)*e;setCar(curLen);setTrail(curLen);if(p<1){raf=requestAnimationFrame(step);}else{curLen=targetLen;if(cb)cb();}}
     raf=requestAnimationFrame(step);
   }
   function goTo(i,instant){
     cur=Math.max(0,Math.min(stops.length-1,i));render();
     if(instant){curLen=stopLen[cur];setCar(curLen);setTrail(curLen);}else{animTo(stopLen[cur]);}
   }
-
-  /* dots */
-  var dotWrap=document.getElementById('mDots'),dots=[];
   stops.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Stop '+(i+1));b.addEventListener('click',function(){stopPlay();goTo(i);});dotWrap.appendChild(b);dots.push(b);});
-
   pins.forEach(function(p){p.addEventListener('click',function(){stopPlay();goTo(parseInt(p.dataset.stop,10));});});
   document.getElementById('mPrev').addEventListener('click',function(){stopPlay();goTo(cur-1);});
   document.getElementById('mNext').addEventListener('click',function(){stopPlay();goTo(cur+1);});
 
-  /* play */
-  var playing=false,timer=null,playBtn=document.getElementById('mPlay');
-  function tick(){
-    if(cur>=stops.length-1){stopPlay();return;}
-    goTo(cur+1);timer=setTimeout(tick,1700);
-  }
-  function startPlay(){
-    if(cur>=stops.length-1)goTo(0,true);
-    playing=true;playBtn.textContent='❚❚';timer=setTimeout(tick,500);
-  }
-  function stopPlay(){playing=false;playBtn.textContent='▶';if(timer){clearTimeout(timer);timer=null;}}
-  playBtn.addEventListener('click',function(){playing?stopPlay():startPlay();});
+  var timer=null,playBtn=document.getElementById('mPlay');
+  function tick(){if(cur>=stops.length-1){stopPlay();return;}goTo(cur+1);timer=setTimeout(tick,1750);}
+  function startPlay(){if(cur>=stops.length-1)goTo(0,true);playBtn.textContent='❚❚';timer=setTimeout(tick,500);}
+  function stopPlay(){playBtn.textContent='▶';if(timer){clearTimeout(timer);timer=null;}}
+  playBtn.addEventListener('click',function(){timer?stopPlay():startPlay();});
 
   goTo(0,true);
 
-  /* ===== DAY TABS ===== */
-  var tabs=document.querySelectorAll('#tabs .tab');
-  var panels=document.querySelectorAll('.panel');
+  /* day tabs */
+  var tabs=document.querySelectorAll('#tabs .tab'),panels=document.querySelectorAll('.panel');
   function setDay(d){tabs.forEach(function(t){t.classList.toggle('active',t.dataset.day===d);});panels.forEach(function(p){p.classList.toggle('active',p.dataset.day===d);});}
   tabs.forEach(function(t){t.addEventListener('click',function(){setDay(t.dataset.day);});});
   document.querySelectorAll('.glance .gcard').forEach(function(g){g.addEventListener('click',function(){setDay(g.dataset.day);document.getElementById('tabs').scrollIntoView({behavior:'smooth',block:'start'});});});
 
-  /* ===== checklists ===== */
+  /* checklists */
   document.querySelectorAll('.check li').forEach(function(li){li.addEventListener('click',function(){li.classList.toggle('done');});});
 
-  /* ===== lightbox ===== */
+  /* lightbox */
   var imgs=Array.prototype.slice.call(document.querySelectorAll('img.zoom'));
   var lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg'),lbcap=document.getElementById('lbcap'),lbct=document.getElementById('lbct'),idx=0;
   function srcFull(im){return im.getAttribute('src').replace(/\?width=\d+/,'?width=1600');}
