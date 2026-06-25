@@ -56,8 +56,7 @@
   .stop .lbl{font-family:var(--body);font-weight:700;font-size:13px;fill:#fff;paint-order:stroke;stroke:#16404a;stroke-width:4px;stroke-linejoin:round;pointer-events:none}
   .stop.active .lbl{fill:#ffe2b0}
   .stop .sub{font-family:var(--body);font-weight:600;font-size:10px;fill:#d7e6e3;paint-order:stroke;stroke:#16404a;stroke-width:3.5px;stroke-linejoin:round;pointer-events:none}
-  #car{filter:drop-shadow(0 3px 3px rgba(0,0,0,.4));offset-rotate:0deg}
-  #tripmap.go #car{transition:offset-distance .9s cubic-bezier(.45,.05,.2,1)}
+  #car{filter:drop-shadow(0 3px 3px rgba(0,0,0,.4))}
   #tripmap.go #routeTrail{transition:stroke-dashoffset .9s cubic-bezier(.45,.05,.2,1)}
   .map-ui{display:flex;align-items:center;gap:14px;padding:14px 16px;border-top:1px solid var(--line);background:var(--card)}
   .navbtn{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s ease}
@@ -585,9 +584,20 @@
   });
 
   trail.style.strokeDasharray=total;
-  car.style.offsetPath="path('"+base.getAttribute('d')+"')";
   car.removeAttribute('transform');
-  function setPos(len){car.style.offsetDistance=(100*len/total)+'%';trail.style.strokeDashoffset=(total-len);}
+  var currentLen=0, carAnim=null;
+  function moveTo(to,animate){
+    var from=currentLen;
+    if(animate && car.animate && Math.abs(to-from)>0.5){
+      var steps=Math.max(2,Math.round(Math.abs(to-from)/total*90)+2),frames=[];
+      for(var k=0;k<=steps;k++){var L=from+(to-from)*k/steps;var p=base.getPointAtLength(L);frames.push({transform:'translate('+p.x+'px,'+p.y+'px)'});}
+      try{if(carAnim)carAnim.cancel();carAnim=car.animate(frames,{duration:Math.min(1300,Math.max(450,Math.abs(to-from)*1.2)),easing:'cubic-bezier(.45,.05,.2,1)',fill:'forwards'});}catch(e){}
+    }
+    var pe=base.getPointAtLength(to);
+    car.style.transform='translate('+pe.x+'px,'+pe.y+'px)';
+    trail.style.strokeDashoffset=(total-to);
+    currentLen=to;
+  }
 
   var stops=[
     {day:'DAY 1',name:'Evenes Airport',leg:'Land 16:40 · pick up the EV',note:'The journey starts here — fly in, grab the car, point west.'},
@@ -615,7 +625,7 @@
     dots.forEach(function(d,i){d.className=(i===cur?'on':(i<cur?'past':''));});
   }
   function goTo(i){
-    cur=Math.max(0,Math.min(stops.length-1,i));render();setPos(stopLen[cur]);
+    cur=Math.max(0,Math.min(stops.length-1,i));render();moveTo(stopLen[cur],true);
   }
   stops.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Stop '+(i+1));b.addEventListener('click',function(){stopPlay();goTo(i);});dotWrap.appendChild(b);dots.push(b);});
   pins.forEach(function(p){p.addEventListener('click',function(){stopPlay();goTo(parseInt(p.dataset.stop,10));});});
@@ -628,7 +638,7 @@
   function stopPlay(){playBtn.textContent='▶';if(timer){clearTimeout(timer);timer=null;}}
   playBtn.addEventListener('click',function(){timer?stopPlay():startPlay();});
 
-  goTo(0);
+  cur=0;render();moveTo(stopLen[0],false);
   document.getElementById('tripmap').classList.add('go');
 
   /* day tabs */
