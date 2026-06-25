@@ -56,7 +56,9 @@
   .stop .lbl{font-family:var(--body);font-weight:700;font-size:13px;fill:#fff;paint-order:stroke;stroke:#16404a;stroke-width:4px;stroke-linejoin:round;pointer-events:none}
   .stop.active .lbl{fill:#ffe2b0}
   .stop .sub{font-family:var(--body);font-weight:600;font-size:10px;fill:#d7e6e3;paint-order:stroke;stroke:#16404a;stroke-width:3.5px;stroke-linejoin:round;pointer-events:none}
-  #car{filter:drop-shadow(0 3px 3px rgba(0,0,0,.4))}
+  #car{filter:drop-shadow(0 3px 3px rgba(0,0,0,.4));offset-rotate:0deg}
+  #tripmap.go #car{transition:offset-distance .9s cubic-bezier(.45,.05,.2,1)}
+  #tripmap.go #routeTrail{transition:stroke-dashoffset .9s cubic-bezier(.45,.05,.2,1)}
   .map-ui{display:flex;align-items:center;gap:14px;padding:14px 16px;border-top:1px solid var(--line);background:var(--card)}
   .navbtn{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s ease}
   .navbtn:hover{background:var(--terra);color:#fff;border-color:var(--terra)}
@@ -583,8 +585,9 @@
   });
 
   trail.style.strokeDasharray=total;
-  function setTrail(len){trail.style.strokeDashoffset=(total-len);}
-  function setCar(len){var pt=base.getPointAtLength(len);car.setAttribute('transform','translate('+pt.x+','+pt.y+')');}
+  car.style.offsetPath="path('"+base.getAttribute('d')+"')";
+  car.removeAttribute('transform');
+  function setPos(len){car.style.offsetDistance=(100*len/total)+'%';trail.style.strokeDashoffset=(total-len);}
 
   var stops=[
     {day:'DAY 1',name:'Evenes Airport',leg:'Land 16:40 · pick up the EV',note:'The journey starts here — fly in, grab the car, point west.'},
@@ -600,7 +603,7 @@
     {day:'DAY 5',name:'Evenes Airport',leg:'Svolvær → Evenes · <span class="g">2h39 ·</span> plan ~3h05',note:'Leave by ~09:00–09:15, return the EV charged, fly 13:40. 🎉'}
   ];
 
-  var cur=0, curLen=stopLen[0]||0, raf=null;
+  var cur=0;
   var dotWrap=document.getElementById('mDots'),dots=[];
   function render(){
     var s=stops[cur];
@@ -611,15 +614,8 @@
     pins.forEach(function(p){p.classList.toggle('active',parseInt(p.dataset.stop,10)===cur);});
     dots.forEach(function(d,i){d.className=(i===cur?'on':(i<cur?'past':''));});
   }
-  function animTo(targetLen,cb){
-    if(raf)cancelAnimationFrame(raf);
-    var startLen=curLen,dur=Math.min(1200,Math.max(450,Math.abs(targetLen-startLen)*1.1)),t0=null;
-    function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/dur);var e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;curLen=startLen+(targetLen-startLen)*e;setCar(curLen);setTrail(curLen);if(p<1){raf=requestAnimationFrame(step);}else{curLen=targetLen;if(cb)cb();}}
-    raf=requestAnimationFrame(step);
-  }
-  function goTo(i,instant){
-    cur=Math.max(0,Math.min(stops.length-1,i));render();
-    if(instant){curLen=stopLen[cur];setCar(curLen);setTrail(curLen);}else{animTo(stopLen[cur]);}
+  function goTo(i){
+    cur=Math.max(0,Math.min(stops.length-1,i));render();setPos(stopLen[cur]);
   }
   stops.forEach(function(s,i){var b=document.createElement('button');b.setAttribute('aria-label','Stop '+(i+1));b.addEventListener('click',function(){stopPlay();goTo(i);});dotWrap.appendChild(b);dots.push(b);});
   pins.forEach(function(p){p.addEventListener('click',function(){stopPlay();goTo(parseInt(p.dataset.stop,10));});});
@@ -628,11 +624,12 @@
 
   var timer=null,playBtn=document.getElementById('mPlay');
   function tick(){if(cur>=stops.length-1){stopPlay();return;}goTo(cur+1);timer=setTimeout(tick,1750);}
-  function startPlay(){if(cur>=stops.length-1)goTo(0,true);playBtn.textContent='❚❚';timer=setTimeout(tick,500);}
+  function startPlay(){if(cur>=stops.length-1)goTo(0);playBtn.textContent='❚❚';timer=setTimeout(tick,500);}
   function stopPlay(){playBtn.textContent='▶';if(timer){clearTimeout(timer);timer=null;}}
   playBtn.addEventListener('click',function(){timer?stopPlay():startPlay();});
 
-  goTo(0,true);
+  goTo(0);
+  document.getElementById('tripmap').classList.add('go');
 
   /* day tabs */
   var tabs=document.querySelectorAll('#tabs .tab'),panels=document.querySelectorAll('.panel');
