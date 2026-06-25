@@ -70,11 +70,11 @@
   .si-leg{font-family:var(--body);font-weight:600;font-size:12.5px;color:var(--sea-dk);margin-top:3px}
   .si-leg .g{color:var(--ink2);font-weight:500}
   .si-note{font-size:13px;color:var(--ink2);margin-top:2px;line-height:1.35}
-  .dots{display:flex;gap:6px;padding:0 16px 14px;flex-wrap:wrap}
-  .dots button{width:13px;height:13px;border-radius:3px;border:2px solid var(--sea);background:transparent;cursor:pointer;padding:0;transition:all .18s ease}
-  .dots button:hover{transform:scale(1.2)}
-  .dots button.on{background:var(--terra);border-color:var(--terra)}
-  .dots button.past{background:var(--sea)}
+  .dots{display:flex;gap:9px;padding:2px 18px 16px;flex-wrap:wrap;justify-content:center;align-items:center;background:var(--card)}
+  .dots button{width:11px;height:11px;border-radius:50%;border:1.5px solid #cabda4;background:#efe6d3;cursor:pointer;padding:0;transition:transform .18s ease,background .18s ease,border-color .18s ease}
+  .dots button:hover{transform:scale(1.3);border-color:var(--sea)}
+  .dots button.past{background:var(--sea);border-color:var(--sea)}
+  .dots button.on{background:var(--terra);border-color:var(--terra);transform:scale(1.35);box-shadow:0 0 0 3px rgba(199,85,63,.18)}
 
   .frame{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);box-shadow:0 16px 38px -20px var(--shadow);background:var(--sky)}
   .frame.hero{margin-top:16px}
