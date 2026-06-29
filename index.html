@@ -227,6 +227,7 @@
   .check li .box{flex:none;width:21px;height:21px;border:2px solid var(--sea);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;color:transparent;transition:all .15s ease;margin-top:1px}
   .check li.done .box{background:var(--sea);color:#fff}
   .check li.done{opacity:.5;text-decoration:line-through}
+  .check li.ok .box{background:var(--sea);color:#fff;border-color:var(--sea)}
 
   footer{text-align:center;margin-top:54px}
   footer .fline{font-family:var(--hand);font-size:26px;color:var(--sea)}
@@ -589,13 +590,15 @@
   </div>
 
   <!-- BOOK -->
-  <div class="sec-head reveal"><div><div class="kicker">Next</div><h2 class="section">Still to book</h2></div></div>
+  <div class="sec-head reveal"><div><div class="kicker">Sorted ✓</div><h2 class="section">Booked &amp; confirmed</h2></div></div>
   <div class="note reveal">
     <ul class="check" id="book">
-      <li><span class="box">✓</span> <b>Cabin A</b> — Svolvær/Kabelvåg for <b>Wed 19</b> &amp; <b>Sat 22</b> (2 nights, can be the same place)</li>
-      <li><span class="box">✓</span> <b>Cabin B</b> — Reine/Hamnøy/Sakrisøy for <b>Thu 20 &amp; Fri 21</b> (books out earliest — grab it)</li>
-      <li><span class="box">✓</span> Confirm <b>Hertz EV</b> pickup works with the 16:40 landing</li>
+      <li class="ok"><span class="box">✓</span> <b>Cabin A</b> — Svolvær · <b>Storgata 18, H0102</b> · Wed 19 &amp; Sat 22</li>
+      <li class="ok"><span class="box">✓</span> <b>Cabin B</b> — Tind, Sørvågen · <b>Tindsveien 5</b> · Thu 20 &amp; Fri 21</li>
+      <li class="ok"><span class="box">✓</span> <b>Hertz VW ID.3</b> — pickup at Evenes, set for the 16:40 landing</li>
+      <li class="ok"><span class="box">✓</span> <b>Flights</b> AMS ↔ Evenes — booked (19th out, 23rd back)</li>
     </ul>
+    <p style="margin:12px 2px 0;font-size:13.5px;color:var(--ink2)">🎉 That’s everything locked in — see you in Lofoten.</p>
   </div>
 
   <footer class="reveal">
