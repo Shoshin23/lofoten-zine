@@ -140,6 +140,27 @@
   .drive{display:flex;gap:9px;align-items:flex-start;background:#eef4ef;border:1px solid #d4e4d8;border-radius:11px;padding:9px 12px;font-size:13.5px;margin-bottom:14px;line-height:1.45}
   .drive .di{font-size:17px;line-height:1.2}
   .drive b{color:var(--sea-dk)}
+  .routebar{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between;background:#eef4ef;border:1px solid #d4e4d8;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13.5px}
+  .routebar .r{font-weight:600;color:var(--ink)}
+  .routebar .r b{color:var(--terra-dk);font-weight:700}
+  .routebar .tot{font-weight:700;color:var(--sea-dk);white-space:nowrap}
+  .itin{list-style:none;margin:6px 0 0;padding:0}
+  .itin li{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-bottom:1px solid var(--line)}
+  .itin li:last-child{border-bottom:none}
+  .itin .ic{flex:none;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .itin li.go .ic{background:#f3e7c6;color:#7a5310}
+  .itin li.see .ic{background:#dce9ea;color:#21595e}
+  .itin li.hike .ic{background:#f6e1b0;color:#7a4e10}
+  .itin li.bed .ic{background:#e6d6f0;color:#5a3a72}
+  .itin li.fly .ic{background:#46555e;color:#fff}
+  .itin .c{flex:1;min-width:0}
+  .itin .c .t{font-size:14.5px;line-height:1.45}
+  .itin .c .t b{color:var(--terra-dk)}
+  .itin .c .t .pl{color:var(--ink);font-weight:700}
+  .itin .dur{flex:none;align-self:center;font-family:var(--body);font-weight:700;font-size:11px;white-space:nowrap;color:var(--sea-dk);background:#eef4ef;border:1px solid #d4e4d8;border-radius:999px;padding:4px 9px}
+  .itin li.go .dur{color:#7a5310;background:#fbf2da;border-color:#f0dca6}
+  .itin li.hike .dur{color:#7a4e10;background:#fbf2da;border-color:#f0dca6}
+  @media(max-width:560px){.itin .dur{font-size:10px;padding:3px 7px}}
   ul.steps{list-style:none;margin:0;padding:0}
   ul.steps li{position:relative;padding:9px 4px 9px 30px;border-bottom:1px solid var(--line);font-size:15.5px}
   ul.steps li:last-child{border-bottom:none}
@@ -371,70 +392,83 @@
 
   <div class="panel active" data-day="1"><div class="body">
     <div class="daterow"><span class="dt">Wed 19 · Land &amp; roll in</span><span class="base">🛏 Svolvær · Storgata 18</span></div>
-    <div class="drive"><span class="di">🚗</span><div><b>Evenes → Svolvær</b> — Google 2h39 (166 km) · <b>plan ~3h15</b>. Add ~30 min for the Austnesfjord &amp; Sildpollnes stops. Car pickup: allow 30–45 min first.</div></div>
-    <ul class="steps">
-      <li>Land <b>AMS → Evenes (EVE) 16:40</b>. Pick up the <b>VW ID.3</b> (electric); big shop best done in <b>Svolvær on arrival</b> (no good supermarket on the way).</li>
-      <li>Drive the E10 into Lofoten — gorgeous even as a transfer, hours of evening light left.</li>
-      <li>On-route stops near Svolvær: <b>Austnesfjorden viewpoint</b> <span class="pill easy">2 min</span> &amp; <b>Sildpollnes Church</b> on its fjord spit. <span class="pill easy">photo stop</span></li>
-      <li>Check in at <b>Storgata 18, Svolvær</b>, cook the first dinner. 🍝</li>
-    </ul>
+    <div class="routebar"><span class="r">🧭 <b>Evenes ✈ → Svolvær</b> · via Austnesfjorden &amp; Sildpollnes</span><span class="tot">🚗 ~3h15 · arrive ~20:30</span></div>
+    <ol class="itin">
+      <li class="fly"><span class="ic">✈</span><div class="c"><div class="t"><span class="pl">Land at Evenes (EVE)</span> — pick up the <b>VW ID.3</b>, then point west</div></div><span class="dur">16:40 · ~40m</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Evenes → Lofoten</b> on the E10 — a scenic transfer with long evening light</div></div><span class="dur">2h39 · 166 km</span></li>
+      <li class="see"><span class="ic">📸</span><div class="c"><div class="t"><span class="pl">Austnesfjorden viewpoint</span> — fjord boardwalk, ~25 min before Svolvær</div></div><span class="dur">~10m</span></li>
+      <li class="see"><span class="ic">📸</span><div class="c"><div class="t"><span class="pl">Sildpollnes Church</span> — white chapel alone on a fjord spit</div></div><span class="dur">~15m</span></li>
+      <li class="bed"><span class="ic">🛏</span><div class="c"><div class="t"><span class="pl">Svolvær · Storgata 18</span> — big grocery shop, cook the first dinner, ⚡ charge the ID.3</div></div><span class="dur">check in</span></li>
+    </ol>
     <div class="tip">⚡ Charge the ID.3 overnight or at the big <b>Svolvær fast-charger bank</b> (Recharge/Mer/Circle K) — contactless or the <b>Elton</b> app. Full charging plan ↓</div>
   </div></div>
 
   <div class="panel" data-day="2"><div class="body">
-    <div class="daterow"><span class="dt">Thu 20 · Henningsvær &amp; the beaches</span><span class="base">🛏 Move west → Sørvågen (Tind)</span></div>
-    <div class="drive"><span class="di">🚗</span><div><b>The driving-heavy day ≈ 4h35 total.</b> Svolvær→Henningsvær ~50m · →Leknes ~1h30 · →Haukland ~30m · →Skagsanden ~1h · →Reine ~55m. <i>(Google base ~3h10 + buffer.)</i> Start early.</div></div>
+    <div class="daterow"><span class="dt">Thu 20 · Svolvær → Tind, the scenic way</span><span class="base">🛏 Move west → Sørvågen (Tind)</span></div>
+    <div class="routebar"><span class="r">🧭 <b>Svolvær → Henningsvær → Leknes → Haukland/Uttakleiv → Skagsanden → Tind</b></span><span class="tot">🚗 ~4h30 · 🥾 ~3–4h · the big day</span></div>
     <figure class="shot"><img class="zoom" loading="lazy" data-cap="Henningsvær harbour" src="https://commons.wikimedia.org/wiki/Special:FilePath/Henningsv%C3%A6r.jpg?width=1200" alt="Henningsvær harbour"><span class="mag">⌕</span><figcaption>Henningsvær — the “Venice of Lofoten”</figcaption></figure>
-    <ul class="steps">
-      <li><b>Henningsvær</b> — harbour, galleries, clifftop football pitch. <span class="pill easy">easy</span> Optional <b>Festvågtind</b>. <span class="pill med">medium ~2h</span></li>
-      <li><b>Haukland ↔ Uttakleiv coastal walk</b> around Mannen — two white-sand beaches, one gentle path. <span class="pill easy">easy ~1–2h</span></li>
-      <li>Optional scramble up <b>Mannen</b> for a top-down view of both beaches. <span class="pill med">short &amp; steep</span> <span class="pill opt">optional</span></li>
-      <li>Stop at <b>Skagsanden beach</b>, then settle into your <b>Tind cabin (Sørvågen)</b>. Cook in.</li>
-    </ul>
+    <ol class="itin">
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Svolvær → Henningsvær</b> — a short detour south off the E10</div></div><span class="dur">33m · ~50m</span></li>
+      <li class="see"><span class="ic">📍</span><div class="c"><div class="t"><span class="pl">Henningsvær</span> — harbour, galleries, the clifftop football pitch <span class="pill opt">opt: Festvågtind +2h</span></div></div><span class="dur">~1–1.5h</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Henningsvær → Leknes</b> — back to the E10, then west across Gimsøy</div></div><span class="dur">1h06 · ~1h25</span></li>
+      <li class="see"><span class="ic">🛒</span><div class="c"><div class="t"><span class="pl">Leknes</span> — grocery top-up + ⚡ fast charge (your mid-drive hub)</div></div><span class="dur">~40m</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Leknes → Haukland</b> — short hop north to the coast</div></div><span class="dur">15m · ~25m</span></li>
+      <li class="hike"><span class="ic">🥾</span><div class="c"><div class="t"><span class="pl">Haukland ↔ Uttakleiv</span> coastal walk around Mannen — two white beaches <span class="pill opt">opt: Mannen +1h</span></div></div><span class="dur">~1–1.5h · easy</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Haukland → Skagsanden</b> (Flakstad)</div></div><span class="dur">41m · ~55m</span></li>
+      <li class="see"><span class="ic">📍</span><div class="c"><div class="t"><span class="pl">Skagsanden beach</span> — quick mirror-sand stop <span class="pill opt">drop if late</span></div></div><span class="dur">~20–30m</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Skagsanden → Tind</b> — past Reine &amp; Sørvågen to land’s end</div></div><span class="dur">42m · ~55m</span></li>
+      <li class="bed"><span class="ic">🛏</span><div class="c"><div class="t"><span class="pl">Tind · Tindsveien 5</span> — check in, cook in</div></div><span class="dur">check in</span></li>
+    </ol>
     <div class="photorow">
       <figure class="shot"><img class="zoom" loading="lazy" data-cap="Haukland Beach" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hauklandsanden,%20Vestv%C3%A5g%C3%B8y,%20Lofoten.JPG?width=1000" alt="Haukland Beach"><span class="mag">⌕</span><figcaption>Haukland Beach</figcaption></figure>
       <figure class="shot"><img class="zoom" loading="lazy" data-cap="Uttakleiv Beach" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lofoten,%20Uttakleiv%202.JPG?width=1000" alt="Uttakleiv Beach"><span class="mag">⌕</span><figcaption>Uttakleiv Beach</figcaption></figure>
     </div>
-    <div class="tip">🛒 Groceries in <b>Leknes</b> (en route). ⚡ <b>Charge here too</b> — Leknes is the mid-island fast-charge hub, ideal mid-drive. If the day runs long, drop Skagsanden.</div>
+    <div class="tip">🧭 <b>Why this order:</b> Henningsvær is a short spur south of Svolvær, so you dip down, come back up, then run west on the E10 — Leknes, Haukland, Skagsanden and Tind all line up after it. Henningsvær adds ~1h; skip it for a calmer day. 🛒⚡ Leknes is your shop-and-charge stop.</div>
   </div></div>
 
   <div class="panel" data-day="3"><div class="body">
-    <div class="daterow"><span class="dt">Fri 21 · The deep west</span><span class="base">🛏 Sørvågen (Tind) · Tindsveien 5</span></div>
-    <div class="drive"><span class="di">🚗</span><div><b>Barely any driving — your Tind base sits in the middle of it all.</b> From Tind: Å/Ågvatnet ~4 min, Sørvågen waterfall ~5 min, Reine/Hamnøy/Reinebringen ~12 min. Everything else on foot.</div></div>
+    <div class="daterow"><span class="dt">Fri 21 · The deep west, on foot</span><span class="base">🛏 Sørvågen (Tind) · Tindsveien 5</span></div>
+    <div class="routebar"><span class="r">🧭 <b>Tind → Reine → Sørvågen → Å → Tind</b> · a tiny loop</span><span class="tot">🚗 under ~1h all day</span></div>
     <div class="photorow">
       <figure class="shot"><img class="zoom" loading="lazy" data-cap="Ågvatnet — the lake walk at Å" src="https://commons.wikimedia.org/wiki/Special:FilePath/Agvatnet.jpg?width=1000" alt="Ågvatnet lake at Å"><span class="mag">⌕</span><figcaption>Ågvatnet — the lake walk at Å</figcaption></figure>
       <figure class="shot"><img class="zoom" loading="lazy" data-cap="Hamnøy — ~12 min from Tind" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hamn%C3%B8y%20Reine%20Moskenes%20Lofoten%20norway%20tunliweb%2003.jpg?width=1000" alt="Hamnøy blue hour"><span class="mag">⌕</span><figcaption>Hamnøy — ~12 min from Tind</figcaption></figure>
     </div>
-    <ul class="steps">
-      <li><b>Reine, Hamnøy &amp; Sakrisøy</b> — the most photographed corner of Norway. Roadside viewpoints, zero climbing. <span class="pill easy">easy</span></li>
-      <li><b>Å i Lofoten</b> + the <b>Ågvatnet lake loop</b> — a calm fjord-lake ringed by peaks. <span class="pill easy">easy</span></li>
-      <li><b>Sørvågen Waterfall</b> (Studalselva) — a short ~1 km stroll to a cascade with a fjord view. <span class="pill fall">💧 waterfall</span> <span class="pill easy">easy ~30 min</span></li>
-      <li><b>Reinebringen</b> stone stairs for the postcard shot. <span class="pill med">medium-hard ~1.5h</span> <span class="pill opt">easy swap: bridge viewpoints</span></li>
-    </ul>
+    <ol class="itin">
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Tind → Reine / Hamnøy / Sakrisøy</b></div></div><span class="dur">~12m</span></li>
+      <li class="see"><span class="ic">📍</span><div class="c"><div class="t"><span class="pl">Reine, Hamnøy &amp; Sakrisøy</span> — the most photographed corner of Norway; roadside viewpoints, no climbing</div></div><span class="dur">~1–1.5h</span></li>
+      <li class="hike"><span class="ic">🥾</span><div class="c"><div class="t"><span class="pl">Reinebringen</span> — 1,566 stone steps to the postcard view <span class="pill opt">optional · or skip for the bridge views</span></div></div><span class="dur">~1.5–2h · med-hard</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Reine → Sørvågen</b></div></div><span class="dur">~9m</span></li>
+      <li class="hike"><span class="ic">💧</span><div class="c"><div class="t"><span class="pl">Sørvågen Waterfall</span> (Studalselva) — short stroll to the cascade</div></div><span class="dur">~30–40m · easy</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Sørvågen → Å</b></div></div><span class="dur">~5m</span></li>
+      <li class="hike"><span class="ic">🏞️</span><div class="c"><div class="t"><span class="pl">Å + Ågvatnet lake loop</span> — flat walk along the fjord-lake</div></div><span class="dur">~1h · easy</span></li>
+      <li class="bed"><span class="ic">🛏</span><div class="c"><div class="t"><span class="pl">Back to Tind</span> — cook in</div></div><span class="dur">~4m</span></li>
+    </ol>
     <div class="tip">💧 More water &amp; alpine drama: the <b>Sørvågen → Munkebu</b> trail climbs past waterfalls, streams &amp; mountain lakes — go as far as you like.</div>
   </div></div>
 
   <div class="panel" data-day="4"><div class="body">
     <div class="daterow"><span class="dt">Sat 22 · Kvalvika + Ryten, then east</span><span class="base">🛏 Back to Svolvær · Storgata 18</span></div>
-    <div class="drive"><span class="di">🚗</span><div><b>The long day.</b> Tind→Fredvang ~45m, hike, then <b>Fredvang→Svolvær ~2h35</b> (Google 1h51, 105 km). ⚡ Charge at <b>Leknes</b> on the way east. Hike early, eat, then drive.</div></div>
+    <div class="routebar"><span class="r">🧭 <b>Tind → Fredvang → [hike] → Leknes (charge) → Svolvær</b></span><span class="tot">🚗 ~3h · 🥾 ~3–4h · the long day</span></div>
     <figure class="shot"><img class="zoom" loading="lazy" data-cap="Kvalvika Beach from Ryten" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ryten%20Kvalvika%20Lofoten%20tunliweb.jpg?width=1200" alt="Kvalvika Beach from Ryten"><span class="mag">⌕</span><figcaption>Kvalvika Beach from Ryten — the day’s big payoff</figcaption></figure>
-    <ul class="steps">
-      <li><b>Kvalvika Beach + Ryten</b> — a hidden beach and a clifftop view straight down onto it. <span class="pill med">medium ~3–4h</span> <span class="pill opt">easier: just Kvalvika beach</span></li>
-      <li>📸 <b>Fredvang roadside stop:</b> the shark-fin peak <b>Volandstinden</b> + the curving <b>Fredvang Bridges</b> with red cabins — the classic shot, right where you park. <span class="pill easy">no hike</span></li>
-      <li><b>Swap option:</b> want that view <i>from above</i>? <b>Volandstinden</b> is a separate short hike (~5 km, easy-moderate) from Fredvang — trade it for Ryten if the shark-fin-from-above is the dream. <span class="pill opt">pick one</span></li>
-      <li>Drive <b>back east to Svolvær</b>. Optional easy viewpoint near Kabelvåg: <b>Tjeldbergtind</b>. <span class="pill med">easy-medium</span> <span class="pill opt">optional</span></li>
-    </ul>
+    <ol class="itin">
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Tind → Fredvang</b> — to the Innersand / Kvalvika–Ryten trailhead</div></div><span class="dur">~42m · ~50m</span></li>
+      <li class="hike"><span class="ic">🥾</span><div class="c"><div class="t"><span class="pl">Kvalvika Beach + Ryten</span> — hidden beach + clifftop view over it <span class="pill opt">easier: just Kvalvika</span></div></div><span class="dur">~3–4h · medium</span></li>
+      <li class="see"><span class="ic">📸</span><div class="c"><div class="t"><span class="pl">Fredvang roadside</span> — Volandstinden “shark fin” + the curving Fredvang Bridges <span class="pill opt">swap: hike Volandstinden ~2–3h</span></div></div><span class="dur">~15m</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Fredvang → Leknes</b> — ⚡ charge for the run east</div></div><span class="dur">~42m</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Leknes → Svolvær</b> <span class="pill opt">opt: Tjeldbergtind viewpoint near Kabelvåg</span></div></div><span class="dur">1h09 · ~1h25</span></li>
+      <li class="bed"><span class="ic">🛏</span><div class="c"><div class="t"><span class="pl">Svolvær · Storgata 18</span> — cook, or a celebratory veg dinner in town</div></div><span class="dur">check in</span></li>
+    </ol>
     <div class="tip">⛰️ Ryten looks out over Kvalvika &amp; the open sea — a different angle from the Volandstinden/bridges view. You realistically can’t do <i>both</i> big hikes plus the drive east, so choose your peak.</div>
   </div></div>
 
   <div class="panel" data-day="5"><div class="body">
     <div class="daterow"><span class="dt">Sun 23 · Slow morning, fly home</span><span class="base">🛫 Drive to Evenes (EVE)</span></div>
-    <div class="drive"><span class="di">🚗</span><div><b>Svolvær → Evenes ~3h05</b> (Google 2h39, 166 km). <b>Leave by ~09:00–09:15</b> for the 13:40 flight with car return + check-in.</div></div>
-    <ul class="steps">
-      <li>Relaxed start: Svolvær harbour, a bakery stop, pack up.</li>
-      <li><b>Charge to full in Svolvær before leaving</b> — 166 km is well within the ID.3's range. Top-up chargers near Narvik/Bjerkvik if you want one before drop-off.</li>
-      <li>Fly <b>EVE → Amsterdam</b>. 🎉</li>
-    </ul>
+    <div class="routebar"><span class="r">🧭 <b>Svolvær → Evenes ✈</b></span><span class="tot">🚗 ~3h05 · leave by ~09:00</span></div>
+    <ol class="itin">
+      <li class="bed"><span class="ic">🛏</span><div class="c"><div class="t"><span class="pl">Svolvær</span> — slow start: harbour stroll, bakery, pack up; ⚡ charge to full</div></div><span class="dur">until ~09:00</span></li>
+      <li class="go"><span class="ic">🚗</span><div class="c"><div class="t"><b>Svolvær → Evenes</b> on the E10 — leave by ~09:00–09:15</div></div><span class="dur">2h39 · 166 km</span></li>
+      <li class="fly"><span class="ic">✈</span><div class="c"><div class="t"><span class="pl">Evenes → Amsterdam</span> — return the ID.3 charged, check in</div></div><span class="dur">13:40</span></li>
+    </ol>
     <div class="tip">⏱️ Staying in Svolvær (not Reine) the last night is the whole trick — Reine → Evenes is ~4 h, Svolvær ~2.5 h. That’s why Saturday loops back east.</div>
   </div></div>
 
