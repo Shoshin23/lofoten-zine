@@ -58,6 +58,40 @@
   .stop .sub{font-family:var(--body);font-weight:600;font-size:10px;fill:#d7e6e3;paint-order:stroke;stroke:#16404a;stroke-width:3.5px;stroke-linejoin:round;pointer-events:none}
   #car{filter:drop-shadow(0 3px 3px rgba(0,0,0,.4))}
   #tripmap.go #routeTrail{transition:stroke-dashoffset .9s cubic-bezier(.45,.05,.2,1)}
+  #chargers{opacity:0;transition:opacity .35s ease;pointer-events:none}
+  #tripmap.show-ch #chargers{opacity:1}
+  #chargers text{font-family:var(--body);font-weight:700;font-size:11px;fill:#fff;paint-order:stroke;stroke:#16404a;stroke-width:3.5px;stroke-linejoin:round}
+  .mapcard{position:relative}
+  .ch-toggle{position:absolute;top:12px;right:12px;z-index:3;font-family:var(--body);font-weight:600;font-size:12.5px;color:#1f2d36;background:rgba(251,245,234,.92);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;box-shadow:0 4px 12px -6px var(--shadow);transition:all .18s ease}
+  .ch-toggle:hover{background:#fff}
+  .ch-toggle.on{background:var(--gold);border-color:var(--gold);color:#3a2a08}
+  .stays{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.stays{grid-template-columns:1fr}}
+  .stay{border:1px solid var(--line);border-radius:18px;background:var(--card);overflow:hidden;box-shadow:0 12px 32px -22px var(--shadow)}
+  .stay .sh{display:flex;align-items:center;gap:11px;padding:14px 16px;background:linear-gradient(180deg,#eef4ef,#e7efe6);border-bottom:1px solid var(--line)}
+  .stay .sh .pin{flex:none;width:36px;height:36px;border-radius:10px;background:var(--sea);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .stay .sh .t{font-family:var(--display);font-weight:600;font-size:19px;color:var(--ink);line-height:1.05}
+  .stay .sh .t small{display:block;font-family:var(--body);font-weight:600;font-size:10.5px;letter-spacing:.1em;color:var(--sea-dk);text-transform:uppercase;margin-top:2px}
+  .stay .sb{padding:14px 16px}
+  .stay .addr{font-weight:600;font-size:14.5px;color:var(--ink)}
+  .stay .nights{display:inline-block;font-family:var(--body);font-weight:700;font-size:10.5px;letter-spacing:.06em;background:var(--terra);color:#fff;border-radius:999px;padding:3px 10px;margin:9px 0 4px}
+  .stay ul{list-style:none;margin:6px 0 0;padding:0}
+  .stay li{display:flex;gap:8px;font-size:13.5px;padding:4px 0;color:var(--ink2)}
+  .stay li b{color:var(--ink)}
+  .dist{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+  .dist span{font-family:var(--body);font-weight:600;font-size:11.5px;background:#eef4ef;border:1px solid #d4e4d8;border-radius:999px;padding:4px 9px;color:var(--sea-dk)}
+  .chargecard{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:16px 18px;box-shadow:0 10px 30px -22px var(--shadow)}
+  .appchips{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 14px}
+  .appchips .a{font-family:var(--body);font-weight:600;font-size:12.5px;background:#fff7e4;border:1px solid #f0dca6;border-radius:999px;padding:6px 11px;color:#7a4e10}
+  .appchips .a b{color:#5a3a08}
+  .plan{list-style:none;margin:0;padding:0}
+  .plan li{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-bottom:1px solid var(--line)}
+  .plan li:last-child{border-bottom:none}
+  .plan .bolt{flex:none;width:30px;height:30px;border-radius:9px;background:var(--gold);color:#3a2a08;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
+  .plan .bolt.skip{background:#e7efe6;color:var(--sea-dk)}
+  .plan .pt{font-size:14.5px;line-height:1.45}
+  .plan .pt b{color:var(--terra-dk)}
+  .plan .pt .where{font-weight:700;color:var(--ink)}
   .map-ui{display:flex;align-items:center;gap:14px;padding:14px 16px;border-top:1px solid var(--line);background:var(--card)}
   .navbtn{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .18s ease}
   .navbtn:hover{background:var(--terra);color:#fff;border-color:var(--terra)}
@@ -214,7 +248,7 @@
   </div>
 
   <div class="chips reveal">
-    <span class="chip">⚡ <b>Electric</b> self-drive</span>
+    <span class="chip">⚡ <b>VW ID.3</b> · electric</span>
     <span class="chip">🥦 Veg &amp; cook-in</span>
     <span class="chip">🥾 Easy–medium hikes</span>
     <span class="chip">💧 Waterfalls</span>
@@ -225,6 +259,7 @@
   <!-- ===== 16-BIT INTERACTIVE MAP (HERO) ===== -->
   <div class="sec-head reveal"><div><div class="kicker">The route · interactive</div><h2 class="section">Drive the trip</h2></div><div class="hint">press ▶ to drive · tap a stop</div></div>
   <div class="mapcard reveal">
+    <button class="ch-toggle" id="chToggle">⚡ Charging stops</button>
     <svg id="tripmap" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive 16-bit trip map">
       <defs>
         <linearGradient id="mSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d6f78"/><stop offset="1" stop-color="#124e57"/></linearGradient>
@@ -265,11 +300,20 @@
       <g class="stop" data-stop="3" transform="translate(432,210)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="36" text-anchor="middle">Leknes</text><text class="sub" x="0" y="50" text-anchor="middle">grocery</text></g>
       <g class="stop" data-stop="4" transform="translate(372,180)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-18" text-anchor="middle">Haukland</text></g>
       <g class="stop" data-stop="5" transform="translate(296,230)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="36" text-anchor="middle">Skagsanden</text></g>
-      <g class="stop" data-stop="6" transform="translate(156,286)"><circle class="ring" r="17" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-20" text-anchor="middle">Reine</text><text class="sub" x="0" y="-7" text-anchor="middle">base · west</text></g>
-      <g class="stop" data-stop="7" transform="translate(100,338)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="10" y="36" text-anchor="middle">Å · lake</text></g>
+      <g class="stop" data-stop="6" transform="translate(156,286)"><circle class="ring" r="17" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="-20" text-anchor="middle">Reine</text><text class="sub" x="0" y="-7" text-anchor="middle">Hamnøy · Sakrisøy</text></g>
+      <g class="stop" data-stop="7" transform="translate(100,338)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="10" y="34" text-anchor="middle">Å · lake</text><text class="sub" x="10" y="48" text-anchor="middle">🛏 Tind base</text></g>
       <g class="stop" data-stop="8" transform="translate(220,378)"><circle class="ring" r="16" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="10" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="36" text-anchor="middle">Fredvang</text><text class="sub" x="0" y="50" text-anchor="middle">Kvalvika · Ryten</text></g>
       <g class="stop" data-stop="9" transform="translate(700,372)"><circle class="ring" r="17" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="11" fill="#2e7d83" stroke="#fff" stroke-width="2.5"/><text class="lbl" x="0" y="36" text-anchor="middle">Svolvær</text><text class="sub" x="0" y="50" text-anchor="middle">base · Sat</text></g>
       <g class="stop" data-stop="10" transform="translate(928,250)"><circle class="ring" r="17" fill="none" stroke="#ffe2b0" stroke-width="3"/><circle class="dot" r="12" fill="#46555e" stroke="#fff" stroke-width="2.5"/><text x="0" y="4" text-anchor="middle" font-size="12" fill="#fff">✈</text><text class="lbl" x="0" y="36" text-anchor="middle">Evenes · out</text></g>
+
+      <!-- CHARGERS (toggle layer) -->
+      <g id="chargers">
+        <g transform="translate(905,120)"><circle r="10" fill="#f2c34a" stroke="#7a5310" stroke-width="2"/><path d="M1,-6 L-4,2 L-0.6,2 L-2,7 L4.5,-1 L0.8,-1 Z" fill="#3a2a08"/><text x="0" y="-15" text-anchor="middle">Evenes</text></g>
+        <g transform="translate(726,136)"><circle r="10" fill="#f2c34a" stroke="#7a5310" stroke-width="2"/><path d="M1,-6 L-4,2 L-0.6,2 L-2,7 L4.5,-1 L0.8,-1 Z" fill="#3a2a08"/><text x="0" y="-15" text-anchor="middle">Svolvær ×3</text></g>
+        <g transform="translate(470,236)"><circle r="10" fill="#f2c34a" stroke="#7a5310" stroke-width="2"/><path d="M1,-6 L-4,2 L-0.6,2 L-2,7 L4.5,-1 L0.8,-1 Z" fill="#3a2a08"/><text x="0" y="34" text-anchor="middle">Leknes ×3</text></g>
+        <g transform="translate(272,252)"><circle r="9" fill="#f2c34a" stroke="#7a5310" stroke-width="2"/><path d="M1,-5.4 L-3.6,1.8 L-0.5,1.8 L-1.8,6.3 L4,-0.9 L0.7,-0.9 Z" fill="#3a2a08"/><text x="0" y="32" text-anchor="middle">Ramberg</text></g>
+        <g transform="translate(182,300)"><circle r="7.5" fill="#cfe9e6" stroke="#21595e" stroke-width="2"/><path d="M0.8,-4.4 L-3,1.5 L-0.4,1.5 L-1.5,5.2 L3.3,-0.8 L0.6,-0.8 Z" fill="#21595e"/><text x="0" y="-13" text-anchor="middle" font-size="9.5">Reine (AC)</text></g>
+      </g>
 
       <!-- CAR (pixel van) -->
       <g id="car" transform="translate(928,96)">
@@ -309,8 +353,8 @@
   <div class="sec-head reveal"><div><div class="kicker">Five days</div><h2 class="section">At a glance</h2></div></div>
   <div class="glance reveal">
     <div class="gcard" data-day="1"><span class="gd">WED 19</span><div class="gt">Land &amp; Drive In</div><div class="gx">Evenes 16:40 → fjord stops → Svolvær</div><div class="gb">🛏 SVOLVÆR</div></div>
-    <div class="gcard" data-day="2"><span class="gd">THU 20</span><div class="gt">Village &amp; Beaches</div><div class="gx">Henningsvær, Haukland ↔ Uttakleiv</div><div class="gb">🛏 → REINE</div></div>
-    <div class="gcard" data-day="3"><span class="gd">FRI 21</span><div class="gt">Deep West</div><div class="gx">Reine, Å lake, Sørvågen waterfall</div><div class="gb">🛏 REINE</div></div>
+    <div class="gcard" data-day="2"><span class="gd">THU 20</span><div class="gt">Village &amp; Beaches</div><div class="gx">Henningsvær, Haukland ↔ Uttakleiv</div><div class="gb">🛏 → TIND</div></div>
+    <div class="gcard" data-day="3"><span class="gd">FRI 21</span><div class="gt">Deep West</div><div class="gx">Reine, Å lake, Sørvågen waterfall</div><div class="gb">🛏 TIND</div></div>
     <div class="gcard" data-day="4"><span class="gd">SAT 22</span><div class="gt">Kvalvika &amp; Ryten</div><div class="gx">Big hike, then drive back east</div><div class="gb">🛏 → SVOLVÆR</div></div>
     <div class="gcard" data-day="5"><span class="gd">SUN 23</span><div class="gt">Slow &amp; Fly Out</div><div class="gx">Svolvær → Evenes, fly 13:40</div><div class="gb">🛫 HOME</div></div>
   </div>
@@ -326,40 +370,40 @@
   </div>
 
   <div class="panel active" data-day="1"><div class="body">
-    <div class="daterow"><span class="dt">Wed 19 · Land &amp; roll in</span><span class="base">🛏 Base 1 · Svolvær / Kabelvåg</span></div>
+    <div class="daterow"><span class="dt">Wed 19 · Land &amp; roll in</span><span class="base">🛏 Svolvær · Storgata 18</span></div>
     <div class="drive"><span class="di">🚗</span><div><b>Evenes → Svolvær</b> — Google 2h39 (166 km) · <b>plan ~3h15</b>. Add ~30 min for the Austnesfjord &amp; Sildpollnes stops. Car pickup: allow 30–45 min first.</div></div>
     <ul class="steps">
-      <li>Land <b>AMS → Evenes (EVE) 16:40</b>. Pick up the electric car; big shop best done in <b>Svolvær on arrival</b> (no good supermarket on the way).</li>
+      <li>Land <b>AMS → Evenes (EVE) 16:40</b>. Pick up the <b>VW ID.3</b> (electric); big shop best done in <b>Svolvær on arrival</b> (no good supermarket on the way).</li>
       <li>Drive the E10 into Lofoten — gorgeous even as a transfer, hours of evening light left.</li>
       <li>On-route stops near Svolvær: <b>Austnesfjorden viewpoint</b> <span class="pill easy">2 min</span> &amp; <b>Sildpollnes Church</b> on its fjord spit. <span class="pill easy">photo stop</span></li>
-      <li>Check in around <b>Svolvær / Kabelvåg</b>, cook the first dinner. 🍝</li>
+      <li>Check in at <b>Storgata 18, Svolvær</b>, cook the first dinner. 🍝</li>
     </ul>
-    <div class="tip">⚡ Top up the EV at the big <b>Svolvær fast-charger bank</b> — sets you up for the next few days.</div>
+    <div class="tip">⚡ Charge the ID.3 overnight or at the big <b>Svolvær fast-charger bank</b> (Recharge/Mer/Circle K) — contactless or the <b>Elton</b> app. Full charging plan ↓</div>
   </div></div>
 
   <div class="panel" data-day="2"><div class="body">
-    <div class="daterow"><span class="dt">Thu 20 · Henningsvær &amp; the beaches</span><span class="base">🛏 Move west → Reine / Hamnøy</span></div>
+    <div class="daterow"><span class="dt">Thu 20 · Henningsvær &amp; the beaches</span><span class="base">🛏 Move west → Sørvågen (Tind)</span></div>
     <div class="drive"><span class="di">🚗</span><div><b>The driving-heavy day ≈ 4h35 total.</b> Svolvær→Henningsvær ~50m · →Leknes ~1h30 · →Haukland ~30m · →Skagsanden ~1h · →Reine ~55m. <i>(Google base ~3h10 + buffer.)</i> Start early.</div></div>
     <figure class="shot"><img class="zoom" loading="lazy" data-cap="Henningsvær harbour" src="https://commons.wikimedia.org/wiki/Special:FilePath/Henningsv%C3%A6r.jpg?width=1200" alt="Henningsvær harbour"><span class="mag">⌕</span><figcaption>Henningsvær — the “Venice of Lofoten”</figcaption></figure>
     <ul class="steps">
       <li><b>Henningsvær</b> — harbour, galleries, clifftop football pitch. <span class="pill easy">easy</span> Optional <b>Festvågtind</b>. <span class="pill med">medium ~2h</span></li>
       <li><b>Haukland ↔ Uttakleiv coastal walk</b> around Mannen — two white-sand beaches, one gentle path. <span class="pill easy">easy ~1–2h</span></li>
       <li>Optional scramble up <b>Mannen</b> for a top-down view of both beaches. <span class="pill med">short &amp; steep</span> <span class="pill opt">optional</span></li>
-      <li>Stop at <b>Skagsanden beach</b>, then settle into <b>Reine / Hamnøy</b>. Cook in.</li>
+      <li>Stop at <b>Skagsanden beach</b>, then settle into your <b>Tind cabin (Sørvågen)</b>. Cook in.</li>
     </ul>
     <div class="photorow">
       <figure class="shot"><img class="zoom" loading="lazy" data-cap="Haukland Beach" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hauklandsanden,%20Vestv%C3%A5g%C3%B8y,%20Lofoten.JPG?width=1000" alt="Haukland Beach"><span class="mag">⌕</span><figcaption>Haukland Beach</figcaption></figure>
       <figure class="shot"><img class="zoom" loading="lazy" data-cap="Uttakleiv Beach" src="https://commons.wikimedia.org/wiki/Special:FilePath/Lofoten,%20Uttakleiv%202.JPG?width=1000" alt="Uttakleiv Beach"><span class="mag">⌕</span><figcaption>Uttakleiv Beach</figcaption></figure>
     </div>
-    <div class="tip">🛒 Top up groceries in <b>Leknes</b> (en route) before Reine. ⚡ Fast chargers there too. If the day feels long, drop Skagsanden.</div>
+    <div class="tip">🛒 Groceries in <b>Leknes</b> (en route). ⚡ <b>Charge here too</b> — Leknes is the mid-island fast-charge hub, ideal mid-drive. If the day runs long, drop Skagsanden.</div>
   </div></div>
 
   <div class="panel" data-day="3"><div class="body">
-    <div class="daterow"><span class="dt">Fri 21 · The deep west</span><span class="base">🛏 Base 2 · Reine / Hamnøy</span></div>
-    <div class="drive"><span class="di">🚗</span><div><b>Light driving day — under ~1h all day.</b> Reine ↔ Å / Sørvågen ~25 min each way (Google 14 min). Everything else is on foot.</div></div>
+    <div class="daterow"><span class="dt">Fri 21 · The deep west</span><span class="base">🛏 Sørvågen (Tind) · Tindsveien 5</span></div>
+    <div class="drive"><span class="di">🚗</span><div><b>Barely any driving — your Tind base sits in the middle of it all.</b> From Tind: Å/Ågvatnet ~4 min, Sørvågen waterfall ~5 min, Reine/Hamnøy/Reinebringen ~12 min. Everything else on foot.</div></div>
     <div class="photorow">
       <figure class="shot"><img class="zoom" loading="lazy" data-cap="Ågvatnet — the lake walk at Å" src="https://commons.wikimedia.org/wiki/Special:FilePath/Agvatnet.jpg?width=1000" alt="Ågvatnet lake at Å"><span class="mag">⌕</span><figcaption>Ågvatnet — the lake walk at Å</figcaption></figure>
-      <figure class="shot"><img class="zoom" loading="lazy" data-cap="Hamnøy, right by your base" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hamn%C3%B8y%20Reine%20Moskenes%20Lofoten%20norway%20tunliweb%2003.jpg?width=1000" alt="Hamnøy blue hour"><span class="mag">⌕</span><figcaption>Hamnøy, right by your base</figcaption></figure>
+      <figure class="shot"><img class="zoom" loading="lazy" data-cap="Hamnøy — ~12 min from Tind" src="https://commons.wikimedia.org/wiki/Special:FilePath/Hamn%C3%B8y%20Reine%20Moskenes%20Lofoten%20norway%20tunliweb%2003.jpg?width=1000" alt="Hamnøy blue hour"><span class="mag">⌕</span><figcaption>Hamnøy — ~12 min from Tind</figcaption></figure>
     </div>
     <ul class="steps">
       <li><b>Reine, Hamnøy &amp; Sakrisøy</b> — the most photographed corner of Norway. Roadside viewpoints, zero climbing. <span class="pill easy">easy</span></li>
@@ -371,8 +415,8 @@
   </div></div>
 
   <div class="panel" data-day="4"><div class="body">
-    <div class="daterow"><span class="dt">Sat 22 · Kvalvika + Ryten, then east</span><span class="base">🛏 Back to Svolvær</span></div>
-    <div class="drive"><span class="di">🚗</span><div><b>The long day.</b> Reine→Fredvang ~45m (Google 30m), hike, then <b>Fredvang→Svolvær ~2h35</b> (Google 1h51, 105 km). Hike early, eat, then drive.</div></div>
+    <div class="daterow"><span class="dt">Sat 22 · Kvalvika + Ryten, then east</span><span class="base">🛏 Back to Svolvær · Storgata 18</span></div>
+    <div class="drive"><span class="di">🚗</span><div><b>The long day.</b> Tind→Fredvang ~45m, hike, then <b>Fredvang→Svolvær ~2h35</b> (Google 1h51, 105 km). ⚡ Charge at <b>Leknes</b> on the way east. Hike early, eat, then drive.</div></div>
     <figure class="shot"><img class="zoom" loading="lazy" data-cap="Kvalvika Beach from Ryten" src="https://commons.wikimedia.org/wiki/Special:FilePath/Ryten%20Kvalvika%20Lofoten%20tunliweb.jpg?width=1200" alt="Kvalvika Beach from Ryten"><span class="mag">⌕</span><figcaption>Kvalvika Beach from Ryten — the day’s big payoff</figcaption></figure>
     <ul class="steps">
       <li><b>Kvalvika Beach + Ryten</b> — a hidden beach and a clifftop view straight down onto it. <span class="pill med">medium ~3–4h</span> <span class="pill opt">easier: just Kvalvika beach</span></li>
@@ -385,14 +429,62 @@
 
   <div class="panel" data-day="5"><div class="body">
     <div class="daterow"><span class="dt">Sun 23 · Slow morning, fly home</span><span class="base">🛫 Drive to Evenes (EVE)</span></div>
-    <div class="drive"><span class="di">🚗</span><div><b>Svolvær → Evenes ~3h05</b> (Google 2h39, 166 km) + EV charge top-up. <b>Leave by ~09:00–09:15</b> for the 13:40 flight with car return + check-in.</div></div>
+    <div class="drive"><span class="di">🚗</span><div><b>Svolvær → Evenes ~3h05</b> (Google 2h39, 166 km). <b>Leave by ~09:00–09:15</b> for the 13:40 flight with car return + check-in.</div></div>
     <ul class="steps">
       <li>Relaxed start: Svolvær harbour, a bakery stop, pack up.</li>
-      <li>Drive back east; return the EV <b>fully charged</b> (charger near the airport is easiest).</li>
+      <li><b>Charge to full in Svolvær before leaving</b> — 166 km is well within the ID.3's range. Top-up chargers near Narvik/Bjerkvik if you want one before drop-off.</li>
       <li>Fly <b>EVE → Amsterdam</b>. 🎉</li>
     </ul>
     <div class="tip">⏱️ Staying in Svolvær (not Reine) the last night is the whole trick — Reine → Evenes is ~4 h, Svolvær ~2.5 h. That’s why Saturday loops back east.</div>
   </div></div>
+
+  <!-- STAYS -->
+  <div class="sec-head reveal"><div><div class="kicker">Where you sleep</div><h2 class="section">The two stays</h2></div></div>
+  <div class="stays reveal">
+    <div class="stay">
+      <div class="sh"><span class="pin">🛏</span><div class="t">Svolvær<small>Base 1 · east · Wed 19 &amp; Sat 22</small></div></div>
+      <div class="sb">
+        <div class="addr">Storgata 18, H0102 · 8300 Svolvær</div>
+        <span class="nights">2 nights · arrival + departure</span>
+        <ul>
+          <li>🏙️ <span>Right in town — restaurants, Coop/Rema, harbour &amp; fast chargers all walkable.</span></li>
+          <li>✈️ <span>The closest sensible base to Evenes for the 16:40 arrival &amp; 13:40 departure.</span></li>
+        </ul>
+        <div class="dist"><span>Evenes ~2h45</span><span>Henningsvær ~35m</span><span>Reine ~2h</span></div>
+      </div>
+    </div>
+    <div class="stay">
+      <div class="sh"><span class="pin">🛏</span><div class="t">Tind · Sørvågen<small>Base 2 · west · Thu 20 &amp; Fri 21</small></div></div>
+      <div class="sb">
+        <div class="addr">Tindsveien 5 · 8392 Sørvågen</div>
+        <span class="nights">2 nights · the deep west</span>
+        <ul>
+          <li>🏔️ <span>A quiet fishing hamlet at land’s end — smack in the middle of every Day-3 sight.</span></li>
+          <li>💧 <span>Sørvågen waterfall, Å &amp; Ågvatnet, Reinebringen all within ~12 min — near drive-free.</span></li>
+        </ul>
+        <div class="dist"><span>Å / Ågvatnet ~4m</span><span>Sørvågen falls ~5m</span><span>Reine ~12m</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHARGING -->
+  <div class="sec-head reveal"><div><div class="kicker">Power · the ID.3</div><h2 class="section">Charging the car</h2></div><div class="hint">tap ⚡ on the map ↑</div></div>
+  <div class="chargecard reveal">
+    <p style="margin:0 0 6px;font-size:14.5px;color:var(--ink2)">The <b>VW ID.3</b> (~58 kWh, ~300 km real range) fast-charges <b>~10→80% in ~30 min</b>. Norway is the easiest place on earth to charge — you’ll see Recharge, Mer, Circle K &amp; Eviny. Pay by <b>contactless card</b> (works at every fast charger in 2026, no account needed).</p>
+    <div class="appchips">
+      <span class="a">📲 <b>Elton</b> — one app, most networks</span>
+      <span class="a">🗺️ <b>ABRP</b> — plan the day</span>
+      <span class="a">⚡ <b>PlugShare</b> / ladestasjoner.no — live status</span>
+      <span class="a">💳 contactless — simplest backup</span>
+    </div>
+    <ul class="plan">
+      <li><span class="bolt">⚡</span><div class="pt"><span class="where">Wed · Svolvær</span> — charge to full overnight or at the big Svolvær bank after the drive in. Start every day topped up.</div></li>
+      <li><span class="bolt">⚡</span><div class="pt"><span class="where">Thu · Leknes</span> — the mid-island fast-charge hub. Plug in while you grocery-shop, then push west to Tind. <b>Recommended pit stop.</b></div></li>
+      <li><span class="bolt skip">○</span><div class="pt"><span class="where">Fri · Tind</span> — barely any driving today, so no fast charge needed. Reine has slower AC poles; trickle-charge at the cabin if it has a socket.</div></li>
+      <li><span class="bolt">⚡</span><div class="pt"><span class="where">Sat · Leknes (eastbound)</span> — top up on the long drive back to Svolvær (Ramberg / Lofoten Beach Camp is a backup). <b>Recommended pit stop.</b></div></li>
+      <li><span class="bolt">⚡</span><div class="pt"><span class="where">Sun · Svolvær → Evenes</span> — leave Svolvær full; 166 km is well within range. Chargers near Narvik/Bjerkvik for a final top-up before drop-off.</div></li>
+    </ul>
+  </div>
 
   <!-- HIKES -->
   <div class="sec-head reveal"><div><div class="kicker">On foot</div><h2 class="section">Hikes &amp; waterfalls</h2></div></div>
@@ -425,7 +517,7 @@
   <div class="sec-head reveal"><div><div class="kicker">Money</div><h2 class="section">Budget snapshot <span style="font-size:14px;color:var(--ink2);font-family:var(--body);font-weight:500">· per person</span></h2></div></div>
   <div class="budget reveal">
     <div class="brow"><span>✈️ Flights AMS ↔ EVE (booked)</span><span>€303</span></div>
-    <div class="brow"><span>🚗 Hertz EV · 5 days (€499.92 ÷ 3)</span><span>€167</span></div>
+    <div class="brow"><span>🚗 Hertz VW ID.3 · 5 days (€499.92 ÷ 3)</span><span>€167</span></div>
     <div class="brow"><span>⚡ EV charging + tolls</span><span>€20</span></div>
     <div class="brow"><span>🛏 Lodging · 4 nights (cabin for 3) ÷ 3</span><span>€210</span></div>
     <div class="brow"><span>🥦 Groceries / cooking</span><span>€100</span></div>
@@ -445,7 +537,7 @@
         <li>West end (Reine/Flakstad) has <b>narrow bits &amp; single-lane bridges</b> — slow, let oncoming cars pass.</li>
         <li><b>Never stop in the road for photos.</b> Use marked laybys only.</li>
         <li>Summer traffic is slower than Google shows — that’s why every leg here has a buffer.</li>
-        <li><b>Charging:</b> fast-charger banks in Svolvær &amp; Leknes; ~30 min = 10→80%. Cards work directly (2026).</li>
+        <li><b>Charging:</b> the ID.3 does ~10→80% in ~30 min. Fast-charge hubs in Svolvær, Leknes &amp; Evenes; pay by contactless or the <b>Elton</b> app (2026). See the Charging section.</li>
       </ol>
     </div>
     <div class="note">
@@ -601,13 +693,13 @@
 
   var stops=[
     {day:'DAY 1',name:'Evenes Airport',leg:'Land 16:40 · pick up the EV',note:'The journey starts here — fly in, grab the car, point west.'},
-    {day:'DAY 1',name:'Svolvær',leg:'Evenes → Svolvær · <span class="g">Google 2h39 ·</span> plan ~3h15',note:'Base 1 (east). Stop at Austnesfjorden &amp; Sildpollnes on the way in.'},
+    {day:'DAY 1',name:'Svolvær',leg:'Evenes → Svolvær · <span class="g">Google 2h39 ·</span> plan ~3h15',note:'Base 1: Storgata 18, Svolvær. Austnesfjorden &amp; Sildpollnes stops on the way in.'},
     {day:'DAY 2',name:'Henningsvær',leg:'Svolvær → Henningsvær · <span class="g">34m ·</span> plan ~50m',note:'The “Venice of Lofoten” — harbour, galleries, the clifftop pitch.'},
     {day:'DAY 2',name:'Leknes',leg:'Henningsvær → Leknes · <span class="g">1h06 ·</span> plan ~1h30',note:'Grocery top-up + fast chargers before heading further west.'},
     {day:'DAY 2',name:'Haukland &amp; Uttakleiv',leg:'Leknes → Haukland · <span class="g">15m ·</span> plan ~30m',note:'Two white-sand beaches joined by an easy coastal walk.'},
     {day:'DAY 2',name:'Skagsanden',leg:'Haukland → Skagsanden · <span class="g">41m ·</span> plan ~1h',note:'Mirror-sand beach at Flakstad — a classic photo stop.'},
-    {day:'DAY 2',name:'Reine / Hamnøy',leg:'Skagsanden → Reine · <span class="g">36m ·</span> plan ~55m',note:'Base 2 (west) — the most photographed corner of Norway.'},
-    {day:'DAY 3',name:'Å &amp; Ågvatnet',leg:'Reine → Å · <span class="g">14m ·</span> plan ~25m',note:'Light day: lake loop, Sørvågen waterfall, Reinebringen. Mostly on foot.'},
+    {day:'DAY 2',name:'Reine / Hamnøy',leg:'Skagsanden → Reine · <span class="g">36m ·</span> plan ~55m',note:'Reine, Hamnøy &amp; Sakrisøy — the most photographed corner of Norway.'},
+    {day:'DAY 3',name:'Å &amp; Ågvatnet',leg:'Reine → Å · <span class="g">14m ·</span> plan ~25m',note:'Your Tind base (Tindsveien 5) sits at the end of the road. Light day — lake, waterfall, Reinebringen, mostly on foot.'},
     {day:'DAY 4',name:'Fredvang · Kvalvika / Ryten',leg:'Reine → Fredvang · <span class="g">30m ·</span> plan ~45m',note:'Big hike to Kvalvika &amp; Ryten. Roadside: Volandstinden “shark fin” + the bridges.'},
     {day:'DAY 4',name:'Svolvær',leg:'Fredvang → Svolvær · <span class="g">1h51 ·</span> plan ~2h35',note:'The long drive back east, after the hike. Last night near the airport.'},
     {day:'DAY 5',name:'Evenes Airport',leg:'Svolvær → Evenes · <span class="g">2h39 ·</span> plan ~3h05',note:'Leave by ~09:00–09:15, return the EV charged, fly 13:40. 🎉'}
@@ -640,6 +732,8 @@
 
   cur=0;render();moveTo(stopLen[0],false);
   document.getElementById('tripmap').classList.add('go');
+  var chBtn=document.getElementById('chToggle');
+  if(chBtn)chBtn.addEventListener('click',function(){var on=svg.classList.toggle('show-ch');chBtn.classList.toggle('on',on);});
 
   /* day tabs */
   var tabs=document.querySelectorAll('#tabs .tab'),panels=document.querySelectorAll('.panel');
